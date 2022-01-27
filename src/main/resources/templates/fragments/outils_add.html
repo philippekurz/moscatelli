@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<div th:fragment="outils_add">
+
+
+    <!-------------------------------------------------------- Modal add ------------------------------------------------------>
+    <div class="modal fade" id="enterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nouvel outil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{'/outils/enregistrer?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post" th:object="${Outil}">
+                        <div class="mb-3">
+                            <input type="text" th:field="*{designation}"  class="form-control" name="designation" placeholder="designation">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" th:field="*{marque}"  class="form-control" name="marque" placeholder="marque">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text"  th:field="*{modele}" class="form-control" name="modele" placeholder="modele">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" th:field="*{puissance}"  class="form-control" name="puissance" placeholder="puissance">
+                        </div>
+
+                        <div  th:if="${etalonnee}" class="mb-3">
+                            <input type="text" th:field="*{capacite}"  class="form-control" name="capacite" placeholder="capacite">
+                        </div>
+                        <input th:unless="${etalonnee}"  type="hidden" th:field="*{capacite}" placeholder="capacite">
+
+
+                        <div class="mb-3">
+                            <input type="text" th:field="*{numero_de_serie}"  class="form-control" name="numero_de_serie" placeholder="numero de serie">
+                        </div>
+
+                        <div  th:if="${periodicite}" class="mb-3">
+                            <input type="text" th:field="*{periodicite}"  class="form-control" name="periodicite" placeholder="periodicite">
+                        </div>
+                        <input th:unless="${periodicite}"  type="hidden" th:field="*{periodicite}" placeholder="periodicite">
+
+                        <div class="mb-3">
+                            <input type="text" th:field="*{repere}"  class="form-control" name="repere" placeholder="Repère">
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" th:field="*{fournisseur}"  class="form-control" name="fournisseur" placeholder="fournisseur">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="typeStatut" class="form-label">Statut</label>
+                            <select class="form-select" th:field="*{typeStatut}">
+                                <option th:value="Fonction" th:text="Fonction"></option>
+                                <option th:value="Maintenance" th:text="Maintenance"></option>
+                                <option th:value="Etalonnage" th:text="Étalonnage"></option>
+                                <option th:value="Rebut" th:text="Rebut"></option>
+                                <option th:value="Manquant" th:text="Manquant"></option>
+                            </select>
+                        </div>
+                        <!--                            <div class="form-group form-check">-->
+                        <!--                                <label for="etalonnee" class="form-check-label">Etalonnage</label>-->
+                        <!--                                <input type="checkbox" th:checked="*{etalonnee}" th:value="*{etalonnee}" class="form-check-input" id="etalonnee" name="etalonnee">-->
+                        <!--                            </div>-->
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

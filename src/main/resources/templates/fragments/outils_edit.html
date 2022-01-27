@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<div th:fragment="outils_edit">
+
+
+    <!-------------------------------------------------------- Modal Edit etalonnee------------------------------------------------------>
+    <div class="modal fade"  th:attr="id='editModal'+*{outil.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelEdit">Modifier info Outil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{'/outils/modifier/'+ ${outil.id} +'?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}"  method="post" th:object="${outil}">
+                        <input type="hidden" th:name="${outil.id}">
+                        <div class="row mb-3">
+                            <label for="designation" class="col-4 form-label">Désignation</label>
+                            <div class="col-8">
+                                <input type="text" th:value="*{designation}" class="form-control" id="designation" name="designation" >
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="marque" class="col-4 form-label">Marque</label>
+                            <div class="col-8">
+                                <input type="text" th:value="${outil.marque}"class="form-control" id="marque" name="marque">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="modele" class="col-4 form-label">Modèle</label>
+                            <div class="col-8">
+                                <input type="text" th:value="${outil.modele}" class="form-control" id="modele" name="modele" >
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="numero_de_serie" class="col-4 form-label">Numéro de série</label>
+                            <input type="text" th:value="${outil.numero_de_serie}" class="form-control" id="numero_de_serie" name="numero_de_serie">
+                        </div>
+                        <div class="row mb-3">
+                            <label for="puissance" class="col-4 form-label">Puissance</label>
+                            <input type="text" th:value="${outil.puissance}" class="form-control" id="puissance" name="puissance" >
+                        </div>
+                        <div th:if="${etalonnee}" class="row mb-3">
+                            <label for="capacite" class="col-4 form-label">capacite</label>
+                            <input type="text" th:value="${outil.capacite}" class="form-control" id="capacite" name="capacite" >
+                        </div>
+                        <input th:if="${!etalonnee}" type="hidden" th:value="${outil.capacite}" id="capacite" name="capacite" >
+
+                        <div class="row mb-3">
+                            <label for="repere" class="col-4 form-label">Repère</label>
+                            <input type="text" th:value="${outil.repere}" class="form-control" id="repere" name="repere">
+                        </div>
+                        <div class="row mb-3">
+                            <label for="etat" class="col-4 form-label">État</label>
+                            <div class="col-8">
+                                <input type="text" th:value="${outil.etat}" class="form-control" id="etat" name="etat" >
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="typeStatut" class="col-4 form-label">Statut</label>
+                            <select class="col-8 form-select" th:value="${outil.typeStatut}" id="typeStatut" name="typeStatut">
+                                <option th:value="Fonction" th:text="Fonction"></option>
+                                <option th:value="Maintenance" th:text="Maintenance"></option>
+                                <option th:value="Etalonnage" th:text="Étalonnage"></option>
+                                <option th:value="Rebut" th:text="Rebut"></option>
+                                <option th:value="Manquant" th:text="Manquant"></option>
+                            </select>
+                        </div>
+
+                        <div th:if="${etalonnee}" class="row mb-3">
+                            <label for="periodicite" class="col-4 form-label">Périodicité</label>
+                            <input type="text" th:value="${outil.periodicite}" class="col-8 form-control" id="periodicite" name="periodicite">
+                        </div>
+                        <input th:if="${!etalonnee}" type="hidden" th:value="${outil.periodicite}" id="periodicite" name="periodicite" >
+
+                        <div class="row mb-3">
+                            <label for="fournisseur" class="col-4 form-label">Fournisseur</label>
+                            <input type="text" th:value="${outil.fournisseur}" class="col-8 form-control" id="fournisseur" name="fournisseur">
+                        </div>
+                        <!----------------- Modal footer ----------------->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

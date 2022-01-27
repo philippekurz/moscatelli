@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<div th:fragment="outils_tableau">
+    <div class="text-center" >
+        <h1 th:if="${etalonnee}">Gestion des appareil etalonnés</h1>
+        <h1 th:if="${!etalonnee}">Gestion des outils</h1>
+
+        <!-------------------------------------------------------------- Début du tableau ----------------------------------------------------------------->
+        <table class="table table-striped table-responsive">
+            <thead>
+            <tr>
+                <!--                    <th scope="col">Id</th>-->
+                <th scope="col">Désignation</th>
+                <th scope="col">Marque</th>
+                <th scope="col">Modèle</th>
+                <th scope="col">Numéro de série</th>
+                <th scope="col">Puissance</th>
+                <th scope="col" th:if="${etalonnee}" >Capacité</th>
+                <th scope="col">Repère</th>
+                <th scope="col">État</th>
+                <th scope="col">Statut</th>
+                <th scope="col" th:if="${etalonnee}">Périodicité</th>
+                <th scope="col">Fournisseur</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <!---------------------------- Contenu du tableau ----------------------------------->
+            <tbody>
+            <th:block th:each="outil : ${Outils}">
+                <tr>
+                    <!--                        <td>[[${outil.id}]]</td>-->
+                    <td>[[${outil.designation}]]</td>
+                    <td>[[${outil.marque}]]</td>
+                    <td>[[${outil.modele}]]</td>
+                    <td>[[${outil.numero_de_serie}]]</td>
+                    <td>[[${outil.puissance}]]</td>
+                    <td th:if="${etalonnee}" >[[${outil.capacite}]]</td>
+                    <td>[[${outil.repere}]]</td>
+                    <td>[[${outil.etat}]]</td>
+                    <td>[[${outil.typeStatut}]]</td>
+                    <td th:if="${etalonnee}" >[[${outil.periodicite}]]</td>
+                    <td>[[${outil.fournisseur}]]</td>
+
+
+                    <td>
+                        <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#editModal'+*{outil.id}"><i class="bi bi-box-arrow-in-left mx-1"></i></a>
+                        <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#editModal'+*{outil.id}"><i class="bi bi-box-arrow-in-right mx-1"></i></a>
+                        <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#editModal'+*{outil.id}"><i class="bi bi-pencil-fill mx-1"></i></a>
+                        <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal"  th:attr="data-bs-target='#deleteModal'+*{outil.id}"><i class="bi bi-trash-fill mx-1"></i></a>
+                    </td>
+
+
+
+                    <div th:replace="fragments/outils_edit.html :: outils_edit"></div>
+                    <div th:replace="fragments/outils_delete.html :: outils_delete"></div>
+
+
+
+                    <!-------------------------------------------------------- Fermeture du tableau ------------------------------------------------------>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
