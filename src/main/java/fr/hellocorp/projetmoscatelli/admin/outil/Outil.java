@@ -67,7 +67,7 @@ public class Outil {
     private boolean etalonnee;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "outil")
-    private Set<EntreeSortie> outil = new HashSet<>();
+    private Set<EntreeSortie> entreesSorties = new HashSet<>();
 
     @Column( length = 70 )
     private String utilisateur_creation;
@@ -82,7 +82,7 @@ public class Outil {
     private LocalDateTime date_maj;
     //////////////////////////////////////// DECLARATIONS DES CONSTRUCTEURS ////////////////////////////////////////
 
-    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, Set<EntreeSortie> outil) {
+    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, Set<EntreeSortie> entreesSorties) {
         this.id = id;
         this.designation = designation;
         this.fournisseur = fournisseur;
@@ -97,10 +97,10 @@ public class Outil {
         this.periodicite = periodicite;
         this.disponibilite = disponibilite;
         this.etalonnee = etalonnee;
-        this.outil = outil;
+        this.entreesSorties = entreesSorties;
     }
 
-    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, Set<EntreeSortie> outil) {
+    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, Set<EntreeSortie> entreesSorties) {
         this.designation = designation;
         this.fournisseur = fournisseur;
         this.marque = marque;
@@ -114,7 +114,7 @@ public class Outil {
         this.periodicite = periodicite;
         this.disponibilite = disponibilite;
         this.etalonnee = etalonnee;
-        this.outil = outil;
+        this.entreesSorties = entreesSorties;
     }
     public Outil() {
     }
@@ -258,12 +258,12 @@ public class Outil {
     }
 
 
-    public Set<EntreeSortie> getOutil() {
-        return outil;
+    public Set<EntreeSortie> getEntreesSorties() {
+        return entreesSorties;
     }
 
-    public void setOutil(Set<EntreeSortie> outil) {
-        this.outil = outil;
+    public void setEntreesSorties(Set<EntreeSortie> entreesSorties) {
+        this.entreesSorties = entreesSorties;
     }
 
     public boolean isEtalonnee() {
@@ -293,7 +293,7 @@ public class Outil {
                 ", periodicite='" + periodicite + '\'' +
                 ", disponibilite=" + disponibilite +
                 ", etalonnee=" + etalonnee +
-                ", outil=" + outil +
+                ", entreesSorties=" + entreesSorties +
                 ", utilisateur_creation='" + utilisateur_creation + '\'' +
                 ", date_creation=" + date_creation +
                 ", utilisateur_maj='" + utilisateur_maj + '\'' +

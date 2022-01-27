@@ -181,6 +181,7 @@ public class EntreeSortie {
         this.dateMaj = dateMaj;
     }
 
+
     @Override
     public String toString() {
         return "EntreeSortie{" +
@@ -198,7 +199,6 @@ public class EntreeSortie {
                 ", dateMaj=" + dateMaj +
                 '}';
     }
-
 }
 
 
