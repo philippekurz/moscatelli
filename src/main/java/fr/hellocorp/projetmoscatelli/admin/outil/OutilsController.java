@@ -1,5 +1,6 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
+import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/outils")
@@ -23,6 +25,9 @@ public class OutilsController {
         model.addAttribute("Outils",outils);
         Outil outil = new Outil();
         model.addAttribute("Outil",outil);
+
+
+
         model.addAttribute("url","/outils");
         model.addAttribute("etalonnee", etalonnee);
         model.addAttribute("keyword", keyword);

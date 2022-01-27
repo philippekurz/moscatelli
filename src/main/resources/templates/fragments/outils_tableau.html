@@ -23,7 +23,7 @@
                 <th scope="col">Statut</th>
                 <th scope="col" th:if="${etalonnee}">Périodicité</th>
                 <th scope="col">Fournisseur</th>
-                <th scope="col">date de sortie</th>
+                <th scope="col">Date sortie</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -43,7 +43,6 @@
                     <td>[[${outil.typeStatut}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.periodicite}]]</td>
                     <td>[[${outil.fournisseur}]]</td>
-<!--                    <td>[[${outil}]]</td>-->
 
 
                     <td>

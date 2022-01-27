@@ -35,6 +35,8 @@ public class UtilisateurController {
         List<Droit> roles = droitService.liste();
         model.addAttribute("roles", roles);
 
+
+
         return "/utilisateur";
     }
 

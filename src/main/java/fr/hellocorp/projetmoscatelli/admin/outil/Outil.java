@@ -1,5 +1,6 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
+import fr.hellocorp.projetmoscatelli.admin.droit.Droit;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 
 import javax.persistence.*;
@@ -66,8 +67,15 @@ public class Outil {
     @Column(name = "etalonnee", columnDefinition = "BOOLEAN DEFAULT false")
     private boolean etalonnee;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "outil")
+
+
+    @OneToMany(fetch = FetchType.EAGER,   cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_outil")
     private Set<EntreeSortie> entreesSorties = new HashSet<>();
+
+
+
+
 
     @Column( length = 70 )
     private String utilisateur_creation;
@@ -83,12 +91,224 @@ public class Outil {
     //////////////////////////////////////// DECLARATIONS DES CONSTRUCTEURS ////////////////////////////////////////
 
 
-    //////////////////////////////////////// DECLARATIONS DES GETTERS AND SETTERS ////////////////////////////////////////
+    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, Set<EntreeSortie> entreesSorties) {
+        this.id = id;
+        this.designation = designation;
+        this.fournisseur = fournisseur;
+        this.marque = marque;
+        this.modele = modele;
+        this.numero_de_serie = numero_de_serie;
+        this.capacite = capacite;
+        this.puissance = puissance;
+        this.repere = repere;
+        this.etat = etat;
+        this.typeStatut = typeStatut;
+        this.periodicite = periodicite;
+        this.disponibilite = disponibilite;
+        this.etalonnee = etalonnee;
+        this.entreesSorties = entreesSorties;
+    }
 
+    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, Set<EntreeSortie> entreesSorties) {
+        this.designation = designation;
+        this.fournisseur = fournisseur;
+        this.marque = marque;
+        this.modele = modele;
+        this.numero_de_serie = numero_de_serie;
+        this.capacite = capacite;
+        this.puissance = puissance;
+        this.repere = repere;
+        this.etat = etat;
+        this.typeStatut = typeStatut;
+        this.periodicite = periodicite;
+        this.disponibilite = disponibilite;
+        this.etalonnee = etalonnee;
+        this.entreesSorties = entreesSorties;
+    }
 
+    public Outil() {
+    }
+
+//////////////////////////////////////// DECLARATIONS DES GETTERS AND SETTERS ////////////////////////////////////////
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public String getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(String fournisseur) {
+        this.fournisseur = fournisseur;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    public String getModele() {
+        return modele;
+    }
+
+    public void setModele(String modele) {
+        this.modele = modele;
+    }
+
+    public String getNumero_de_serie() {
+        return numero_de_serie;
+    }
+
+    public void setNumero_de_serie(String numero_de_serie) {
+        this.numero_de_serie = numero_de_serie;
+    }
+
+    public String getCapacite() {
+        return capacite;
+    }
+
+    public void setCapacite(String capacite) {
+        this.capacite = capacite;
+    }
+
+    public String getPuissance() {
+        return puissance;
+    }
+
+    public void setPuissance(String puissance) {
+        this.puissance = puissance;
+    }
+
+    public String getRepere() {
+        return repere;
+    }
+
+    public void setRepere(String repere) {
+        this.repere = repere;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public TypeStatut getTypeStatut() {
+        return typeStatut;
+    }
+
+    public void setTypeStatut(TypeStatut typeStatut) {
+        this.typeStatut = typeStatut;
+    }
+
+    public String getPeriodicite() {
+        return periodicite;
+    }
+
+    public void setPeriodicite(String periodicite) {
+        this.periodicite = periodicite;
+    }
+
+    public boolean isDisponibilite() {
+        return disponibilite;
+    }
+
+    public void setDisponibilite(boolean disponibilite) {
+        this.disponibilite = disponibilite;
+    }
+
+    public boolean isEtalonnee() {
+        return etalonnee;
+    }
+
+    public void setEtalonnee(boolean etalonnee) {
+        this.etalonnee = etalonnee;
+    }
+
+    public Set<EntreeSortie> getEntreesSorties() {
+        return entreesSorties;
+    }
+
+    public void setEntreesSorties(Set<EntreeSortie> entreesSorties) {
+        this.entreesSorties = entreesSorties;
+    }
+
+    public String getUtilisateur_creation() {
+        return utilisateur_creation;
+    }
+
+    public void setUtilisateur_creation(String utilisateur_creation) {
+        this.utilisateur_creation = utilisateur_creation;
+    }
+
+    public LocalDateTime getDate_creation() {
+        return date_creation;
+    }
+
+    public void setDate_creation(LocalDateTime date_creation) {
+        this.date_creation = date_creation;
+    }
+
+    public String getUtilisateur_maj() {
+        return utilisateur_maj;
+    }
+
+    public void setUtilisateur_maj(String utilisateur_maj) {
+        this.utilisateur_maj = utilisateur_maj;
+    }
+
+    public LocalDateTime getDate_maj() {
+        return date_maj;
+    }
+
+    public void setDate_maj(LocalDateTime date_maj) {
+        this.date_maj = date_maj;
+    }
 
 
     //////////////////////////////////////// DECLARATIONS methode to string ////////////////////////////////////////
 
 
+    @Override
+    public String toString() {
+        return "Outil{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", fournisseur='" + fournisseur + '\'' +
+                ", marque='" + marque + '\'' +
+                ", modele='" + modele + '\'' +
+                ", numero_de_serie='" + numero_de_serie + '\'' +
+                ", capacite='" + capacite + '\'' +
+                ", puissance='" + puissance + '\'' +
+                ", repere='" + repere + '\'' +
+                ", etat='" + etat + '\'' +
+                ", typeStatut=" + typeStatut +
+                ", periodicite='" + periodicite + '\'' +
+                ", disponibilite=" + disponibilite +
+                ", etalonnee=" + etalonnee +
+                ", entreesSorties=" + entreesSorties +
+                ", utilisateur_creation='" + utilisateur_creation + '\'' +
+                ", date_creation=" + date_creation +
+                ", utilisateur_maj='" + utilisateur_maj + '\'' +
+                ", date_maj=" + date_maj +
+                '}';
+    }
 }
