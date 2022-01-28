@@ -7,23 +7,21 @@
 <!------------------------------------------------------Modal history ------------------------------------------------------>
 
     <div class="modal fade" th:attr="id='historyModal'+*{outil.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Historique [[${outil.designation}]] [[${outil.modele}]]</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-
-                    <table>
+                    <table class="table table-stripped table-bordered">
                         <thead>
                         <tr>
-                            <th scope="col">Date de sortie</th>
-                            <th scope="col">date de retour prévue</th>
-                            <th scope="col">date de retour</th>
-                            <th scope="col">probleme</th>
-                            <th scope="col">referencePV</th>
+                            <th scope="col">Sortie</th>
+                            <th scope="col">Retour prévu</th>
+                            <th scope="col">Retour</th>
+                            <th scope="col">Probleme</th>
+                            <th scope="col">Référence PV</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,10 +38,9 @@
                         </tbody>
                     </table>
 
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
             </div>
         </div>
