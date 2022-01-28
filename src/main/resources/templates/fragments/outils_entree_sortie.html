@@ -40,7 +40,7 @@
                 <div class="modal-body">
 
 
-                    <form th:action="@{/outils/sortie}" method="post">
+                    <form th:action="@{'/outils/sortie/' +'?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
                         <input type="hidden" id="outil" name="outil" th:value="${outil.id}">
 
 
