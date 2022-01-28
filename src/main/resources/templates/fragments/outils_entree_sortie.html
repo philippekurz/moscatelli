@@ -15,15 +15,11 @@
                 </div>
                 <div class="modal-body">
 
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            </div>
 
-
-
-
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -41,7 +37,6 @@
 
                     <form th:action="@{'/outils/sortie/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
 
-                    <form th:action="@{/outils/sortie}" method="post">
                         <input type="hidden" id="outil" name="outil" th:value="${outil.id}">
 
                         <div class="row mb-3">
