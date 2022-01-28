@@ -2,6 +2,8 @@ package fr.hellocorp.projetmoscatelli.admin.outil;
 
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
+import fr.hellocorp.projetmoscatelli.admin.utilisateur.Utilisateur;
+import fr.hellocorp.projetmoscatelli.admin.utilisateur.UtilisateurService;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -21,6 +24,8 @@ public class OutilsController {
     private OutilService service;
     @Autowired
     private EntreeSortieService entreeSortieService;
+    @Autowired
+    private UtilisateurService utilisateurService;
 
     @GetMapping(value = {"/recherche",""})
     public String ShowTools(Model model, @Param("keyword") String keyword,@Param("etalonnee") boolean etalonnee) {
@@ -31,9 +36,14 @@ public class OutilsController {
         Outil outil = new Outil();
         model.addAttribute("Outil",outil);
 
+        List<Utilisateur> utilisateurs = utilisateurService.findAll(keyword);
+        model.addAttribute("utilisateurs", utilisateurs);
+
         model.addAttribute("url","/outils");
         model.addAttribute("etalonnee", etalonnee);
         model.addAttribute("keyword", keyword);
+
+        model.addAttribute("currentDate", LocalDate.now());
 
         return "outils";
     }
@@ -45,6 +55,24 @@ public class OutilsController {
         service.enregistrer(outil);
 
         return "redirect:/outils?etalonnee="+etalonnee;
+    }
+    @PostMapping("/sortie")
+    public String sortie(
+                         @Param("keyword)") String keyword,
+                         @Param("etalonnee)") boolean etalonnee,
+                         @RequestParam Utilisateur utilisateur,
+                         @RequestParam Outil outil,
+                         @RequestParam String date_sortie,
+                         @RequestParam String date_de_retour_prevue)
+    {
+        EntreeSortie entreeSortie = new EntreeSortie();
+        entreeSortie.setUtilisateur(utilisateur);
+        entreeSortie.setOutil(outil);
+        entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
+        entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
+
+        entreeSortieService.enregistrer(entreeSortie);
+        return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
 
     @PostMapping("/supprimer/{id}")

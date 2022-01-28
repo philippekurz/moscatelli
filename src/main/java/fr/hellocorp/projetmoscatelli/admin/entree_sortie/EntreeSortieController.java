@@ -50,6 +50,8 @@ public class EntreeSortieController {
         return "redirect:/entreesortie";
     }
 
+
+
     @PostMapping("/supprimer/{id}")
     public String supprimer(@PathVariable Long id,
                             @Param("keyword")String keyword) throws EntreeSortieNotFoundException {
