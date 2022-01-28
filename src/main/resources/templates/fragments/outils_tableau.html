@@ -23,8 +23,6 @@
                 <th scope="col">Statut</th>
                 <th scope="col" th:if="${etalonnee}">Périodicité</th>
                 <th scope="col">Fournisseur</th>
-                <th scope="col">Date sortie</th>
-                <th scope="col"></th>
             </tr>
             </thead>
             <!---------------------------- Contenu du tableau ----------------------------------->
@@ -45,8 +43,8 @@
                     <td>[[${outil.fournisseur}]]</td>
 
 
-                    <td>
-                        <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#entreeModal'"><i class="bi bi-box-arrow-in-left mx-1"></i></a>
+
+                    <td><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#entreeModal'"><i class="bi bi-box-arrow-in-left mx-1"></i></a>
                         <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#sortieModal'"><i class="bi bi-box-arrow-in-right mx-1"></i></a>
                         <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#editModal'+*{outil.id}"><i class="bi bi-pencil-fill mx-1"></i></a>
                         <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal"  th:attr="data-bs-target='#deleteModal'+*{outil.id}"><i class="bi bi-trash-fill mx-1"></i></a>
@@ -56,12 +54,11 @@
 
                     <div th:replace="fragments/outils_edit.html :: outils_edit"></div>
                     <div th:replace="fragments/outils_delete.html :: outils_delete"></div>
-                    <!---------------------------------------------------------- Modal entree sortie ------------------------------------------------------>
+<!---------------------------------------------------------- Modal entree sortie ------------------------------------------------------>
 
                     <div th:replace="fragments/outils_entree_sortie.html :: outils_entree_sortie"></div>
 
-
-                    <!-------------------------------------------------------- Fermeture du tableau ------------------------------------------------------>
+<!-------------------------------------------------------- Fermeture du tableau ------------------------------------------------------>
                 </tr>
             </th:block>
             </tbody>

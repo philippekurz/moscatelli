@@ -9,8 +9,8 @@
 <main class="container">
 
     <div>
-        <button class="bouton"><a th:href="@{/outils?etalonnee=false}">Outils</a></button>
-        <button class="bouton2"><a th:href="@{/outils?etalonnee=true}">Appareil etalonnés</a></button>
+        <button th:class="${etalonnee? 'bouton' : 'bouton2'}"><a th:href="@{/outils?etalonnee=false}">Outils</a></button>
+        <button th:class="${etalonnee? 'bouton2' : 'bouton'}"><a th:href="@{/outils?etalonnee=true}">Appareil etalonnés</a></button>
     </div>
 
     <div>

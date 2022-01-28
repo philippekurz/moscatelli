@@ -67,16 +67,6 @@ public class Outil {
     @Column(name = "etalonnee", columnDefinition = "BOOLEAN DEFAULT false")
     private boolean etalonnee;
 
-
-
-    @OneToMany(fetch = FetchType.EAGER,   cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_outil")
-    private Set<EntreeSortie> entreesSorties = new HashSet<>();
-
-
-
-
-
     @Column( length = 70 )
     private String utilisateur_creation;
 
@@ -88,6 +78,11 @@ public class Outil {
 
     @Column(name="date_maj", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
     private LocalDateTime date_maj;
+
+    @OneToMany( cascade = CascadeType.ALL, mappedBy = "outil")
+    private Set<EntreeSortie> entreesSorties = new HashSet<>();
+
+
     //////////////////////////////////////// DECLARATIONS DES CONSTRUCTEURS ////////////////////////////////////////
 
 
@@ -304,11 +299,11 @@ public class Outil {
                 ", periodicite='" + periodicite + '\'' +
                 ", disponibilite=" + disponibilite +
                 ", etalonnee=" + etalonnee +
-                ", entreesSorties=" + entreesSorties +
                 ", utilisateur_creation='" + utilisateur_creation + '\'' +
                 ", date_creation=" + date_creation +
                 ", utilisateur_maj='" + utilisateur_maj + '\'' +
                 ", date_maj=" + date_maj +
+                ", entreesSorties=" + entreesSorties +
                 '}';
     }
 }

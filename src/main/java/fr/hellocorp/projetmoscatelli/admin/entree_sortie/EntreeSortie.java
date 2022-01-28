@@ -181,13 +181,10 @@ public class EntreeSortie {
         this.dateMaj = dateMaj;
     }
 
-
     @Override
     public String toString() {
         return "EntreeSortie{" +
                 "id=" + id +
-                ", utilisateur=" + utilisateur +
-                ", outil=" + outil +
                 ", date_sortie=" + date_sortie +
                 ", date_de_retour_prevue=" + date_de_retour_prevue +
                 ", date_retour=" + date_retour +

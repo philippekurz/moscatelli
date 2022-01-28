@@ -1,6 +1,7 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
+import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -18,15 +19,17 @@ public class OutilsController {
 
     @Autowired
     private OutilService service;
+    @Autowired
+    private EntreeSortieService entreeSortieService;
 
     @GetMapping(value = {"/recherche",""})
     public String ShowTools(Model model, @Param("keyword") String keyword,@Param("etalonnee") boolean etalonnee) {
+
+
         List<Outil> outils = service.findAll(keyword, etalonnee);
         model.addAttribute("Outils",outils);
         Outil outil = new Outil();
         model.addAttribute("Outil",outil);
-
-
 
         model.addAttribute("url","/outils");
         model.addAttribute("etalonnee", etalonnee);
