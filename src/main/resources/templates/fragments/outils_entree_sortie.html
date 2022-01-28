@@ -34,29 +34,38 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModal">Démarrer un pret</h5>
+                    <h5 class="modal-title" id="exampleModal">Prêter [[${outil.designation}]] [[${outil.modele}]]</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
+                    <form th:action="@{'/outils/sortie/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
 
-                    <form th:action="@{'/outils/sortie/' +'?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
+                    <form th:action="@{/outils/sortie}" method="post">
                         <input type="hidden" id="outil" name="outil" th:value="${outil.id}">
 
-
-                        <div class="mb-3">
-                            <select class="form-select" id="utilisateur" name="utilisateur">
-                                <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
-                            </select>
+                        <div class="row mb-3">
+                            <label for="utilisateur" class="form-label col-5">Utilisateur</label>
+                            <div class="col-7">
+                                <select class="form-select" id="utilisateur" name="utilisateur">
+                                    <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Date sortie</label>
-                            <input type="date" class="form-control" name="date_sortie" id="date_sortie" th:value="${currentDate}" placeholder="JJ/MM/AAAA">
+                        <div class="row mb-3">
+                            <label for="date_sortie" class="form-label col-5">Date sortie</label>
+                            <div class="col-7">
+                                <input type="date" class="form-control" name="date_sortie" id="date_sortie" th:value="${currentDate}" placeholder="JJ/MM/AAAA">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Date de retour prévue</label>
-                            <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA">
+
+                        <div class="row mb-3">
+                            <label for="date_de_retour_prevue" class="form-label col-5">Date de retour prévue</label>
+                            <div class="col-7">
+                                <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA">
+                            </div>
+
                         </div>
 
 
