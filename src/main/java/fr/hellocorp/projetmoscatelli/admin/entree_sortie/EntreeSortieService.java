@@ -32,4 +32,12 @@ public class EntreeSortieService {
         }
         repo.deleteById(id);
     }
+
+
+
+    public List<EntreeSortie> retardsOutils() {
+        return repo.retardOutils();
+    }
+
+    public List<EntreeSortie> notificationOutils() {return repo.notificationsOutils();}
 }
