@@ -179,6 +179,7 @@ public class Utilisateur {
     public void setUtilisateur(Set<EntreeSortie> utilisateur) {
         this.utilisateur = utilisateur;
     }
+
     public void ajouterDroit(Droit droit) {
         this.droits.add(droit);
     }

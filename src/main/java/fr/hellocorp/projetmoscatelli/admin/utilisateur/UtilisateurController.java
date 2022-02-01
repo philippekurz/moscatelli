@@ -40,12 +40,22 @@ public class UtilisateurController {
         return "/utilisateur";
     }
 
-//    @PostMapping("/enregistrer")
-//    public String enregistrer(Utilisateur utilisateur) {
-//
-//        utilisateurService.enregistrer(utilisateur);
-//        return "redirect:/utilisateur";
-//    }
+    @PostMapping("/enregistrer")
+    public String enregistrer(Utilisateur utilisateur) {
+
+        if (utilisateur.getId() == null) {
+
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            utilisateur.setMdp(encoder.encode(utilisateur.getMdp()));
+
+            // Rôle par défaut
+            Droit droit = droitService.get("ROLE_VISITEUR");
+            utilisateur.ajouterDroit(droit);
+        }
+
+        utilisateurService.enregistrer(utilisateur);
+        return "redirect:/utilisateur";
+    }
 
     @PostMapping("/supprimer/{id}")
     public String supprimer(@PathVariable Long id,

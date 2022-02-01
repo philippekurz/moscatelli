@@ -21,4 +21,5 @@ public class DroitService {
     public List<Droit> liste() {
         return repo.findAll();
     }
+
 }
