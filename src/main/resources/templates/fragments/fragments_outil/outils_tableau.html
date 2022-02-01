@@ -37,11 +37,10 @@
                     <td th:if="${etalonnee}" >[[${outil.capacite}]]</td>
                     <td>[[${outil.repere}]]</td>
                     <td>[[${outil.etat}]]</td>
-                    <td>[[${outil.typeStatut}]]</td>
-                    <td th:if="${etalonnee}" >[[${outil.periodicite}]]</td>
+                    <td th:if="${outil.typeStatut.name() == 'Fonction'}" class="table-danger">[[${outil.typeStatut}]]</td>
+                    <td th:unless="${outil.typeStatut.name() == 'Fonction'}">[[${outil.typeStatut}]]</td>
+                    <td th:if="${etalonnee}">[[${outil.periodicite}]]</td>
                     <td>[[${outil.fournisseur}]]</td>
-
-
 
                     <td><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#entreeModal'"><i class="bi bi-box-arrow-in-left mx-1"></i></a>
                         <a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#sortieModal'+*{outil.id}"><i class="bi bi-box-arrow-in-right mx-1"></i></a>
