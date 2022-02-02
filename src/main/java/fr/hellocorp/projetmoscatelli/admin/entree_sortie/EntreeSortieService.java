@@ -32,4 +32,8 @@ public class EntreeSortieService {
         }
         repo.deleteById(id);
     }
+
+    public EntreeSortie getLastById(Long id_outil) {
+        return repo.findLastByOutil(id_outil);
+    }
 }

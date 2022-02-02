@@ -85,6 +85,8 @@ public class EntreeSortie {
     }
     //////////////////////////////////////// DECLARATIONS DES GETTERS AND SETTERS ////////////////////////////////////////
 
+
+
     public Long getId() {
         return id;
     }
@@ -196,6 +198,8 @@ public class EntreeSortie {
                 ", dateMaj=" + dateMaj +
                 '}';
     }
+
+
 }
 
 

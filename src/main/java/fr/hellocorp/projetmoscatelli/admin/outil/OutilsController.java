@@ -32,9 +32,12 @@ public class OutilsController {
 
 
         List<Outil> outils = service.findAll(keyword, etalonnee);
+        System.out.println(outils);
         model.addAttribute("Outils",outils);
+
         Outil outil = new Outil();
         model.addAttribute("Outil",outil);
+
 
         List<Utilisateur> utilisateurs = utilisateurService.findAll(keyword);
         model.addAttribute("utilisateurs", utilisateurs);

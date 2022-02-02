@@ -15,4 +15,7 @@ public interface IRepositoryEntreeSortie extends CrudRepository <EntreeSortie, L
             + "OR p.probleme LIKE %?1%"
             + "OR p.referencePV LIKE %?1%" )
     List<EntreeSortie> search(String keyword);
+
+    @Query("SELECT es FROM EntreeSortie es WHERE (es.outil.id = ?1) AND es.date_retour IS NULL")
+    EntreeSortie findLastByOutil(Long id_outil);
 }
