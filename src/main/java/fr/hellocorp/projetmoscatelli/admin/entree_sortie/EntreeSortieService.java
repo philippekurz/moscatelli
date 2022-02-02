@@ -36,4 +36,10 @@ public class EntreeSortieService {
     public EntreeSortie getLastById(Long id_outil) {
         return repo.findLastByOutil(id_outil);
     }
+
+    public List<EntreeSortie> retardsOutils() {
+        return repo.retardOutils();
+    }
+
+    public List<EntreeSortie> notificationOutils() {return repo.notificationsOutils();}
 }
