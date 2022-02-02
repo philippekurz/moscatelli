@@ -26,6 +26,7 @@
                 <th scope="col">Statut</th>
                 <th scope="col" th:if="${etalonnee}">Périodicité</th>
                 <th scope="col">Fournisseur</th>
+                <th scope="col">ES</th>
             </tr>
             </thead>
             <!---------------------------- Contenu du tableau ----------------------------------->
@@ -43,7 +44,7 @@
                     <td>[[${outil.typeStatut}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.periodicite}]]</td>
                     <td>[[${outil.fournisseur}]]</td>
-
+                    <td>[[${outil.id_es}]]</td>
 
 
                     <td><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#entreeModal'"><i class="bi bi-box-arrow-in-left mx-1"></i></a>

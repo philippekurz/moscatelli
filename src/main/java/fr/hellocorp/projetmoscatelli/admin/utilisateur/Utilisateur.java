@@ -5,8 +5,7 @@ import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "utilisateurs",
@@ -60,7 +59,7 @@ public class Utilisateur {
     private LocalDateTime date_maj;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateur")
-    private Set<EntreeSortie> utilisateur = new HashSet<>();
+    private List<EntreeSortie> utilisateur = new ArrayList<>();
 
     //////////////////////////////////////// DECLARATIONS DES CONSTRUCTEURS ////////////////////////////////////////
 
@@ -172,11 +171,11 @@ public class Utilisateur {
         this.droits = droits;
     }
 
-    public Set<EntreeSortie> getUtilisateur() {
+    public List<EntreeSortie> getUtilisateur() {
         return utilisateur;
     }
 
-    public void setUtilisateur(Set<EntreeSortie> utilisateur) {
+    public void setUtilisateur(List<EntreeSortie> utilisateur) {
         this.utilisateur = utilisateur;
     }
 

@@ -1,5 +1,6 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
+import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ public class OutilService {
 
     @Autowired
     private IRepositoryOutils repo;
+
 
 
     public List<Outil> findAll(String keyword, boolean etalonnee) {
@@ -48,5 +50,4 @@ public class OutilService {
             return outil.get();
         throw new OutilNotFoundException("l'outil " + id + " n'existe pas.");
     }
-
 }
