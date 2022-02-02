@@ -18,12 +18,14 @@
                     <form th:action="@{'/outils/modifier/'+ ${outil.id} +'?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}"  method="post" th:object="${outil}">
                         <input type="hidden" th:name="${outil.id}">
 
+
                         <div class="row mb-3">
                             <label for="designation" class="col-4 form-label">Désignation</label>
                             <div class="col-8">
                                 <input type="text" th:value="*{designation}" class="form-control" id="designation" name="designation" >
                             </div>
                         </div>
+
 
                         <div class="row mb-3">
                             <label for="marque" class="col-4 form-label">Marque</label>

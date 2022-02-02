@@ -1,5 +1,4 @@
-
-<div th:fragment="outils_add">
+<div th:fragment="outils_add" xmlns:th="http://www.w3.org/1999/xhtml">
 
 
     <!-------------------------------------------------------- Modal add ------------------------------------------------------>
@@ -12,40 +11,79 @@
                 </div>
                 <div class="modal-body">
                     <form th:action="@{'/outils/enregistrer?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post" th:object="${Outil}">
-                        <div class="mb-3">
-                            <input type="text" th:field="*{designation}"  class="form-control" name="designation" placeholder="designation">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" th:field="*{marque}"  class="form-control" name="marque" placeholder="marque">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text"  th:field="*{modele}" class="form-control" name="modele" placeholder="modele">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" th:field="*{puissance}"  class="form-control" name="puissance" placeholder="puissance">
+
+
+                        <div class="row mb-3">
+                            <label class="col-4 form-label">Désignation</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{designation}"  class="form-control" name="designation" placeholder="designation">
+                            </div>
                         </div>
 
-                        <div  th:if="${etalonnee}" class="mb-3">
-                            <input type="text" th:field="*{capacite}"  class="form-control" name="capacite" placeholder="capacite">
+
+                        <div class="row mb-3">
+                            <label class="col-4 form-label">Marque</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{marque}"  class="form-control" name="marque" placeholder="marque">
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label class="col-4 form-label">Modèle</label>
+                            <div class="col-8">
+                                <input type="text"  th:field="*{modele}" class="form-control" name="modele" placeholder="modele">
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label class="col-4 form-label">Puissance</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{puissance}"  class="form-control" name="puissance" placeholder="puissance">
+                            </div>
+                        </div>
+
+
+                        <div  th:if="${etalonnee}" class="row mb-3">
+                            <label class="col-4 form-label">Capacité</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{capacite}"  class="form-control" name="capacite" placeholder="capacite">
+                            </div>
                         </div>
                         <input th:unless="${etalonnee}"  type="hidden" th:field="*{capacite}" placeholder="capacite">
 
 
-                        <div class="mb-3">
-                            <input type="text" th:field="*{numero_de_serie}"  class="form-control" name="numero_de_serie" placeholder="numero de serie">
+                        <div class="row mb-3">
+                            <label class="col-4 form-label">Numéro de série</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{numero_de_serie}"  class="form-control" name="numero_de_serie" placeholder="numero de serie">
+                            </div>
                         </div>
 
-                        <div  th:if="${periodicite}" class="mb-3">
-                            <input type="text" th:field="*{periodicite}"  class="form-control" name="periodicite" placeholder="periodicite">
+
+                        <div  th:if="${periodicite}" class="row mb-3">
+                            <label class="col-4 form-label">Périodicité</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{periodicite}"  class="form-control" name="periodicite" placeholder="periodicite">
+                            </div>
                         </div>
                         <input th:unless="${periodicite}"  type="hidden" th:field="*{periodicite}" placeholder="periodicite">
 
-                        <div class="mb-3">
-                            <input type="text" th:field="*{repere}"  class="form-control" name="repere" placeholder="Repère">
+
+                        <div class="row mb-3">
+                            <label class="col-4 form-label">Repère</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{repere}"  class="form-control" name="repere" placeholder="Repère">
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <input type="text" th:field="*{fournisseur}"  class="form-control" name="fournisseur" placeholder="fournisseur">
+
+                        <div class="row mb-3">
+                            <label class="col-4 form-label">Fournisseur</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{fournisseur}"  class="form-control" name="fournisseur" placeholder="fournisseur">
+                            </div>
                         </div>
 
                         <div class="mb-3">

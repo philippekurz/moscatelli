@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/fragment.html :: head"></head>
 <!-------------------------------------------------------- Header ------------------------------------------------------>
 <body>
@@ -7,7 +7,7 @@
 <!-------------------------------------------------------- Main ------------------------------------------------------>
 <main>
     <div class="container">
-        <button class="bouton3" type="button" data-bs-toggle="modal" data-bs-target="#enterModal">Ajouter</button>
+        <button  sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" class="bouton3" type="button" data-bs-toggle="modal" data-bs-target="#enterModal">Ajouter</button>
     </div>
    
         <!------------------------------------------------------ Tableau des entreesortie ------------------------------------------------------>

@@ -1,4 +1,4 @@
-<div th:fragment="utilisateurs_add">
+<div th:fragment="utilisateurs_add" xmlns:th="http://www.w3.org/1999/xhtml">
 
 
     <!-------------------------------------------------------- Modal add ------------------------------------------------------>
@@ -34,14 +34,14 @@
                             <label for="mdp" class="form-label">Mot de passe</label>
                             <input type="password" class="form-control" id="mdp" placeholder="mdp" th:field="*{mdp}">
                         </div>
-<!--                        <div class="mb-3">-->
-<!--                            <label for="role" class="form-label">Rôle</label>-->
-<!--                            <select class="form-select" th:value="${utilisateur.droits}" id="role" name="role">-->
-<!--                                <option th:value="ROLE_Administrateur" th:text="Administrateur"></option>-->
-<!--                                <option th:value="ROLE_Magasinier" th:text="Magasinier"></option>-->
-<!--                                <option th:value="ROLE_Visiteur" th:text="Visiteur"></option>-->
-<!--                            </select>-->
-<!--                        </div>-->
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Rôle</label>
+                            <select class="form-select" th:value="${utilisateur.droits}" id="role" name="role">
+                                <option th:value="ROLE_Administrateur" th:text="Administrateur"></option>
+                                <option th:value="ROLE_Magasinier" th:text="Magasinier"></option>
+                                <option th:value="ROLE_Visiteur" th:text="Visiteur"></option>
+                            </select>
+                        </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

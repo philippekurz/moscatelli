@@ -24,13 +24,18 @@
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a  sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Menu admin
                         </a>
+                        <a  sec:authorize="hasAnyRole('ROLE_MAGASINIER')" class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Menu Magasinier
+                        </a>
+
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                             <li><a class="dropdown-item" href="/outils">Gestion des Outils</a></li>
-                            <li><a class="dropdown-item" href="/utilisateur">Gestion des comptes</a></li>
-                            <li><a class="dropdown-item" href="/entreesortie">Gestion des prets</a></li>
+                            <li><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" class="dropdown-item" href="/utilisateur">Gestion des comptes</a></li>
+                            <li><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" class="dropdown-item" href="/entreesortie">Gestion des prets</a></li>
+                            <li><a sec:authorize="hasAnyRole('ROLE_MAGASINIER')" class="dropdown-item" href="/entreesortie">Historique des prets</a></li>
                             <li><a  class="dropdown-item" href="/alertes">Gestion des Alertes</a></li>
                         </ul>
                     </li>
