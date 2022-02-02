@@ -77,6 +77,28 @@ public class OutilsController {
         entreeSortieService.enregistrer(entreeSortie);
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
+    @PostMapping("/entree")
+    public String entree(
+            @Param("keyword)") String keyword,
+            @Param("etalonnee)") boolean etalonnee,
+            @RequestParam Utilisateur utilisateur,
+            @RequestParam Outil outil,
+            @RequestParam String date_retour,
+            @RequestParam String probleme,
+            @RequestParam String referencePV)
+    {
+        EntreeSortie entreeSortie = new EntreeSortie();
+        entreeSortie.setUtilisateur(utilisateur);
+        entreeSortie.setOutil(outil);
+        entreeSortie.setDate_retour(LocalDate.parse(date_retour));
+        entreeSortie.setProbleme(probleme);
+        entreeSortie.setReferencePV(referencePV);
+
+        entreeSortieService.enregistrer(entreeSortie);
+        return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
+    }
+
+
 
     @PostMapping("/supprimer/{id}")
     public String supprimer(@PathVariable Long id,
