@@ -5,17 +5,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ConfigurationService {
 
     @Autowired
-    private IRepositoryConfigurations repo;
+    private IRepositoryConfiguration repo;
 
     public List<Configuration> listeConfigurations() {
         return (List<Configuration>) repo.findAll();
     }
-
+    public Configuration getById(Long id) {
+        Optional<Configuration> config = repo.findById(id);
+        if (config.isPresent())
+            return config.get();
+        else
+            return null;
+    }
     public void enregistrer(Configuration configuration) {
 
         repo.save(configuration);

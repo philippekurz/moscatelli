@@ -1,11 +1,13 @@
 package fr.hellocorp.projetmoscatelli.admin.config;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalTime;
 
 
 @Entity
-@Table(name = "configurations")
+@Table(name = "configuration")
 public class Configuration {
 
     @Id
@@ -13,34 +15,35 @@ public class Configuration {
     private Long id;
 
 
-    @Column(nullable = false,length = 255)
-    private String contact;
+    @Column(name="destinataires_notification", nullable = false, length = 255)
+    private String destinatairesNotification;
 
-    @Column(nullable = false)
-    private LocalTime heure_Envoi;
+    @Column(name="heure_envoi", nullable = false)
+    @DateTimeFormat(pattern = "hh:mm")
+    private LocalTime heureEnvoi;
 
     @Column(name = "alerte_on_off", columnDefinition = "BOOLEAN DEFAULT true")
-    private Boolean alerte_on_off;
+    private Boolean alerteOnOff;
 
-    @Column(nullable = false)
-    private int duree_Pret;
+    @Column(name="duree_pret", nullable = false)
+    private int dureePret;
 
     public Configuration() {
     }
 
-    public Configuration(Long id, String contact, LocalTime heure_Envoi, Boolean alerte_on_off, int duree_Pret) {
+    public Configuration(Long id, String destinatairesNotification, LocalTime heureEnvoi, Boolean alerteOnOff, int dureePret) {
         this.id = id;
-        this.contact = contact;
-        this.heure_Envoi = heure_Envoi;
-        this.alerte_on_off = alerte_on_off;
-        this.duree_Pret = duree_Pret;
+        this.destinatairesNotification = destinatairesNotification;
+        this.heureEnvoi = heureEnvoi;
+        this.alerteOnOff = alerteOnOff;
+        this.dureePret = dureePret;
     }
 
-    public Configuration(String contact, LocalTime heure_Envoi, Boolean alerte_on_off, int duree_Pret) {
-        this.contact = contact;
-        this.heure_Envoi = heure_Envoi;
-        this.alerte_on_off = alerte_on_off;
-        this.duree_Pret = duree_Pret;
+    public Configuration(String destinatairesNotification, LocalTime heureEnvoi, Boolean alerteOnOff, int dureePret) {
+        this.destinatairesNotification = destinatairesNotification;
+        this.heureEnvoi = heureEnvoi;
+        this.alerteOnOff = alerteOnOff;
+        this.dureePret = dureePret;
     }
 
     public Long getId() {
@@ -51,46 +54,46 @@ public class Configuration {
         this.id = id;
     }
 
-    public String getContact() {
-        return contact;
+    public String getDestinatairesNotification() {
+        return destinatairesNotification;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setDestinatairesNotification(String destinatairesNotification) {
+        this.destinatairesNotification = destinatairesNotification;
     }
 
-    public LocalTime getHeure_Envoi() {
-        return heure_Envoi;
+    public LocalTime getHeureEnvoi() {
+        return heureEnvoi;
     }
 
-    public void setHeure_Envoi(LocalTime heure_Envoi) {
-        this.heure_Envoi = heure_Envoi;
+    public void setHeureEnvoi(LocalTime heureEnvoi) {
+        this.heureEnvoi = heureEnvoi;
     }
 
-    public Boolean getAlerte_on_off() {
-        return alerte_on_off;
+    public Boolean getAlerteOnOff() {
+        return alerteOnOff;
     }
 
-    public void setAlerte_on_off(Boolean alerte_on_off) {
-        this.alerte_on_off = alerte_on_off;
+    public void setAlerteOnOff(Boolean alerteOnOff) {
+        this.alerteOnOff = alerteOnOff;
     }
 
-    public int getDuree_Pret() {
-        return duree_Pret;
+    public int getDureePret() {
+        return dureePret;
     }
 
-    public void setDuree_Pret(int duree_Pret) {
-        this.duree_Pret = duree_Pret;
+    public void setDureePret(int dureePret) {
+        this.dureePret = dureePret;
     }
 
     @Override
     public String toString() {
         return "Configuration{" +
                 "id=" + id +
-                ", contact='" + contact + '\'' +
-                ", heure_Envoi=" + heure_Envoi +
-                ", alerte_on_off=" + alerte_on_off +
-                ", duree_Pret=" + duree_Pret +
+                ", destinatairesNotification='" + destinatairesNotification + '\'' +
+                ", heureEnvoi=" + heureEnvoi +
+                ", alerteOnOff=" + alerteOnOff +
+                ", dureePret=" + dureePret +
                 '}';
     }
 }

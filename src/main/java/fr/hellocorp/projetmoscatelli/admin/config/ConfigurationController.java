@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-@Controller
 
+@Controller
 public class ConfigurationController {
 
 
@@ -18,19 +18,20 @@ public class ConfigurationController {
 
     @GetMapping("/configuration")
     public String showConfigurations(Model model) {
-        List<Configuration> configurations = service.listeConfigurations();
-        model.addAttribute("configurations", configurations);
+        Configuration config = service.getById(1L);
+        //List<Configuration> configurations = service.listeConfigurations();
+        model.addAttribute("configuration", config);
 
         return "configuration";
     }
 
-    @GetMapping("/configuration/nouveau")
-    public String showNouvelleConfiguration(Model model) {
-        Configuration configuration = new Configuration();
-        model.addAttribute("configuration", configuration);
-
-        return "configuration_saisie";
-    }
+//    @GetMapping("/configuration/nouveau")
+//    public String showNouvelleConfiguration(Model model) {
+//        Configuration configuration = new Configuration();
+//        model.addAttribute("configuration", configuration);
+//
+//        return "configuration_saisie";
+//    }
 
     @PostMapping("/configuration/enregistrer")
     public String enregistrer(Configuration configuration) {

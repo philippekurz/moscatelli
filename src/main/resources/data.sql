@@ -85,3 +85,8 @@ VALUES  (1,1),
         (6,2),
         (7,3);
 
+INSERT INTO configuration (destinataires_notification, heure_envoi, alerte_on_off, duree_pret)
+VALUES ("hello.corp@javenir84.com",
+        "12:00",
+        true,
+        30);
