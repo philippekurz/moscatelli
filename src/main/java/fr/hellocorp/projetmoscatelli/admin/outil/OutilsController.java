@@ -4,7 +4,6 @@ import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.Utilisateur;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.UtilisateurService;
-import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/outils")
@@ -137,7 +135,8 @@ public class OutilsController {
         outil.setRepere(repere);
         outil.setEtat(etat);
         outil.setTypeStatut(Outil.TypeStatut.valueOf(String.valueOf(typeStatut)));
-        outil.setPeriodicite(periodicite);
+        if(periodicite.length()!=0)
+            outil.setPeriodicite(Integer.parseInt(periodicite));
         outil.setEtalonnee(etalonnee);
 
         service.enregistrer(outil);

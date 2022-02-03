@@ -19,7 +19,7 @@ public class Planification {
     @Autowired
     EmailService emailService;
 
-    @Scheduled(initialDelay = 10000L, fixedDelay = 10000L)
+    @Scheduled(initialDelay = 1000000000L, fixedDelay = 1000000000L)
     public void alertes() {
 
         // Récupérer le mail destinataire (v1 en dur)
