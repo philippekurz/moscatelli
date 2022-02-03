@@ -14,6 +14,12 @@
                 </div>
                 <div class="modal-body">
                     <form th:action="@{/entreesortie/enregistrer}" method="post" th:object="${entreeSortie}">
+
+                        <select class="form-select" th:field="*{motif}" >
+                            <option th:each="motifOpt : ${T(fr.hellocorp.projetmoscatelli.entree_sortie.EntreeSortie.MotifEntreeSortie).values()}"
+                                    th:value="${motifOpt}" th:text="${motifOpt}"></option>
+                        </select>
+
                         <div class="mb-3">
                             <select class="form-select" th:field="*{utilisateur}">
                                 <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
@@ -26,23 +32,27 @@
                         </div>
                         <div class="mb-3">
                             <label for="date_sortie" class="form-label">Date sortie</label>
-                            <input type="Date" class="form-control" name="date_sortie" placeholder="JJ/MM/AAAA" th:field="*{date_sortie}">
+                            <input type="Date" class="form-control" name="date_sortie" id="date_sortie" placeholder="JJ/MM/AAAA" th:field="*{date_sortie}">
                         </div>
                         <div class="mb-3">
                             <label for="date_de_retour_prevue" class="form-label">Date de retour prévue</label>
-                            <input type="Date" class="form-control" name="date_de_retour_prevue" placeholder="JJ/MM/AAAA" th:field="*{date_de_retour_prevue}">
+                            <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA" th:field="*{date_de_retour_prevue}">
                         </div>
                         <div class="mb-3">
                             <label for="date_retour" class="form-label">Date de retour</label>
-                            <input type="Date" class="form-control" name="date_retour" placeholder="JJ/MM/AAAA" th:field="*{date_retour}">
+                            <input type="Date" class="form-control" name="date_retour" id="date_retour" placeholder="JJ/MM/AAAA" th:field="*{date_retour}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="date_etalonnage" class="form-label">Date d'étalonnage</label>
+                            <input type="Date" class="form-control" name="date_etalonnage" id="date_etalonnage" placeholder="JJ/MM/AAAA" th:field="*{date_etalonnage}">
                         </div>
                         <div class="mb-3">
                             <label for="probleme" class="form-label">probleme</label>
-                            <input type="text" class="form-control" name="probleme" placeholder="probleme" th:field="*{probleme}">
+                            <input type="text" class="form-control" name="probleme" id="probleme" placeholder="probleme" th:field="*{probleme}">
                         </div>
                         <div class="mb-3">
                             <label for="referencePV" class="form-label">referencePV</label>
-                            <input type="text" class="form-control" name="referencePV" placeholder="referencePV" th:field="*{referencePV}">
+                            <input type="text" class="form-control" name="referencePV" id="referencePV" placeholder="referencePV" th:field="*{referencePV}">
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>

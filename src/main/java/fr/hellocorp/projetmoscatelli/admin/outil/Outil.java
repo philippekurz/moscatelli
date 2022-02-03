@@ -1,9 +1,6 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
-import fr.hellocorp.projetmoscatelli.admin.droit.Droit;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
-import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -57,11 +54,11 @@ public class Outil {
     @Column
     private String etat;
 
-    @Column( nullable = false, length = 30)
+    @Column(nullable = false, length = 30)
     private TypeStatut typeStatut;
 
-    @Column(length = 30)
-    private String periodicite;
+    @Column(nullable = true)
+    private Integer periodicite;
 
     @Column(name = "disponibilite", columnDefinition = "BOOLEAN DEFAULT true")
     private boolean disponibilite;
@@ -89,7 +86,7 @@ public class Outil {
     private LocalDate date_retour;
     private LocalDate date_de_retour_prevue;
 
-    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long id_es, LocalDate date_retour, LocalDate date_de_retour_prevue) {
+    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long id_es, LocalDate date_retour, LocalDate date_de_retour_prevue) {
         this.id = id;
         this.designation = designation;
         this.fournisseur = fournisseur;
@@ -115,7 +112,7 @@ public class Outil {
         this.date_de_retour_prevue = date_de_retour_prevue;
     }
 
-    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, String periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long id_es, LocalDate date_retour, LocalDate date_de_retour_prevue) {
+    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long id_es, LocalDate date_retour, LocalDate date_de_retour_prevue) {
         this.designation = designation;
         this.fournisseur = fournisseur;
         this.marque = marque;
@@ -231,11 +228,11 @@ public class Outil {
         this.typeStatut = typeStatut;
     }
 
-    public String getPeriodicite() {
+    public Integer getPeriodicite() {
         return periodicite;
     }
 
-    public void setPeriodicite(String periodicite) {
+    public void setPeriodicite(Integer periodicite) {
         this.periodicite = periodicite;
     }
 
@@ -340,7 +337,7 @@ public class Outil {
                 ", date_creation=" + date_creation +
                 ", utilisateur_maj='" + utilisateur_maj + '\'' +
                 ", date_maj=" + date_maj +
-                ", entreesSorties=" + entreesSorties +
+                //", entreesSorties=" + entreesSorties +
                 ", id_es=" + id_es +
                 ", date_retour=" + date_retour +
                 ", date_de_retour_prevue=" + date_de_retour_prevue +

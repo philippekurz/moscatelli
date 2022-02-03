@@ -17,10 +17,16 @@ import java.time.LocalDateTime;
                 @Index(columnList = "date_de_retour_prevue")})
 public class EntreeSortie {
     //////////////////////////////////////// DECLARATIONS DES VARIABLES ////////////////////////////////////////
+    public enum MotifEntreeSortie{
+        Prêt, Etalonnage, Maintenance
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="motif")
+    private MotifEntreeSortie motif;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_utilisateur")
@@ -42,6 +48,10 @@ public class EntreeSortie {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date_retour;
 
+    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date_etalonnage;
+
     @Column(length = 255)
     private String probleme;
 
@@ -62,25 +72,40 @@ public class EntreeSortie {
 
     //////////////////////////////////////// DECLARATIONS DES CONSTRUCTEURS ////////////////////////////////////////
 
-    public EntreeSortie(Long id, Utilisateur utilisateur, Outil outil, LocalDate date_sortie, LocalDate date_de_retour_prevue, LocalDate date_retour, String probleme, String referencePV) {
+
+    public EntreeSortie(Long id, MotifEntreeSortie motif, Utilisateur utilisateur, Outil outil, LocalDate date_sortie, LocalDate date_de_retour_prevue, LocalDate date_retour, LocalDate date_etalonnage, String probleme, String referencePV, String utilisateurcreation, LocalDateTime dateCreation, String utilisateurMAJ, LocalDateTime dateMaj) {
         this.id = id;
+        this.motif = motif;
         this.utilisateur = utilisateur;
         this.outil = outil;
         this.date_sortie = date_sortie;
         this.date_de_retour_prevue = date_de_retour_prevue;
         this.date_retour = date_retour;
+        this.date_etalonnage = date_etalonnage;
         this.probleme = probleme;
         this.referencePV = referencePV;
+        this.utilisateurcreation = utilisateurcreation;
+        this.dateCreation = dateCreation;
+        this.utilisateurMAJ = utilisateurMAJ;
+        this.dateMaj = dateMaj;
     }
-    public EntreeSortie(Utilisateur utilisateur, Outil outil, LocalDate date_sortie, LocalDate date_de_retour_prevue, LocalDate date_retour, String probleme, String referencePV) {
+
+    public EntreeSortie(MotifEntreeSortie motif, Utilisateur utilisateur, Outil outil, LocalDate date_sortie, LocalDate date_de_retour_prevue, LocalDate date_retour, LocalDate date_etalonnage, String probleme, String referencePV, String utilisateurcreation, LocalDateTime dateCreation, String utilisateurMAJ, LocalDateTime dateMaj) {
+        this.motif = motif;
         this.utilisateur = utilisateur;
         this.outil = outil;
         this.date_sortie = date_sortie;
         this.date_de_retour_prevue = date_de_retour_prevue;
         this.date_retour = date_retour;
+        this.date_etalonnage = date_etalonnage;
         this.probleme = probleme;
         this.referencePV = referencePV;
+        this.utilisateurcreation = utilisateurcreation;
+        this.dateCreation = dateCreation;
+        this.utilisateurMAJ = utilisateurMAJ;
+        this.dateMaj = dateMaj;
     }
+
     public EntreeSortie() {
     }
     //////////////////////////////////////// DECLARATIONS DES GETTERS AND SETTERS ////////////////////////////////////////
@@ -93,6 +118,14 @@ public class EntreeSortie {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public MotifEntreeSortie getMotif() {
+        return motif;
+    }
+
+    public void setMotif(MotifEntreeSortie motif) {
+        this.motif = motif;
     }
 
     public Utilisateur getUtilisateur() {
@@ -133,6 +166,14 @@ public class EntreeSortie {
 
     public void setDate_retour(LocalDate date_retour) {
         this.date_retour = date_retour;
+    }
+
+    public LocalDate getDate_etalonnage() {
+        return date_etalonnage;
+    }
+
+    public void setDate_etalonnage(LocalDate date_etalonnage) {
+        this.date_etalonnage = date_etalonnage;
     }
 
     public String getProbleme() {
@@ -183,13 +224,17 @@ public class EntreeSortie {
         this.dateMaj = dateMaj;
     }
 
+
     @Override
     public String toString() {
         return "EntreeSortie{" +
                 "id=" + id +
+                ", motif=" + motif +
+                ", utilisateur=" + utilisateur +
                 ", date_sortie=" + date_sortie +
                 ", date_de_retour_prevue=" + date_de_retour_prevue +
                 ", date_retour=" + date_retour +
+                ", date_etalonnage=" + date_etalonnage +
                 ", probleme='" + probleme + '\'' +
                 ", referencePV='" + referencePV + '\'' +
                 ", utilisateurcreation='" + utilisateurcreation + '\'' +
@@ -198,8 +243,6 @@ public class EntreeSortie {
                 ", dateMaj=" + dateMaj +
                 '}';
     }
-
-
 }
 
 

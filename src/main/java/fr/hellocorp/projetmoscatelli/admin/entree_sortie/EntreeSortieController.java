@@ -69,6 +69,7 @@ public class EntreeSortieController {
                            @RequestParam String date_sortie,
                            @RequestParam String date_de_retour_prevue,
                            @RequestParam String date_retour,
+                           @RequestParam String date_etalonnage,
                            @RequestParam String probleme,
                            @RequestParam String referencePV)
     {
@@ -79,6 +80,7 @@ public class EntreeSortieController {
         entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
         entreeSortie.setDate_retour(LocalDate.parse(date_retour));
+        entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
         entreeSortie.setProbleme(probleme);
         entreeSortie.setReferencePV(referencePV);
 
