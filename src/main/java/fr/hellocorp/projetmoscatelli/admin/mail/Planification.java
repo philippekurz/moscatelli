@@ -24,7 +24,7 @@ public class Planification {
     @Autowired
     ConfigurationService configService;
 
-    @Scheduled(initialDelay = 1000000000000L, fixedDelay = 1000000000000L)
+    @Scheduled(initialDelay = 100000000L, fixedDelay = 100000000L)
     public void alertes() {
 
         // Récupérer le mail destinataire (v1 en dur)
