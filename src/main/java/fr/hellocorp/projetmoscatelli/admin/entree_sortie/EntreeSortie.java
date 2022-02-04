@@ -224,25 +224,6 @@ public class EntreeSortie {
         this.dateMaj = dateMaj;
     }
 
-
-    @Override
-    public String toString() {
-        return "EntreeSortie{" +
-                "id=" + id +
-                ", motif=" + motif +
-                ", utilisateur=" + utilisateur +
-                ", date_sortie=" + date_sortie +
-                ", date_de_retour_prevue=" + date_de_retour_prevue +
-                ", date_retour=" + date_retour +
-                ", date_etalonnage=" + date_etalonnage +
-                ", probleme='" + probleme + '\'' +
-                ", referencePV='" + referencePV + '\'' +
-                ", utilisateurcreation='" + utilisateurcreation + '\'' +
-                ", dateCreation=" + dateCreation +
-                ", utilisateurMAJ='" + utilisateurMAJ + '\'' +
-                ", dateMaj=" + dateMaj +
-                '}';
-    }
 }
 
 

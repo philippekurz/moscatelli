@@ -15,6 +15,7 @@
             <thead>
             <tr>
                 <!--                    <th scope="col">Id</th>-->
+                <th scope="col">Id</th>
                 <th scope="col">Désignation</th>
                 <th scope="col">Marque</th>
                 <th scope="col">Modèle</th>
@@ -33,6 +34,7 @@
             <tbody>
             <th:block th:each="outil : ${Outils}">
                 <tr>
+                    <td>[[${outil.id}]]</td>
                     <td>[[${outil.designation}]]</td>
                     <td>[[${outil.marque}]]</td>
                     <td>[[${outil.modele}]]</td>
@@ -44,7 +46,7 @@
                     <td>[[${outil.typeStatut}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.periodicite}]]</td>
                     <td>[[${outil.fournisseur}]]</td>
-                    <td>[[${outil.id_es}]]</td>
+                    <td>[[${outil.ES.id} + ' ' + ${outil.ES.probleme}]]</td>
 
 
                     <td><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#entreeModal'"><i class="bi bi-box-arrow-in-left mx-1"></i></a>

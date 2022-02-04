@@ -28,7 +28,6 @@ public class OutilsController {
     @GetMapping(value = {"/recherche",""})
     public String ShowTools(Model model, @Param("keyword") String keyword,@Param("etalonnee") boolean etalonnee) {
 
-
         List<Outil> outils = service.findAll(keyword, etalonnee);
         System.out.println(outils);
         model.addAttribute("Outils",outils);

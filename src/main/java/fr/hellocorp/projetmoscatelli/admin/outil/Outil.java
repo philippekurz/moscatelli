@@ -81,12 +81,7 @@ public class Outil {
     @OneToMany( cascade = CascadeType.ALL, mappedBy = "outil")
     private List<EntreeSortie> entreesSorties = new ArrayList<>();
 
-    @Transient
-    private Long id_es;
-    private LocalDate date_retour;
-    private LocalDate date_de_retour_prevue;
-
-    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long id_es, LocalDate date_retour, LocalDate date_de_retour_prevue) {
+    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long ides, LocalDate date_retour, LocalDate date_de_retour_prevue) {
         this.id = id;
         this.designation = designation;
         this.fournisseur = fournisseur;
@@ -106,13 +101,9 @@ public class Outil {
         this.utilisateur_maj = utilisateur_maj;
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
-        this.id_es = id_es;
-        System.out.println("--------------------------------------- id_es = " + id_es);
-        this.date_retour = date_retour;
-        this.date_de_retour_prevue = date_de_retour_prevue;
     }
 
-    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long id_es, LocalDate date_retour, LocalDate date_de_retour_prevue) {
+    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long ides, LocalDate date_retour, LocalDate date_de_retour_prevue) {
         this.designation = designation;
         this.fournisseur = fournisseur;
         this.marque = marque;
@@ -131,10 +122,6 @@ public class Outil {
         this.utilisateur_maj = utilisateur_maj;
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
-        this.id_es = id_es;
-        System.out.println("--------------------------------------- id_es = " + id_es);
-        this.date_retour = date_retour;
-        this.date_de_retour_prevue = date_de_retour_prevue;
     }
 
     public Outil() {
@@ -292,28 +279,17 @@ public class Outil {
         this.entreesSorties = entreesSorties;
     }
 
-    public Long getId_es() {
-        return id_es;
-    }
-
-    public void setId_es(Long id_es) {
-        this.id_es = id_es;
-    }
-
-    public LocalDate getDate_retour() {
-        return date_retour;
-    }
-
-    public void setDate_retour(LocalDate date_retour) {
-        this.date_retour = date_retour;
-    }
-
-    public LocalDate getDate_de_retour_prevue() {
-        return date_de_retour_prevue;
-    }
-
-    public void setDate_de_retour_prevue(LocalDate date_de_retour_prevue) {
-        this.date_de_retour_prevue = date_de_retour_prevue;
+    public EntreeSortie getES() {
+        Collections.sort(entreesSorties, (es1,es2)->{
+            return (int)(es2.getId()-es1.getId());
+        });
+        if (entreesSorties.size()==0)
+            return new EntreeSortie();
+        else
+            if (entreesSorties.get(0).getDate_retour()==null)
+                return entreesSorties.get(0);
+            else
+                return new EntreeSortie();
     }
 
     @Override
@@ -337,10 +313,7 @@ public class Outil {
                 ", date_creation=" + date_creation +
                 ", utilisateur_maj='" + utilisateur_maj + '\'' +
                 ", date_maj=" + date_maj +
-                //", entreesSorties=" + entreesSorties +
-                ", id_es=" + id_es +
-                ", date_retour=" + date_retour +
-                ", date_de_retour_prevue=" + date_de_retour_prevue +
+                ", entreesSorties=" + entreesSorties +
                 '}';
     }
 }

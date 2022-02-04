@@ -6,35 +6,45 @@
     <main>
         <div class="page">
 
-        <div class="container">
-            <div class="text-center">
-                <h1 sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR','ROLE_VISITEUR')">Configuration</h1>
+            <div class="container">
+                <div class="text-center">
+                    <h1>Configuration</h1>
+                </div>
+
+                <form th:action="@{/configuration/enregistrer}" method="post" th:object="${configuration}">
+                    <input type="hidden" th:name="${configuration.id}">
+                    <div class="row mb-3">
+                        <label for="destinatairesNotification" class="col-4 form-label">Destinataires des notifications</label>
+                        <div class="col-8">
+                            <input type="text" th:value="${configuration.destinatairesNotification}" class="form-control" id="destinatairesNotification" name="destinatairesNotification" >
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="heureEnvoi" class="col-4 form-label">Heure d'envoi</label>
+                        <div class="col-8">
+                            <input type="time" th:value="${configuration.heureEnvoi}" class="form-control" id="heureEnvoi" name="heureEnvoi" >
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-4"></div>
+                        <div class="col-8">
+                            <label for="alerteOnOff" class="form-label">Activation alerte on/off
+                                <input type="checkbox" th:value="${configuration.alerteOnOff}" id="alerteOnOff" name="alerteOnOff" >
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="dureePret" class="col-4 form-label">Durée du pret</label>
+                        <div class="col-8">
+                            <input type="number" th:value="${configuration.dureePret}" class="form-control" id="dureePret" name="dureePret" >
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </form>
             </div>
-
-            <form th:action="@{/configuration/enregistrer}" method="post" th:object="${configuration}">
-                <input type="hidden" th:name="${configuration.id}">
-                <div class="mb-3">
-                    <label for="destinatairesNotification" class="form-label">Destinataires des notifications</label>
-                    <input type="text" th:value="${configuration.destinatairesNotification}" class="form-control" id="destinatairesNotification" name="destinatairesNotification" >
-                </div>
-
-                <div class="mb-3">
-                    <label for="heureEnvoi" class="form-label">Heure d'envoi</label>
-                    <input type="time" th:value="${configuration.heureEnvoi}" class="form-control" id="heureEnvoi" name="heureEnvoi" >
-                </div>
-
-                <div class="mb-3">
-                    <label for="alerteOnOff" class="form-label">Activation alerte on/off</label>
-                    <input type="checkbox" th:value="${configuration.alerteOnOff}" class="form-control" id="alerteOnOff" name="alerteOnOff" >
-                </div>
-
-                <div class="mb-3">
-                    <label for="dureePret" class="form-label">Durée du pret</label>
-                    <input type="number" th:value="${configuration.dureePret}" class="form-control" id="dureePret" name="dureePret" >
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
         </div>
     </main>
 </div>
