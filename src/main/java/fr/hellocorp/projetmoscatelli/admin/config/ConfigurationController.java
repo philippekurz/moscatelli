@@ -18,7 +18,7 @@ public class ConfigurationController {
 
     @GetMapping("/configuration")
     public String showConfigurations(Model model) {
-        Configuration config = service.getById(1L);
+        Configuration config = service.getConfig();
         //List<Configuration> configurations = service.listeConfigurations();
         model.addAttribute("configuration", config);
 

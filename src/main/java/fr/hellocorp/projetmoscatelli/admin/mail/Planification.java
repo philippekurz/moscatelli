@@ -1,6 +1,8 @@
 package fr.hellocorp.projetmoscatelli.admin.mail;
 
 
+import fr.hellocorp.projetmoscatelli.admin.config.Configuration;
+import fr.hellocorp.projetmoscatelli.admin.config.ConfigurationService;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class Planification {
     @Autowired
     EmailService emailService;
 
+    @Autowired
+    ConfigurationService configService;
+
     @Scheduled(initialDelay = 1000000000000L, fixedDelay = 1000000000000L)
     public void alertes() {
 
@@ -29,26 +34,28 @@ public class Planification {
         // Liste de Entrées Sorties avec date de retour prévue = now+7 à 00:00:00
         List<EntreeSortie> liste = entreeSortieService.retardsOutils();
         List<EntreeSortie> liste2 = entreeSortieService.notificationOutils();
+        Configuration config=configService.getConfig();
 
-
+        String email = config.getDestinatairesNotification();
+        // Split sur email avec separateur = ";"
 
         for (EntreeSortie es: liste) {
             System.out.println(
                     es.getUtilisateur().getNom()
-                            + " " +  es.getUtilisateur().getPrenom()
-                            + " " +  es.getOutil().getDesignation()
-                            + " " +  es.getOutil().getMarque()
-                            + " " +  es.getOutil().getNumero_de_serie()
+                            + " " + es.getUtilisateur().getPrenom()
+                            + " " + es.getOutil().getDesignation()
+                            + " " + es.getOutil().getMarque()
+                            + " " + es.getOutil().getNumero_de_serie()
                             + " " + es.getDate_sortie()
-                            + " " +  es.getDate_de_retour_prevue());
+                            + " " + es.getDate_de_retour_prevue());
 
             String texte = "<div> Emprunteur : " + es.getUtilisateur().getNom()
-                    + " " +  es.getUtilisateur().getPrenom()
+                    + " " + es.getUtilisateur().getPrenom()
                     + " " + es.getUtilisateur().getTelephone()
                     + " " + es.getUtilisateur().getEmail() + "</div>"
                     + " <div> Outil : " +  es.getOutil().getDesignation()
-                    + " " +  es.getOutil().getMarque()
-                    + " " +  es.getOutil().getNumero_de_serie() + "</div>"
+                    + " " + es.getOutil().getMarque()
+                    + " " + es.getOutil().getNumero_de_serie() + "</div>"
                     + "Date d'emprunt :  " + es.getDate_sortie()
                     + "<div>Date de retour prévue : " +  es.getDate_de_retour_prevue() +  "</div>";
 

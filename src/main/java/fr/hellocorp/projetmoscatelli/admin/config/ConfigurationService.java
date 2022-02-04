@@ -16,8 +16,9 @@ public class ConfigurationService {
     public List<Configuration> listeConfigurations() {
         return (List<Configuration>) repo.findAll();
     }
-    public Configuration getById(Long id) {
-        Optional<Configuration> config = repo.findById(id);
+
+    public Configuration getConfig() {
+        Optional<Configuration> config = repo.findById(1L);
         if (config.isPresent())
             return config.get();
         else
