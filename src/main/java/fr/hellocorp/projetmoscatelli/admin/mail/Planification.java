@@ -5,6 +5,7 @@ import fr.hellocorp.projetmoscatelli.admin.config.Configuration;
 import fr.hellocorp.projetmoscatelli.admin.config.ConfigurationService;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
+import fr.hellocorp.projetmoscatelli.admin.pojo.EtalonnageES;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,11 @@ public class Planification {
     @Autowired
     ConfigurationService configService;
 
-    @Scheduled(initialDelay = 100000000L, fixedDelay = 100000000L)
+    @Scheduled(initialDelay = 3000L, fixedDelay = 100000000L)
     public void alertes() {
+        //Requête pour les outils à recalibrer
+        //SELECT o.id, o.designation, o.periodicite AS periodicite, es.date_etalonnage, IF(o.periodicite IS NULL, NULL, IF(date_etalonnage IS NULL, NOW(), DATE_ADD(date_etalonnage, INTERVAL o.periodicite MONTH))) AS date_prochain_etalonnage FROM outils o LEFT OUTER JOIN (SELECT id_outil, MAX(date_etalonnage) AS date_etalonnage FROM entrees_sorties GROUP BY id_outil) es ON o.id = es.id_outil WHERE (IF(o.periodicite IS NULL, NULL, IF(date_etalonnage IS NULL, NOW(), DATE_ADD(date_etalonnage, INTERVAL o.periodicite MONTH)))<=DATE_ADD(NOW(),INTERVAL 60 DAY));
+
 
         // Récupérer le mail destinataire (v1 en dur)
 
@@ -34,6 +38,7 @@ public class Planification {
         // Liste de Entrées Sorties avec date de retour prévue = now+7 à 00:00:00
         List<EntreeSortie> liste = entreeSortieService.retardsOutils();
         List<EntreeSortie> liste2 = entreeSortieService.notificationOutils();
+        List<EtalonnageES> liste3 = entreeSortieService.notificationsEtalonnage();
         Configuration config=configService.getConfig();
 
         String email = config.getDestinatairesNotification();

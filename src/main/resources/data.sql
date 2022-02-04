@@ -55,7 +55,7 @@ VALUES
 INSERT INTO entrees_sorties (motif, id_outil, id_utilisateur, date_sortie, date_de_retour_prevue, date_retour, date_etalonnage, probleme, referencepv)
 
 VALUES
-    (0,1,1,'19971002','20030328',NULL, '20220201', 'ES11', ''),
+    (0,1,1,'20211220','20030328','20220110', '20220201', 'ES11', ''),
     (0,1,1,'19971002','20030328','20220112', '20220201', 'ES12', ''),
     (0,1,1,'19971002','20030328','20220120', '20220201', 'ES13', ''),
     (0,2,2,'19971002','20030328','20030328', '20220201', 'ES21', ''),

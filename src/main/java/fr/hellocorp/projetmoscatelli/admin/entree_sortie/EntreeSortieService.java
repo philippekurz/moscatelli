@@ -1,5 +1,6 @@
 package fr.hellocorp.projetmoscatelli.admin.entree_sortie;
 
+import fr.hellocorp.projetmoscatelli.admin.pojo.EtalonnageES;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,8 @@ public class EntreeSortieService {
 
     @Autowired
     private IRepositoryEntreeSortie repo;
+    @Autowired
+    private IRepositoryEtalonnageES repoEtalonnageES;
 
     public List<EntreeSortie> findAll(String keyword) {
 
@@ -42,4 +45,6 @@ public class EntreeSortieService {
     }
 
     public List<EntreeSortie> notificationOutils() {return repo.notificationsOutils();}
+
+    public List<EtalonnageES> notificationsEtalonnage() {return repoEtalonnageES.notificationsEtalonnage();}
 }
