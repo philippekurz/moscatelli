@@ -25,7 +25,7 @@ public class Planification {
     @Autowired
     ConfigurationService configService;
 
-    @Scheduled(initialDelay = 3000L, fixedDelay = 100000000L)
+    @Scheduled(initialDelay = 1000000000L, fixedDelay = 100000000L)
     public void alertes() {
         //Requête pour les outils à recalibrer
         //SELECT o.id, o.designation, o.periodicite AS periodicite, es.date_etalonnage, IF(o.periodicite IS NULL, NULL, IF(date_etalonnage IS NULL, NOW(), DATE_ADD(date_etalonnage, INTERVAL o.periodicite MONTH))) AS date_prochain_etalonnage FROM outils o LEFT OUTER JOIN (SELECT id_outil, MAX(date_etalonnage) AS date_etalonnage FROM entrees_sorties GROUP BY id_outil) es ON o.id = es.id_outil WHERE (IF(o.periodicite IS NULL, NULL, IF(date_etalonnage IS NULL, NOW(), DATE_ADD(date_etalonnage, INTERVAL o.periodicite MONTH)))<=DATE_ADD(NOW(),INTERVAL 60 DAY));

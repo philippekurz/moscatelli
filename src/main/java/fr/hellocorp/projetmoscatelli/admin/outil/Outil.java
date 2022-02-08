@@ -3,7 +3,6 @@ package fr.hellocorp.projetmoscatelli.admin.outil;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -81,7 +80,10 @@ public class Outil {
     @OneToMany( cascade = CascadeType.ALL, mappedBy = "outil")
     private List<EntreeSortie> entreesSorties = new ArrayList<>();
 
-    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long ides, LocalDate date_retour, LocalDate date_de_retour_prevue) {
+    @Transient
+    private EntreeSortie esEnCours;
+
+    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
         this.id = id;
         this.designation = designation;
         this.fournisseur = fournisseur;
@@ -101,9 +103,22 @@ public class Outil {
         this.utilisateur_maj = utilisateur_maj;
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
+
+        Collections.sort(entreesSorties, (es1, es2)->{
+            return (int)(es2.getId()-es1.getId());
+        });
+        if (entreesSorties.size()==0)
+            this.esEnCours = new EntreeSortie();
+        else
+        if (entreesSorties.get(0).getDate_retour()==null)
+            this.esEnCours = entreesSorties.get(0);
+        else
+            this.esEnCours = new EntreeSortie();
+
+
     }
 
-    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, int periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, Long ides, LocalDate date_retour, LocalDate date_de_retour_prevue) {
+    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
         this.designation = designation;
         this.fournisseur = fournisseur;
         this.marque = marque;
@@ -122,6 +137,19 @@ public class Outil {
         this.utilisateur_maj = utilisateur_maj;
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
+
+        Collections.sort(entreesSorties, (es1, es2)->{
+            return (int)(es2.getId()-es1.getId());
+        });
+        if (entreesSorties.size()==0)
+            this.esEnCours = new EntreeSortie();
+        else
+        if (entreesSorties.get(0).getDate_retour()==null)
+            this.esEnCours = entreesSorties.get(0);
+        else
+            this.esEnCours = new EntreeSortie();
+
+
     }
 
     public Outil() {
@@ -276,21 +304,27 @@ public class Outil {
     }
 
     public void setEntreesSorties(List<EntreeSortie> entreesSorties) {
-        this.entreesSorties = entreesSorties;
-    }
 
-    public EntreeSortie getES() {
-        Collections.sort(entreesSorties, (es1,es2)->{
+        this.entreesSorties = entreesSorties;
+        Collections.sort(entreesSorties, (es1, es2)->{
             return (int)(es2.getId()-es1.getId());
         });
         if (entreesSorties.size()==0)
-            return new EntreeSortie();
+            this.esEnCours = new EntreeSortie();
         else
-            if (entreesSorties.get(0).getDate_retour()==null)
-                return entreesSorties.get(0);
-            else
-                return new EntreeSortie();
+        if (entreesSorties.get(0).getDate_retour()==null)
+            this.esEnCours = entreesSorties.get(0);
+        else
+            this.esEnCours = new EntreeSortie();
+
+
+
     }
+
+    public EntreeSortie getEsEnCours() {
+        return esEnCours;
+    }
+
 
     @Override
     public String toString() {

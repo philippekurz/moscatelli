@@ -16,14 +16,14 @@
                     <div class="row mb-3">
                         <label for="destinatairesNotification" class="col-4 form-label">Destinataires des notifications</label>
                         <div class="col-8">
-                            <input type="text" th:value="${configuration.destinatairesNotification}" class="form-control" id="destinatairesNotification" name="destinatairesNotification" >
+                            <input type="text" th:field="*{destinatairesNotification}" class="form-control" id="destinatairesNotification" name="destinatairesNotification" >
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="heureEnvoi" class="col-4 form-label">Heure d'envoi</label>
                         <div class="col-8">
-                            <input type="time" th:value="${configuration.heureEnvoi}" class="form-control" id="heureEnvoi" name="heureEnvoi" >
+                            <input type="time" th:field="*{heureEnvoi}" class="form-control" id="heureEnvoi" name="heureEnvoi" >
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                         <div class="col-4"></div>
                         <div class="col-8">
                             <label for="alerteOnOff" class="form-label">Activation alerte on/off
-                                <input type="checkbox" th:value="${configuration.alerteOnOff}" id="alerteOnOff" name="alerteOnOff" >
+                                <input type="checkbox" th:field="*{alerteOnOff}" id="alerteOnOff" name="alerteOnOff" >
                             </label>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     <div class="row mb-3">
                         <label for="dureePret" class="col-4 form-label">Durée du pret</label>
                         <div class="col-8">
-                            <input type="number" th:value="${configuration.dureePret}" class="form-control" id="dureePret" name="dureePret" >
+                            <input type="number" th:field="*{dureePret}" class="form-control" id="dureePret" name="dureePret" >
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
