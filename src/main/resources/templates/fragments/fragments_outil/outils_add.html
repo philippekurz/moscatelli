@@ -96,6 +96,7 @@
 <!--                                <option th:value="Manquant" th:text="Manquant"></option>-->
 <!--                            </select>-->
 
+                            <!-- A corriger : ne marche pas -->
                             <select class="form-select" th:field="*{typeStatut}" id="typeStatut">
                                 <option th:each="statutOpt : ${T(fr.hellocorp.projetmoscatelli.outil.Outil.TypeStatut).values()}"
                                         th:value="${statutOpt}" th:text="${statutOpt}"></option>

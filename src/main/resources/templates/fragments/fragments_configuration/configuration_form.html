@@ -12,7 +12,7 @@
                 </div>
 
                 <form th:action="@{/configuration/enregistrer}" method="post" th:object="${configuration}">
-                    <input type="hidden" th:name="${configuration.id}">
+                    <input type="hidden" th:field="*{id}">
                     <div class="row mb-3">
                         <label for="destinatairesNotification" class="col-4 form-label">Destinataires des notifications</label>
                         <div class="col-8">

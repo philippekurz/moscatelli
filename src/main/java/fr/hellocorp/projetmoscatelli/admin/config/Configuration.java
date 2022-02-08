@@ -18,8 +18,8 @@ public class Configuration {
     @Column(name="destinataires_notification", nullable = false, length = 255)
     private String destinatairesNotification;
 
-    @Column(name="heure_envoi", nullable = false)
-    @DateTimeFormat(pattern = "hh:mm")
+    @Column(name="heure_envoi", columnDefinition = "TIME")
+//    @DateTimeFormat(pattern = "hh:mm")
     private LocalTime heureEnvoi;
 
     @Column(name = "alerte_on_off", columnDefinition = "BOOLEAN DEFAULT true")
