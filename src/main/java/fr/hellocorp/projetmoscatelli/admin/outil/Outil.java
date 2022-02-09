@@ -104,18 +104,6 @@ public class Outil {
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
 
-        Collections.sort(entreesSorties, (es1, es2)->{
-            return (int)(es2.getId()-es1.getId());
-        });
-        if (entreesSorties.size()==0)
-            this.esEnCours = new EntreeSortie();
-        else
-        if (entreesSorties.get(0).getDate_retour()==null)
-            this.esEnCours = entreesSorties.get(0);
-        else
-            this.esEnCours = new EntreeSortie();
-
-
     }
 
     public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
@@ -138,8 +126,12 @@ public class Outil {
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
 
+    }
+
+    @PostLoad
+    private void postLoad() {
         Collections.sort(entreesSorties, (es1, es2)->{
-            return (int)(es2.getId()-es1.getId());
+            return (int)(es1.getId()-es2.getId());
         });
         if (entreesSorties.size()==0)
             this.esEnCours = new EntreeSortie();
@@ -151,7 +143,6 @@ public class Outil {
 
 
     }
-
     public Outil() {
     }
 
@@ -304,21 +295,7 @@ public class Outil {
     }
 
     public void setEntreesSorties(List<EntreeSortie> entreesSorties) {
-
         this.entreesSorties = entreesSorties;
-        Collections.sort(entreesSorties, (es1, es2)->{
-            return (int)(es2.getId()-es1.getId());
-        });
-        if (entreesSorties.size()==0)
-            this.esEnCours = new EntreeSortie();
-        else
-        if (entreesSorties.get(0).getDate_retour()==null)
-            this.esEnCours = entreesSorties.get(0);
-        else
-            this.esEnCours = new EntreeSortie();
-
-
-
     }
 
     public EntreeSortie getEsEnCours() {
