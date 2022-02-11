@@ -43,10 +43,30 @@
 .form-inline {
     margin-right: 85px;
 }
+
 a {
     text-decoration: none;
     color: white;
 }
+
 a:hover {
     color : white;
 }
+
+a.tri {
+    color: black;
+}
+
+a.tri.asc::after {
+    content: "";
+    display: block;
+    background: url('/img/sort-alpha-down.svg') no-repeat;
+    width: 16px;
+    height: 16px;
+    float: right;
+    margin: 0 0 0 3px;
+}
+a.tri.desc::after {
+    content : '\F571'
+}
+

@@ -1,6 +1,7 @@
 package fr.hellocorp.projetmoscatelli.admin.entree_sortie;
 
 import fr.hellocorp.projetmoscatelli.admin.pojo.EtalonnageES;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

@@ -1,6 +1,7 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
+import org.springframework.cglib.core.CollectionUtils;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -130,17 +131,17 @@ public class Outil {
 
     @PostLoad
     private void postLoad() {
+        // Tri de la collection
         Collections.sort(entreesSorties, (es1, es2)->{
             return (int)(es1.getId()-es2.getId());
         });
         if (entreesSorties.size()==0)
             this.esEnCours = new EntreeSortie();
         else
-        if (entreesSorties.get(0).getDate_retour()==null)
-            this.esEnCours = entreesSorties.get(0);
-        else
-            this.esEnCours = new EntreeSortie();
-
+            if (entreesSorties.get(0).getDate_retour()==null)
+                this.esEnCours = entreesSorties.get(0);
+            else
+                this.esEnCours = new EntreeSortie();
 
     }
     public Outil() {
