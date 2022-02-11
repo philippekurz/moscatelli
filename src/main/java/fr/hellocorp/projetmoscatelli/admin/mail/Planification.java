@@ -25,8 +25,14 @@ public class Planification {
     @Autowired
     ConfigurationService configService;
 
-    @Scheduled(initialDelay = 1000000000L, fixedDelay = 100000000L)
+    
+    @Scheduled(cron = "0 0 12 * ?", zone = "Europe/Paris")
+
     public void alertes() {
+        Configuration configuration = configService.getConfig();
+        if(!configuration.getAlerteOnOff())
+            return;
+
         //Requête pour les outils à recalibrer
         //SELECT o.id, o.designation, o.periodicite AS periodicite, es.date_etalonnage, IF(o.periodicite IS NULL, NULL, IF(date_etalonnage IS NULL, NOW(), DATE_ADD(date_etalonnage, INTERVAL o.periodicite MONTH))) AS date_prochain_etalonnage FROM outils o LEFT OUTER JOIN (SELECT id_outil, MAX(date_etalonnage) AS date_etalonnage FROM entrees_sorties GROUP BY id_outil) es ON o.id = es.id_outil WHERE (IF(o.periodicite IS NULL, NULL, IF(date_etalonnage IS NULL, NOW(), DATE_ADD(date_etalonnage, INTERVAL o.periodicite MONTH)))<=DATE_ADD(NOW(),INTERVAL 60 DAY));
 
@@ -64,7 +70,7 @@ public class Planification {
                     + "Date d'emprunt :  " + es.getDate_sortie()
                     + "<div>Date de retour prévue : " +  es.getDate_de_retour_prevue() +  "</div>";
 
-            emailService.envoiEmail("hello.corp@javenir84.com", "Retard d'emprunt", texte );
+            emailService.envoiEmail(configService.getConfig().getDestinatairesNotification() , "Retard d'emprunt", texte );
         }
 
         for (EntreeSortie es: liste2) {
@@ -89,13 +95,44 @@ public class Planification {
                     + "Date d'emprunt :  " + es.getDate_sortie()
                     + "<div>Date de retour prévue : " +  es.getDate_de_retour_prevue() +  "</div>";
             
-            emailService.envoiEmail("hello.corp@javenir84.com", "Notification d'emprunt", texte );
+            emailService.envoiEmail(configService.getConfig().getDestinatairesNotification(), "Notification d'emprunt", texte );
             //designation outil
             //date de retour prévue
             //emprunteur
             //Envoi le mail
 
         }
+
+        /*for (EtalonnageES ese: liste3) {
+            System.out.println(
+                    ese.getNom()
+                            + " " +  ese.getNom()
+                            + " " +  ese.getNom()
+                            + " " +  ese.getNom()
+                            + " " +  ese.getNom()
+                            + " " +  ese.getNom()
+                            + " " +  ese.getNom()
+            );
+
+            //String texte = Le message, peut être formaté avec de l'html
+            String texte = "<div> Emprunteur : " +  ese.getNom()
+                    + " " +   ese.getNom()
+                    + " " +  ese.getNom()
+                    + " " +  ese.getNom() + "</div>"
+                    + " <div> Outil : " +   ese.getNom()
+                    + " " +   ese.getNom()
+                    + " " +   ese.getNom() + "</div>"
+                    + "Date d'emprunt :  " +  ese.getNom()
+                    + "<div>Date de retour prévue : " +   ese.getNom() +  "</div>";
+
+            emailService.envoiEmail(configService.getConfig().getDestinatairesNotification(), "Notification d'emprunt", texte );
+            //designation outil
+            //date de retour prévue
+            //emprunteur
+            //Envoi le mail
+
+        }*/
+
 
 
         // Logique de préparation et envoi des mails
