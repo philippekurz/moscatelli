@@ -142,8 +142,8 @@ public class Outil {
                 this.esEnCours = entreesSorties.get(0);
             else
                 this.esEnCours = new EntreeSortie();
-
     }
+
     public Outil() {
     }
 

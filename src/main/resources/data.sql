@@ -48,10 +48,31 @@ VALUES
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X72HH5', 'A000123227', '400mm', '400W','AC0003' ,'Non fonctionnel' , 1 ,'12',true);
 
 
+INSERT INTO droits (nom)
+VALUES  ("ROLE_VISITEUR"),
+        ("ROLE_MAGASINIER"),
+        ("ROLE_ADMINISTRATEUR");
 
+INSERT INTO utilisateurs_droits (id_utilisateur, id_droit)
+VALUES  (1,1),
+        (2,2),
+        (3,3),
+        (4,1),
+        (5,1),
+        (6,2),
+        (7,3);
 
+INSERT INTO configuration (destinataires_notification, heure_envoi, alerte_on_off, duree_pret)
+VALUES ("hello.corp@javenir84.com",
+        "12:00",
+        false,
+        30);
 
+INSERT INTO entrees_sorties (motif, id_outil, id_utilisateur, date_sortie, date_de_retour_prevue, date_retour, date_etalonnage, probleme, referencepv) VALUES
+    (0,1,1,'20211221','20220121',NULL, NULL, 'ES11', ''),
+    (0,1,1,'20211220','20220120',NULL, NULL, 'ES11', '');
 
+/*
 INSERT INTO entrees_sorties (motif, id_outil, id_utilisateur, date_sortie, date_de_retour_prevue, date_retour, date_etalonnage, probleme, referencepv)
 
 VALUES
@@ -96,25 +117,4 @@ VALUES
     (1,17,2,'20220113','20220213','20220210', '20220210', 'ES32', 'PV202207'),
     (1,17,2,'20210115','20210215','20210130', '20210130', 'ES32', 'PV202106'),
     (1,17,2,'20200120','20200220','20200215', '20200215', 'ES32', 'PV202006');
-
-
-
-INSERT INTO droits (nom)
-VALUES  ("ROLE_VISITEUR"),
-        ("ROLE_MAGASINIER"),
-        ("ROLE_ADMINISTRATEUR");
-
-INSERT INTO utilisateurs_droits (id_utilisateur, id_droit)
-VALUES  (1,1),
-        (2,2),
-        (3,3),
-        (4,1),
-        (5,1),
-        (6,2),
-        (7,3);
-
-INSERT INTO configuration (destinataires_notification, heure_envoi, alerte_on_off, duree_pret)
-VALUES ("hello.corp@javenir84.com",
-        "12:00",
-        true,
-        30);
+*/

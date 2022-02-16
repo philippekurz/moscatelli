@@ -28,6 +28,7 @@ public class EntreeSortieService {
     public void enregistrer(EntreeSortie entreeSortie) {
         repo.save(entreeSortie);
     }
+
     public void supprimer(Long id) throws EntreeSortieNotFoundException {
         Long count = repo.countById(id);
         if (count == null || count ==0) {
