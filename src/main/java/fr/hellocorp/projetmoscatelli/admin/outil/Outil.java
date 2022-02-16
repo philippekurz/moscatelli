@@ -25,7 +25,7 @@ public class Outil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false,length = 100)
     private String designation;
@@ -84,7 +84,7 @@ public class Outil {
     @Transient
     private EntreeSortie esEnCours;
 
-    public Outil(long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
+    public Outil(Long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
         this.id = id;
         this.designation = designation;
         this.fournisseur = fournisseur;
@@ -147,7 +147,7 @@ public class Outil {
     public Outil() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

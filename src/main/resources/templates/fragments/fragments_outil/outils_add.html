@@ -86,33 +86,25 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="typeStatut" class="form-label">Statut</label>
-<!--                            <select class="form-select" th:field="*{typeStatut}">-->
-<!--                                <option th:value="Fonction" th:text="Fonction"></option>-->
-<!--                                <option th:value="Maintenance" th:text="Maintenance"></option>-->
-<!--                                <option th:value="Etalonnage" th:text="Étalonnage"></option>-->
-<!--                                <option th:value="Rebut" th:text="Rebut"></option>-->
-<!--                                <option th:value="Manquant" th:text="Manquant"></option>-->
-<!--                            </select>-->
-
-                            <!-- A corriger : ne marche pas -->
-                            <select class="form-select" th:field="*{typeStatut}" id="typeStatut">
-                                <option th:each="statutOpt : ${T(fr.hellocorp.projetmoscatelli.outil.Outil.TypeStatut).values()}"
-                                        th:value="${statutOpt}" th:text="${statutOpt}"></option>
-                            </select>
-
-
+                        <div class="row mb-3">
+                            <label for="etat" class="col-4 form-label">État</label>
+                            <div class="col-8">
+                                <input type="text" th:field="*{etat}" class="form-control" id="etat" name="etat" placeholder="état" >
+                            </div>
                         </div>
-                        <!--                            <div class="form-group form-check">-->
-                        <!--                                <label for="etalonnee" class="form-check-label">Etalonnage</label>-->
-                        <!--                                <input type="checkbox" th:checked="*{etalonnee}" th:value="*{etalonnee}" class="form-check-input" id="etalonnee" name="etalonnee">-->
-                        <!--                            </div>-->
+
+
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                         </div>
+
+
+
+
+
+
 
                     </form>
                 </div>

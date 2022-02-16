@@ -23,5 +23,7 @@ public interface IRepositoryOutils extends CrudRepository <Outil, Long> {
             nativeQuery = true)
     List<Outil> findByEtalonnee(boolean etalonnee);
 
+
+
 }
 

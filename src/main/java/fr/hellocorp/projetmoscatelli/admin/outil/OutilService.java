@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut.Fonction;
+
 @Service
 public class OutilService {
 
@@ -32,8 +34,28 @@ public class OutilService {
     }
 
     public void enregistrer(Outil outil) {
+        if (outil.getId() == null){
+
+           outil.setTypeStatut(Fonction);
+
+        }
+
+
         repo.save(outil);
     }
+
+
+
+    //if (utilisateur.getId() == null) {
+    //
+    //
+    //
+    //            //role
+    //            Droit droit = repositoryDroit.findByNom("Visiteur");
+    //            utilisateur.ajouterDroit(droit);
+    //        }
+    //        repo.save(utilisateur);
+    //    }
 
     public void supprimer(Long id) throws OutilNotFoundException {
         Long count = repo.countById(id);

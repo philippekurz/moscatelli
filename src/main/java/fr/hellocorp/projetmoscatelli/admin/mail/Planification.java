@@ -26,7 +26,7 @@ public class Planification {
     ConfigurationService configService;
 
     
-    @Scheduled(cron = "0 0 12 * ?", zone = "Europe/Paris")
+    @Scheduled(cron = "0 1 * * * ?", zone = "Europe/Paris")
 
     public void alertes() {
         Configuration configuration = configService.getConfig();
@@ -105,25 +105,27 @@ public class Planification {
 
         }
 
-        /*for (EtalonnageES ese: liste3) {
+        for (EtalonnageES ese: liste3) {
             System.out.println(
                     ese.getNom()
+                            + " " +  ese.getDesignation()
+                            + " " +  ese.getPeriodicite()
+                            + " " +  ese.getDate_etalonnage()
+                            + " " +  ese.getDate_prochain_etalonnage()
                             + " " +  ese.getNom()
-                            + " " +  ese.getNom()
-                            + " " +  ese.getNom()
-                            + " " +  ese.getNom()
-                            + " " +  ese.getNom()
-                            + " " +  ese.getNom()
+                            + " " +  ese.getPrenom()
+
+
             );
 
             //String texte = Le message, peut être formaté avec de l'html
             String texte = "<div> Emprunteur : " +  ese.getNom()
-                    + " " +   ese.getNom()
-                    + " " +  ese.getNom()
-                    + " " +  ese.getNom() + "</div>"
-                    + " <div> Outil : " +   ese.getNom()
-                    + " " +   ese.getNom()
-                    + " " +   ese.getNom() + "</div>"
+                    + " " +   ese.getPrenom()
+                    + "</div>"
+                    + " <div> Outil : " +   ese.getDesignation()
+                    + " Dernier etalonnage : " +   ese.getDate_etalonnage()
+                    + " Periodicite: " + ese.getPeriodicite()
+                    + " Prochain etalonnage " +   ese.getDate_etalonnage() + "</div>"
                     + "Date d'emprunt :  " +  ese.getNom()
                     + "<div>Date de retour prévue : " +   ese.getNom() +  "</div>";
 
@@ -133,7 +135,7 @@ public class Planification {
             //emprunteur
             //Envoi le mail
 
-        }*/
+        }
 
 
 
