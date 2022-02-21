@@ -17,16 +17,16 @@
                         <input type="hidden" th:value="${entreeSortie.id}">
                         <div class="mb-3">
 
-<!--                            <select class="form-select" th:value="${entreeSortie.motif}" >-->
-<!--                                <option th:each="motifOpt : ${T(fr.hellocorp.projetmoscatelli.entree_sortie.EntreeSortie.MotifEntreeSortie).values()}"-->
-<!--                                        th:value="${motifOpt}" th:text="${motifOpt}"></option>-->
-<!--                            </select>-->
+                            <!--<select class="form-select" id="motif" name="motif" >
+                               <option th:each="motif:${motif}" th:value="${entreeSortie.motif}" th:text="${entreeSortie.motif}"
+                               th:select="${entreeSortie.motif}==${entreeSortie.motif}"></option>
+                            </select>-->
 
                             <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif" >
                                 <option value="Prêt">Prêt</option>
                                 <option value="Etalonnage">Etalonnage</option>
                                 <option value="Maintenance">Maintenance</option>
-                            </select>
+                            </select>-->
 
                             <label class="form-label">Utilisateur</label>
                             <select class="form-select" id="utilisateur" name="utilisateur">
@@ -42,20 +42,20 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="date_sortie" class="form-label">date sortie</label>
-                            <input type="Date" th:value="${entreeSortie.date_sortie}" class="form-control" id="date_sortie" name="date_sortie">
+                            <label for="date_sortie" class="form-label">Date sortie</label>
+                            <input type="Date" class="form-control" name="date_sortie" id="date_sortie" placeholder="JJ/MM/AAAA" th:value="${entreeSortie.date_sortie}">
                         </div>
                         <div class="mb-3">
-                            <label for="date_de_retour_prevue" class="form-label">date de retour prevue</label>
-                            <input type="Date" th:value="${entreeSortie.date_de_retour_prevue}" class="form-control" id="date_de_retour_prevue" name="date_de_retour_prevue">
+                            <label for="date_de_retour_prevue" class="form-label">Date de retour prévue</label>
+                            <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA" th:value="${entreeSortie.date_de_retour_prevue}">
                         </div>
                         <div class="mb-3">
-                            <label for="date_retour" class="form-label">date de retour</label>
-                            <input type="Date" th:value="${entreeSortie.date_retour}" class="form-control" id="date_retour" name="date_retour">
+                            <label for="date_retour" class="form-label">Date de retour</label>
+                            <input type="Date" class="form-control" name="date_retour" id="date_retour" placeholder="JJ/MM/AAAA" th:value="${entreeSortie.date_retour}">
                         </div>
                         <div class="mb-3">
-                            <label for="date_etalonnage" class="form-label">date d'étalonnage</label>
-                            <input type="Date" th:value="${entreeSortie.date_etalonnage}" class="form-control" id="date_etalonnage" name="date_etalonnage">
+                            <label for="date_etalonnage" class="form-label">Date d'étalonnage</label>
+                            <input type="Date" class="form-control" name="date_etalonnage" id="date_etalonnage" placeholder="JJ/MM/AAAA" th:value="${entreeSortie.date_etalonnage}">
                         </div>
                         <div class="mb-3">
                             <label for="probleme" class="form-label">probleme</label>

@@ -46,16 +46,7 @@ public class OutilService {
 
 
 
-    //if (utilisateur.getId() == null) {
-    //
-    //
-    //
-    //            //role
-    //            Droit droit = repositoryDroit.findByNom("Visiteur");
-    //            utilisateur.ajouterDroit(droit);
-    //        }
-    //        repo.save(utilisateur);
-    //    }
+
 
     public void supprimer(Long id) throws OutilNotFoundException {
         Long count = repo.countById(id);

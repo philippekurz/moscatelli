@@ -14,7 +14,7 @@
         <table class="table table-striped table-responsive">
             <thead>
             <tr>
-                <th scope="col"><a class="tri asc" th:href="@{/outils}+'?s=id&o=a&keyword=' +${keyword}+'&etalonnee=' +${etalonnee}   ">Id</a></th>
+
                 <th scope="col"><a class="tri asc"  th:href="@{/outils}">Désignation</a></th>
                 <th scope="col"><a class="tri desc"  th:href="@{/outils}">Marque</a></th>
                 <th scope="col"><a class="tri"  th:href="@{/outils}">Modèle</a></th>
@@ -34,7 +34,7 @@
             <tbody>
             <th:block th:each="outil : ${Outils}">
                 <tr>
-                    <td>[[${outil.id}]]</td>
+
                     <td>[[${outil.designation}]]</td>
                     <td>[[${outil.marque}]]</td>
                     <td>[[${outil.modele}]]</td>

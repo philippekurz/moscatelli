@@ -54,9 +54,11 @@ public class EntreeSortieController {
 
     @PostMapping("/supprimer/{id}")
     public String supprimer(@PathVariable Long id,
+                            @Param("etalonnee") boolean etalonnee,
                             @Param("keyword")String keyword) throws EntreeSortieNotFoundException {
         service.supprimer(id);
-        return "redirect:/entreesortie?keyword="+(Objects.equals(keyword, "null") ? "":keyword);
+        return "redirect:/entreesortie?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
+        //return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
 
     @PostMapping ("/modifier/{id}")
@@ -71,7 +73,8 @@ public class EntreeSortieController {
                            @RequestParam String date_retour,
                            @RequestParam String date_etalonnage,
                            @RequestParam String probleme,
-                           @RequestParam String referencePV)
+                           @RequestParam String referencePV,
+                           @RequestParam EntreeSortie.MotifEntreeSortie motifEntreeSortie)
     {
         EntreeSortie entreeSortie = new EntreeSortie();
         entreeSortie.setId(id);
@@ -83,6 +86,7 @@ public class EntreeSortieController {
         entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
         entreeSortie.setProbleme(probleme);
         entreeSortie.setReferencePV(referencePV);
+        entreeSortie.setMotif(motifEntreeSortie);
 
         List<EntreeSortie> entreesSorties = service.findAll(keyword);
         model.addAttribute("entreesSorties", entreesSorties);

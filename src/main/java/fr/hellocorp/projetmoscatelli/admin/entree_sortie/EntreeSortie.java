@@ -25,7 +25,9 @@ public class EntreeSortie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name="motif")
+    @Enumerated
     private MotifEntreeSortie motif;
 
     @ManyToOne(fetch = FetchType.EAGER)

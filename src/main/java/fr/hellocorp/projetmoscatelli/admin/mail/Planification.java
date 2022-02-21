@@ -25,9 +25,10 @@ public class Planification {
     @Autowired
     ConfigurationService configService;
 
-    
+    //Configuration configuration = configService.getConfig();
+    //Configuration heure = configuration.getHeureEnvoi();
     @Scheduled(cron = "0 1 * * * ?", zone = "Europe/Paris")
-
+    //@Scheduled(fixedRateString = heure)
     public void alertes() {
         Configuration configuration = configService.getConfig();
         if(!configuration.getAlerteOnOff())
@@ -119,7 +120,7 @@ public class Planification {
             );
 
             //String texte = Le message, peut être formaté avec de l'html
-            String texte = "<div> Emprunteur : " +  ese.getNom()
+            String texte = " <div> Emprunteur : " +  ese.getNom()
                     + " " +   ese.getPrenom()
                     + "</div>"
                     + " <div> Outil : " +   ese.getDesignation()
