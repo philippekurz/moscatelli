@@ -73,8 +73,8 @@ public class EntreeSortieController {
                            @RequestParam String date_retour,
                            @RequestParam String date_etalonnage,
                            @RequestParam String probleme,
-                           @RequestParam String referencePV,
-                           @RequestParam EntreeSortie.MotifEntreeSortie motifEntreeSortie)
+                           @RequestParam String referencePV)
+                           //@RequestParam EntreeSortie.MotifEntreeSortie motifEntreeSortie)
     {
         EntreeSortie entreeSortie = new EntreeSortie();
         entreeSortie.setId(id);
@@ -86,7 +86,7 @@ public class EntreeSortieController {
         entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
         entreeSortie.setProbleme(probleme);
         entreeSortie.setReferencePV(referencePV);
-        entreeSortie.setMotif(motifEntreeSortie);
+        //entreeSortie.setMotif(motifEntreeSortie);
 
         List<EntreeSortie> entreesSorties = service.findAll(keyword);
         model.addAttribute("entreesSorties", entreesSorties);
