@@ -4,7 +4,58 @@
 
 <div th:fragment="outils_entree_sortie">
 
-<!------------------------------------------------------Modal entree outils ------------------------------------------------------>
+<!------------------------------------------------------Modal sortie outils ------------------------------------------------------>
+    <div class="modal fade" th:attr="id='sortieModal'+*{outil.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">Prêter [[${outil.designation}]] [[${outil.modele}]]</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form th:action="@{'/outils/sortie/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
+
+                        <input type="text" id="outil_sortie" name="outil" th:value="${outil.id}">
+                        <input type="text" id="motif_sortie" name="motif" th:value="Prêt">
+
+                        <div class="row mb-3">
+                            <label for="utilisateur" class="form-label col-5">Utilisateur</label>
+                            <div class="col-7">
+                                <select class="form-select" id="utilisateur_sortie" name="utilisateur">
+                                    <option value="0">Sélectionnez un utilisateur</option>
+                                    <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="date_sortie" class="form-label col-5">Date sortie</label>
+                            <div class="col-7">
+                                <input type="date" class="form-control" name="date_sortie" id="date_sortie" th:value="${currentDate}" placeholder="JJ/MM/AAAA">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="date_de_retour_prevue" class="form-label col-5">Date de retour prévue</label>
+                            <div class="col-7">
+                                <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" th:value="${defaultReturnDate}" placeholder="JJ/MM/AAAA">
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------------------- Modal retour outils ------------------------------------------------------>
 
     <div class="modal fade" id="entreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -59,55 +110,5 @@
             </div>
         </div>
     </div>
-<!------------------------------------------------------Modal sortie outils ------------------------------------------------------>
-
-    <div class="modal fade" th:attr="id='sortieModal'+*{outil.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModal">Prêter [[${outil.designation}]] [[${outil.modele}]]</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <form th:action="@{'/outils/sortie/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
-
-                        <input type="hidden" id="outil" name="outil" th:value="${outil.id}">
-
-                        <div class="row mb-3">
-                            <label for="utilisateur" class="form-label col-5">Utilisateur</label>
-                            <div class="col-7">
-                                <select class="form-select" id="utilisateur" name="utilisateur">
-                                    <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="date_sortie" class="form-label col-5">Date sortie</label>
-                            <div class="col-7">
-                                <input type="date" class="form-control" name="date_sortie" id="date_sortie" th:value="${currentDate}" placeholder="JJ/MM/AAAA">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="date_de_retour_prevue" class="form-label col-5">Date de retour prévue</label>
-                            <div class="col-7">
-                                <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA">
-                            </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 </div>

@@ -1,5 +1,6 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
+import fr.hellocorp.projetmoscatelli.admin.config.ConfigurationService;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.Utilisateur;
@@ -24,12 +25,15 @@ public class OutilsController {
     private EntreeSortieService entreeSortieService;
     @Autowired
     private UtilisateurService utilisateurService;
+    @Autowired
+    private ConfigurationService configurationService;
 
     @GetMapping(value = {"/recherche",""})
     public String ShowTools(Model model, @Param("keyword") String keyword,@Param("etalonnee") boolean etalonnee) {
 
         List<Outil> outils = service.findAll(keyword, etalonnee);
-        System.out.println(outils);
+        //System.out.println(outils);
+        //outils.sort();
         model.addAttribute("Outils",outils);
 
         Outil outil = new Outil();
@@ -44,6 +48,7 @@ public class OutilsController {
         model.addAttribute("keyword", keyword);
 
         model.addAttribute("currentDate", LocalDate.now());
+        model.addAttribute("defaultReturnDate", LocalDate.now().plusDays(configurationService.getConfig().getDureePret()));
 
         return "outils";
     }
@@ -60,16 +65,20 @@ public class OutilsController {
     public String sortie(
                          @Param("keyword)") String keyword,
                          @Param("etalonnee)") boolean etalonnee,
+                         @RequestParam EntreeSortie.MotifEntreeSortie motif,
                          @RequestParam Utilisateur utilisateur,
                          @RequestParam Outil outil,
                          @RequestParam String date_sortie,
                          @RequestParam String date_de_retour_prevue)
     {
         EntreeSortie entreeSortie = new EntreeSortie();
+        entreeSortie.setMotif(motif);
         entreeSortie.setUtilisateur(utilisateur);
         entreeSortie.setOutil(outil);
         entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
+        entreeSortie.setUtilisateurcreation("root");
+        entreeSortie.setUtilisateurMAJ("root");
 
         entreeSortieService.enregistrer(entreeSortie);
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
