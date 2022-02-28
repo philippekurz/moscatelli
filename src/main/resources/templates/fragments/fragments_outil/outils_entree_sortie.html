@@ -6,59 +6,74 @@
 
 <!------------------------------------------------------Modal entree outils ------------------------------------------------------>
 
-    <div class="modal fade" id="entreeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Preter un outil</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form th:action="@{'/outils/entree/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
+<!--    <div class="modal fade"  id='entreeModal' tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="exampleModalLabel">Retour [[${outil.designation}]] [[${outil.modele}]]</h5>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <form th:action="@{'/outils/entree/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">-->
 
-                        <input type="hidden" id="outil" name="outil" th:value="${outil.id}">
+<!--                        <input type="hidden" id="outil" name="outil" th:value="${outil.id}">-->
 
-                        <div class="row mb-3">
-                            <label for="utilisateur" class="form-label col-5">Utilisateur</label>
-                            <div class="col-7">
-                                <select class="form-select" id="utilisateur" name="utilisateur">
-                                    <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
-                                </select>
-                            </div>
-                        </div>
+<!--                        <div class="row mb-3">-->
+<!--                            <label for="utilisateur" class="form-label col-5">Utilisateur</label>-->
+<!--                            <div class="col-7">-->
+<!--                                <select class="form-select" id="utilisateur" name="utilisateur">-->
+<!--                                    <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="row mb-3">
-                            <label for="date_retour" class="form-label col-5">Date retour</label>
-                            <div class="col-7">
-                                <input type="date" class="form-control" name="date_retour" id="date_retour" th:value="${currentDate}" placeholder="JJ/MM/AAAA">
-                            </div>
-                        </div>
+<!--                        <div class="row mb-3">-->
+<!--                            <label for="date_sortie" class="form-label col-5">Date sortie</label>-->
+<!--                            <div class="col-7">-->
+<!--                                <input type="date" class="form-control" name="date_sortie" id="date_sortie" th:value="${currentDate}" placeholder="JJ/MM/AAAA">-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="row mb-3">
-                            <label for="probleme" class="form-label col-5">Probleme</label>
-                            <div class="col-7">
-                                <input type="text" class="form-control" name="probleme" id="probleme" placeholder="Probleme">
-                            </div>
-                        </div>
+<!--                        <div class="row mb-3">-->
+<!--                            <label for="date_de_retour_prevue" class="form-label col-5">Date de retour prévue</label>-->
+<!--                            <div class="col-7">-->
+<!--                                <input type="date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" th:value="${currentDate}" placeholder="JJ/MM/AAAA">-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="row mb-3">
-                            <label for="referencePV" class="form-label col-5">Reference PV</label>
-                            <div class="col-7">
-                                <input type="text" class="form-control" name="referencePV" id="referencePV" placeholder="Reference PV">
-                            </div>
-                        </div>
 
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        </div>
+<!--                        <div class="row mb-3">-->
+<!--                            <label for="date_retour" class="form-label col-5">Date retour</label>-->
+<!--                            <div class="col-7">-->
+<!--                                <input type="date" class="form-control" name="date_retour" id="date_retour" th:value="${currentDate}" placeholder="JJ/MM/AAAA">-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                    </form>
+<!--                        <div class="row mb-3">-->
+<!--                            <label for="probleme" class="form-label col-5">Probleme</label>-->
+<!--                            <div class="col-7">-->
+<!--                                <input type="text" class="form-control" name="probleme" id="probleme" placeholder="Probleme">-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                </div>
-            </div>
-        </div>
-    </div>
+<!--                        <div class="row mb-3">-->
+<!--                            <label for="referencePV" class="form-label col-5">Reference PV</label>-->
+<!--                            <div class="col-7">-->
+<!--                                <input type="text" class="form-control" name="referencePV" id="referencePV" placeholder="Reference PV">-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="modal-footer">-->
+<!--                            <button type="submit" class="btn btn-primary">Enregistrer</button>-->
+<!--                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>-->
+<!--                        </div>-->
+
+<!--                    </form>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 <!------------------------------------------------------Modal sortie outils ------------------------------------------------------>
 
     <div class="modal fade" th:attr="id='sortieModal'+*{outil.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +108,7 @@
                         <div class="row mb-3">
                             <label for="date_de_retour_prevue" class="form-label col-5">Date de retour prévue</label>
                             <div class="col-7">
-                                <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA">
+                                <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" th:value="${currentDate}" placeholder="JJ/MM/AAAA">
                             </div>
 
                         </div>

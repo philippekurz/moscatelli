@@ -44,12 +44,12 @@ public class EntreeSortieController {
         return "entreesortie";
     }
 
+
     @PostMapping("/enregistrer")
     public String enregistrer(EntreeSortie entreeSortie) {
         service.enregistrer(entreeSortie);
         return "redirect:/entreesortie";
     }
-
 
 
     @PostMapping("/supprimer/{id}")
@@ -61,6 +61,7 @@ public class EntreeSortieController {
         //return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
 
+
     @PostMapping ("/modifier/{id}")
     public String modifier(Model model,
                            @Param("keyword)") String keyword,
@@ -70,11 +71,13 @@ public class EntreeSortieController {
                            @RequestParam Outil outil,
                            @RequestParam String date_sortie,
                            @RequestParam String date_de_retour_prevue,
-                           @RequestParam String date_retour,
-                           @RequestParam String date_etalonnage,
                            @RequestParam String probleme,
-                           @RequestParam String referencePV)
-                           //@RequestParam EntreeSortie.MotifEntreeSortie motifEntreeSortie)
+                           @RequestParam String referencePV,
+                           @RequestParam String date_etalonnage,
+                           @RequestParam String date_retour)
+                            //@RequestParam EntreeSortie.MotifEntreeSortie motifEntreeSortie)
+
+
     {
         EntreeSortie entreeSortie = new EntreeSortie();
         entreeSortie.setId(id);
@@ -82,17 +85,76 @@ public class EntreeSortieController {
         entreeSortie.setOutil(outil);
         entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
-        entreeSortie.setDate_retour(LocalDate.parse(date_retour));
-        entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
         entreeSortie.setProbleme(probleme);
         entreeSortie.setReferencePV(referencePV);
-        //entreeSortie.setMotif(motifEntreeSortie);
+        if(date_retour.length()!=0)
+            entreeSortie.setDate_retour(LocalDate.parse(date_retour));
+
+        if(date_etalonnage.length()!=0)
+            entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
+
+//        entreeSortie.setDate_retour(LocalDate.parse(date_retour));
+//        entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
+
+
 
         List<EntreeSortie> entreesSorties = service.findAll(keyword);
         model.addAttribute("entreesSorties", entreesSorties);
 
         List<Utilisateur> utilisateurs = utilisateurService.findAll();
         model.addAttribute("utilisateurs", utilisateurs);
+        List<Outil> outils = outilService.findAll();
+        model.addAttribute("Outils",outils);
+        model.addAttribute("etalonnee", etalonnee);
+        model.addAttribute("keyword", keyword);
+        service.enregistrer(entreeSortie);
+        return "redirect:/entreesortie?keyword="+(Objects.equals(keyword, "null") ? "":keyword);
+    }
+
+
+    @PostMapping ("/retour/{id}")
+    public String retour(Model model,
+                           @Param("keyword)") String keyword,
+                           @Param("etalonnee)") boolean etalonnee,
+                           @PathVariable Long id,
+                           @RequestParam Utilisateur utilisateur,
+                           @RequestParam Outil outil,
+                           @RequestParam String date_sortie,
+                           @RequestParam String date_de_retour_prevue,
+                           @RequestParam String probleme,
+                           @RequestParam String date_retour,
+                           @RequestParam String date_etalonnage,
+                           @RequestParam String referencePV)
+    //@RequestParam EntreeSortie.MotifEntreeSortie motifEntreeSortie)
+
+    {
+        EntreeSortie entreeSortie = new EntreeSortie();
+        entreeSortie.setId(id);
+        entreeSortie.setUtilisateur(utilisateur);
+        entreeSortie.setOutil(outil);
+        entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
+        entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
+        entreeSortie.setProbleme(probleme);
+        entreeSortie.setReferencePV(referencePV);
+        if(date_retour.length()!=0)
+            entreeSortie.setDate_retour(LocalDate.parse(date_retour));
+
+        if(date_etalonnage.length()!=0)
+            entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
+
+//        entreeSortie.setDate_retour(LocalDate.parse(date_retour));
+//        entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
+//        entreeSortie.setMotif(motifEntreeSortie);
+//
+
+
+
+        List<EntreeSortie> entreesSorties = service.findAll(keyword);
+        model.addAttribute("entreesSorties", entreesSorties);
+
+        List<Utilisateur> utilisateurs = utilisateurService.findAll();
+        model.addAttribute("utilisateurs", utilisateurs);
+
         List<Outil> outils = outilService.findAll();
         model.addAttribute("Outils",outils);
         model.addAttribute("etalonnee", etalonnee);

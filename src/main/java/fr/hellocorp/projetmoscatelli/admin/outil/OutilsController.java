@@ -24,6 +24,9 @@ public class OutilsController {
     private EntreeSortieService entreeSortieService;
     @Autowired
     private UtilisateurService utilisateurService;
+    @Autowired
+    private OutilService outilService;
+
 
     @GetMapping(value = {"/recherche",""})
     public String ShowTools(Model model, @Param("keyword") String keyword,@Param("etalonnee") boolean etalonnee) {
@@ -56,44 +59,25 @@ public class OutilsController {
 
         return "redirect:/outils?etalonnee="+etalonnee;
     }
-    @PostMapping("/sortie")
-    public String sortie(
-                         @Param("keyword)") String keyword,
-                         @Param("etalonnee)") boolean etalonnee,
-                         @RequestParam Utilisateur utilisateur,
-                         @RequestParam Outil outil,
-                         @RequestParam String date_sortie,
-                         @RequestParam String date_de_retour_prevue)
-    {
-        EntreeSortie entreeSortie = new EntreeSortie();
-        entreeSortie.setUtilisateur(utilisateur);
-        entreeSortie.setOutil(outil);
-        entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
-        entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
 
-        entreeSortieService.enregistrer(entreeSortie);
-        return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
-    }
-    @PostMapping("/entree")
-    public String entree(
-            @Param("keyword)") String keyword,
-            @Param("etalonnee)") boolean etalonnee,
-            @RequestParam Utilisateur utilisateur,
-            @RequestParam Outil outil,
-            @RequestParam String date_retour,
-            @RequestParam String probleme,
-            @RequestParam String referencePV)
-    {
-        EntreeSortie entreeSortie = new EntreeSortie();
-        entreeSortie.setUtilisateur(utilisateur);
-        entreeSortie.setOutil(outil);
-        entreeSortie.setDate_retour(LocalDate.parse(date_retour));
-        entreeSortie.setProbleme(probleme);
-        entreeSortie.setReferencePV(referencePV);
+@PostMapping("/sortie")
+public String sortie(
+        @Param("keyword)") String keyword,
+        @Param("etalonnee)") boolean etalonnee,
+        @RequestParam Utilisateur utilisateur,
+        @RequestParam Outil outil,
+        @RequestParam String date_sortie,
+        @RequestParam String date_de_retour_prevue)
+{
+    EntreeSortie entreeSortie = new EntreeSortie();
+    entreeSortie.setUtilisateur(utilisateur);
+    entreeSortie.setOutil(outil);
+    entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
+    entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
 
-        entreeSortieService.enregistrer(entreeSortie);
-        return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
-    }
+    entreeSortieService.enregistrer(entreeSortie);
+    return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
+}
 
 
 
@@ -105,6 +89,8 @@ public class OutilsController {
 
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
+
+
 
     @PostMapping ("/modifier/{id}")
     public String modifier(@PathVariable Long id,

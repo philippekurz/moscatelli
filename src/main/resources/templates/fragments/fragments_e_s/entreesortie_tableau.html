@@ -42,7 +42,7 @@
                     <td>[[${entreeSortie.probleme}]]</td>
                     <td>[[${entreeSortie.referencePV}]]</td>
 
-
+                    <td><a th:unless="${entreeSortie.date_retour}!=null" sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#retourModal'+*{entreeSortie.id}"><i class="bi bi-box-arrow-in-left mx-1"></i></a></td>
                     <td><a  sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#editModal'+*{entreeSortie.id}"><i class="bi bi-pencil-fill"></i></a></td>
                     <td><a  sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#deleteModal'+*{entreeSortie.id}"><i class="bi bi-trash-fill"></i></a></td>
 
@@ -50,6 +50,7 @@
 
                     <div th:replace="fragments/fragments_e_s/entreesortie_edit.html :: entreesortie_edit"></div>
                     <div th:replace="fragments/fragments_e_s/entreesortie_delete.html :: entreesortie_delete"></div>
+                    <div th:replace="fragments/fragments_e_s/entreesortie_retour.html :: entreesortie_retour"></div>
 
 
                     <!-------------------------------------------------------- Fermeture du tableau ------------------------------------------------------>
