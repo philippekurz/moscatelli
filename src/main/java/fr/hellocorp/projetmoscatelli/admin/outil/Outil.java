@@ -78,7 +78,7 @@ public class Outil {
     @Column(name="date_maj", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
     private LocalDateTime date_maj;
 
-    @OneToMany( cascade = CascadeType.ALL, mappedBy = "outil")
+    @OneToMany( cascade = CascadeType.REMOVE, mappedBy = "outil")
     private List<EntreeSortie> entreesSorties = new ArrayList<>();
 
     @Transient
