@@ -40,6 +40,7 @@ public class Outil {
     private String modele;
 
     @Column(unique = true,length = 100)
+
     private String numero_de_serie;
 
     @Column(length = 30)

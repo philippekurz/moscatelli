@@ -146,19 +146,9 @@ public class EntreeSortieController {
 //        entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
 //        entreeSortie.setMotif(motifEntreeSortie);
 //
-
-
-
         List<EntreeSortie> entreesSorties = service.findAll(keyword);
         model.addAttribute("entreesSorties", entreesSorties);
 
-        List<Utilisateur> utilisateurs = utilisateurService.findAll();
-        model.addAttribute("utilisateurs", utilisateurs);
-
-        List<Outil> outils = outilService.findAll();
-        model.addAttribute("Outils",outils);
-        model.addAttribute("etalonnee", etalonnee);
-        model.addAttribute("keyword", keyword);
         service.enregistrer(entreeSortie);
         return "redirect:/entreesortie?keyword="+(Objects.equals(keyword, "null") ? "":keyword);
     }
