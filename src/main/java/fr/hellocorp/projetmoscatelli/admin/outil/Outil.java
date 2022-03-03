@@ -134,7 +134,7 @@ public class Outil {
     private void postLoad() {
         // Tri de la collection
         Collections.sort(entreesSorties, (es1, es2)->{
-            return (int)(es1.getId()-es2.getId());
+            return (int)(es2.getId()-es1.getId());
         });
         if (entreesSorties.size()==0)
             this.esEnCours = new EntreeSortie();

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EntreeSortieService {
@@ -13,6 +14,14 @@ public class EntreeSortieService {
     private IRepositoryEntreeSortie repo;
     @Autowired
     private IRepositoryEtalonnageES repoEtalonnageES;
+
+    public EntreeSortie get(Long id) {
+        Optional<EntreeSortie> es = repo.findById(id);
+        if (es.isPresent())
+            return es.get();
+        else
+            return null;
+    }
 
     public List<EntreeSortie> findAll(String keyword) {
 
