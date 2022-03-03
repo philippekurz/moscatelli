@@ -113,7 +113,7 @@ public class EntreeSortieController {
 
 
     @PostMapping ("/retour/{id}")
-    public String retour(Model model,
+    public String retour(
                            @Param("keyword)") String keyword,
                            @Param("etalonnee)") boolean etalonnee,
                            @PathVariable Long id,
@@ -145,10 +145,6 @@ public class EntreeSortieController {
 //        entreeSortie.setDate_retour(LocalDate.parse(date_retour));
 //        entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
 //        entreeSortie.setMotif(motifEntreeSortie);
-//
-        List<EntreeSortie> entreesSorties = service.findAll(keyword);
-        model.addAttribute("entreesSorties", entreesSorties);
-
 
         service.enregistrer(entreeSortie);
 
