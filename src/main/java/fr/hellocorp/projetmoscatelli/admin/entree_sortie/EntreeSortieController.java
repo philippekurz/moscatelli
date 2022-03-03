@@ -149,6 +149,9 @@ public class EntreeSortieController {
         List<EntreeSortie> entreesSorties = service.findAll(keyword);
         model.addAttribute("entreesSorties", entreesSorties);
 
+
+        service.enregistrer(entreeSortie);
+
         return "redirect:/entreesortie?keyword="+(Objects.equals(keyword, "null") ? "":keyword);
     }
 }
