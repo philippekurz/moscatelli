@@ -19,6 +19,7 @@
                         <input type="hidden" id="outil" name="outil" th:value="${outil.id}">
                         <input type="hidden" id="idES" name="idES" th:value="${outil.esEnCours.id}">
 
+
                         <div class="row mb-3">
                             <label for="utilisateur" class="form-label col-5">Utilisateur</label>
                             <div class="col-7">
@@ -26,12 +27,14 @@
                             </div>
                         </div>
 
+
                         <div class="row mb-3">
                             <label for="date_sortie" class="form-label col-5">Date sortie</label>
                             <div class="col-7">
                                 [[${outil.esEnCours.date_sortie}]]
                             </div>
                         </div>
+
 
                         <div class="row mb-3">
                             <label for="date_de_retour_prevue" class="form-label col-5">Date de retour prévue</label>
@@ -48,6 +51,7 @@
                             </div>
                         </div>
 
+
                         <div class="row mb-3">
                             <label for="probleme" class="form-label col-5">Probleme</label>
                             <div class="col-7">
@@ -55,12 +59,14 @@
                             </div>
                         </div>
 
+
                         <div class="row mb-3">
                             <label for="referencePV" class="form-label col-5">Reference PV</label>
                             <div class="col-7">
                                 <input type="text" class="form-control" name="referencePV" id="referencePV" >
                             </div>
                         </div>
+
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>

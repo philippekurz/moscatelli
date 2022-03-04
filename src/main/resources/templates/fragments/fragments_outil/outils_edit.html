@@ -10,10 +10,12 @@
 
         <div class="modal-dialog">
             <div class="modal-content">
+
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabelEdit">Modifier info Outil</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body">
                     <form th:action="@{'/outils/modifier/'+ ${outil.id} +'?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}"  method="post" th:object="${outil}">
                         <input type="hidden" th:name="${outil.id}">
@@ -34,12 +36,14 @@
                             </div>
                         </div>
 
+
                         <div class="row mb-3">
                             <label for="modele" class="col-4 form-label">Modèle</label>
                             <div class="col-8">
                                 <input type="text" th:value="${outil.modele}" class="form-control" id="modele" name="modele" >
                             </div>
                         </div>
+
 
                         <div class="row mb-3">
                             <label for="numero_de_serie" class="col-4 form-label">Numéro de série</label>
@@ -48,12 +52,14 @@
                             </div>
                         </div>
 
+
                         <div class="row mb-3">
                             <label for="puissance" class="col-4 form-label">Puissance</label>
                             <div class="col-8">
                                 <input type="text" th:value="${outil.puissance}" class="form-control" id="puissance" name="puissance" >
                             </div>
                         </div>
+
 
                         <div th:if="${etalonnee}" class="row mb-3">
                             <label for="capacite" class="col-4 form-label">capacite</label>
@@ -63,6 +69,7 @@
                         </div>
                         <input th:if="${!etalonnee}" type="hidden" th:value="${outil.capacite}" id="capacite" name="capacite" >
 
+
                         <div class="row mb-3">
                             <label for="repere" class="col-4 form-label">Repère</label>
                             <div class="col-8">
@@ -70,12 +77,15 @@
                             </div>
                         </div>
 
+
                         <div class="row mb-3">
                             <label for="etat" class="col-4 form-label">État</label>
                             <div class="col-8">
                                 <input type="text" th:value="${outil.etat}" class="form-control" id="etat" name="etat" >
                             </div>
                         </div>
+
+
                         <div class="row mb-3">
                             <label for="typeStatut" class="col-4 form-label">Statut</label>
                             <div class="col-8">
@@ -100,7 +110,9 @@
                                 <input type="text" th:value="${outil.periodicite}" class="form-control" id="periodicite" name="periodicite">
                             </div>
                         </div>
+
                         <input th:if="${!etalonnee}" type="hidden" th:value="${outil.periodicite}" id="periodicite" name="periodicite" >
+
 
                         <div class="row mb-3">
                             <label for="fournisseur" class="col-4 form-label">Fournisseur</label>
@@ -108,6 +120,8 @@
                                 <input type="text" th:value="${outil.fournisseur}" class="form-control" id="fournisseur" name="fournisseur">
                             </div>
                         </div>
+
+
                         <!----------------- Modal footer ----------------->
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>

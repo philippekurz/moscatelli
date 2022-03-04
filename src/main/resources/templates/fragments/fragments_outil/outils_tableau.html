@@ -51,10 +51,6 @@
 
 
                     <td><a th:if="${outil.esEnCours.id}!=null" sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal"  th:attr="data-bs-target='#retourModal'+*{outil.id}" ><i class="bi bi-box-arrow-in-left mx-1"></i></a></td>
-
-
-
-
                     <td><a th:unless="${outil.esEnCours.id}!=null" sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#sortieModal'+*{outil.id}"><i class="bi bi-box-arrow-in-right mx-1"></i></a></td>
                     <td><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#editModal'+*{outil.id}"><i class="bi bi-pencil-fill mx-1"></i></a></td>
                     <td><a sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" type="button" data-bs-toggle="modal"  th:attr="data-bs-target='#deleteModal'+*{outil.id}"><i class="bi bi-trash-fill mx-1"></i></a></td>

@@ -111,43 +111,4 @@ public class EntreeSortieController {
         return "redirect:/entreesortie?keyword="+(Objects.equals(keyword, "null") ? "":keyword);
     }
 
-
-    @PostMapping ("/retour/{id}")
-    public String retour(
-                           @Param("keyword)") String keyword,
-                           @Param("etalonnee)") boolean etalonnee,
-                           @PathVariable Long id,
-                           @RequestParam Utilisateur utilisateur,
-                           @RequestParam Outil outil,
-                           @RequestParam String date_sortie,
-                           @RequestParam String date_de_retour_prevue,
-                           @RequestParam String probleme,
-                           @RequestParam String date_retour,
-                           @RequestParam String date_etalonnage,
-                           @RequestParam String referencePV)
-    //@RequestParam EntreeSortie.MotifEntreeSortie motifEntreeSortie)
-
-    {
-        EntreeSortie entreeSortie = new EntreeSortie();
-        entreeSortie.setId(id);
-        entreeSortie.setUtilisateur(utilisateur);
-        entreeSortie.setOutil(outil);
-        entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
-        entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
-        entreeSortie.setProbleme(probleme);
-        entreeSortie.setReferencePV(referencePV);
-        if(date_retour.length()!=0)
-            entreeSortie.setDate_retour(LocalDate.parse(date_retour));
-
-        if(date_etalonnage.length()!=0)
-            entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
-
-//        entreeSortie.setDate_retour(LocalDate.parse(date_retour));
-//        entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
-//        entreeSortie.setMotif(motifEntreeSortie);
-
-        service.enregistrer(entreeSortie);
-
-        return "redirect:/entreesortie?keyword="+(Objects.equals(keyword, "null") ? "":keyword);
-    }
 }

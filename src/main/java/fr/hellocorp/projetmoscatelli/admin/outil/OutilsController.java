@@ -103,11 +103,6 @@ public class OutilsController {
 
 
 
-
-
-
-
-
     @PostMapping("/supprimer/{id}")
     public String supprimer(@PathVariable Long id,
                             @Param("etalonnee") boolean etalonnee,

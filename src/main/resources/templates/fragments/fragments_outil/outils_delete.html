@@ -13,17 +13,27 @@
                     <h5 class="modal-title" id="exampleModalLabelDelete">Supprimer</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
+
                 <div class="modal-body">
                     <form th:action="@{'/outils/supprimer/'+ ${outil.id} +'?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post">
+
+
                         <div class="mb-3">
                             Voulez-vous supprimer l'outil [[${outil.designation}]] [[${outil.modele}]] ?
                         </div>
+
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </div>
+
+
                     </form>
                 </div>
+
+
             </div>
         </div>
     </div>
