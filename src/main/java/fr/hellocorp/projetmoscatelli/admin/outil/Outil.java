@@ -2,8 +2,11 @@ package fr.hellocorp.projetmoscatelli.admin.outil;
 
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
 import org.springframework.cglib.core.CollectionUtils;
+import org.springframework.cglib.core.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -58,6 +61,10 @@ public class Outil {
     @Column(nullable = false, length = 30)
     private TypeStatut typeStatut;
 
+    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date_etalonnage;
+
     @Column(nullable = true)
     private Integer periodicite;
 
@@ -84,6 +91,9 @@ public class Outil {
 
     @Transient
     private EntreeSortie esEnCours;
+
+    @Transient
+    private String classCouleur;
 
     public Outil(Long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
         this.id = id;
@@ -132,17 +142,43 @@ public class Outil {
 
     @PostLoad
     private void postLoad() {
-        // Tri de la collection
+        // Tri de la collection sur id
         Collections.sort(entreesSorties, (es1, es2)->{
             return (int)(es2.getId()-es1.getId());
         });
         if (entreesSorties.size()==0)
             this.esEnCours = new EntreeSortie();
-        else
-            if (entreesSorties.get(0).getDate_retour()==null)
+        else {
+            if (entreesSorties.get(0).getDate_retour() == null)
                 this.esEnCours = entreesSorties.get(0);
             else
                 this.esEnCours = new EntreeSortie();
+        }
+
+        if (this.esEnCours.getId()==null && (this.typeStatut.equals(TypeStatut.Fonction)))
+            classCouleur = "vert";
+        else {
+            if(this.esEnCours.getId()!=null) {
+                if (this.esEnCours.getDate_de_retour_prevue()!=null) {
+                    if (this.esEnCours.getDate_de_retour_prevue().isBefore(LocalDate.now()))
+                        classCouleur = "rouge";
+                    else
+                        classCouleur = "orange";
+                }
+            }
+            else
+                classCouleur = "orange";
+
+        }
+
+        if (this.date_etalonnage != null)
+            if (this.date_etalonnage.plusMonths(this.periodicite).isAfter(LocalDate.now()))
+                classCouleur="rouge";
+//        // Tri de la collection sur id
+//        Collections.sort(entreesSorties, (es1, es2)->{
+//            return (int)(es2.getDate_etalonnage().compareTo(es1.getDate_etalonnage()));
+//        });
+
     }
 
     public Outil() {
@@ -304,6 +340,13 @@ public class Outil {
         return esEnCours;
     }
 
+    public String getClassCouleur() {
+        return classCouleur;
+    }
+
+    public void setClassCouleur(String classCouleur) {
+        this.classCouleur = classCouleur;
+    }
 
     @Override
     public String toString() {

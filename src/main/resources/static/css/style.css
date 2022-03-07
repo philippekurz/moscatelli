@@ -70,3 +70,16 @@ a.tri.desc::after {
     content : '\F571'
 }
 
+.vert {
+    background-color: green !important;
+    /*color: #fff !important;*/
+}
+
+.orange {
+    background-color: orange !important;
+    /*color: #fff !important;*/
+}
+.rouge {
+    background-color: red !important;
+    /*color: #fff !important;*/
+}

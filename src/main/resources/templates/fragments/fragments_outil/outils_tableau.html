@@ -11,7 +11,7 @@
         <h1 sec:authorize="hasAnyRole('ROLE_VISITEUR')" th:if="${!etalonnee}">Liste des outils</h1>
 
         <!-------------------------------------------------------------- Début du tableau ----------------------------------------------------------------->
-        <table class="table table-striped table-responsive">
+        <table class="table table-responsive">
             <thead>
             <tr>
 
@@ -33,8 +33,8 @@
             <!---------------------------- Contenu du tableau ----------------------------------->
             <tbody>
             <th:block th:each="outil : ${Outils}">
-                <tr>
-
+<!--                <tr th:class="${outil.esEnCours.id==null && (outil.typeStatut eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Fonction) ? 'vert' : 'orange'}">-->
+                <tr th:class="${outil.classCouleur}">
                     <td>[[${outil.designation}]]</td>
                     <td>[[${outil.marque}]]</td>
                     <td>[[${outil.modele}]]</td>
