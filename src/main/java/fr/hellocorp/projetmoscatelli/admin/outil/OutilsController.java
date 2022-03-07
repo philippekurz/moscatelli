@@ -66,12 +66,14 @@ public class OutilsController {
             @Param("etalonnee)") boolean etalonnee,
             @RequestParam Utilisateur utilisateur,
             @RequestParam Outil outil,
+            @RequestParam String motif,
             @RequestParam String date_sortie,
             @RequestParam String date_de_retour_prevue)
     {
         EntreeSortie entreeSortie = new EntreeSortie();
         entreeSortie.setUtilisateur(utilisateur);
         entreeSortie.setOutil(outil);
+        entreeSortie.setMotif(EntreeSortie.MotifEntreeSortie.valueOf(motif));
         entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
 
@@ -85,6 +87,7 @@ public class OutilsController {
             @Param("etalonnee)") boolean etalonnee,
             @RequestParam String idES,
             @RequestParam String date_retour,
+            @RequestParam(required = false) String date_etalonnage,
             @RequestParam String probleme,
             @RequestParam String referencePV)
     {
@@ -93,6 +96,7 @@ public class OutilsController {
         EntreeSortie entreeSortie = entreeSortieService.get(Long.parseLong(idES));
         if (entreeSortie != null) {
             entreeSortie.setDate_retour(LocalDate.parse(date_retour));
+            if (date_etalonnage != null) entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
             entreeSortie.setProbleme(probleme);
             entreeSortie.setReferencePV(referencePV);
             entreeSortieService.enregistrer(entreeSortie);
