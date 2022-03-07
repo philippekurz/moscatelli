@@ -66,6 +66,7 @@ public class OutilsController {
             @Param("etalonnee)") boolean etalonnee,
             @RequestParam Utilisateur utilisateur,
             @RequestParam Outil outil,
+
             @RequestParam String motif,
             @RequestParam String date_sortie,
             @RequestParam String date_de_retour_prevue)
@@ -78,6 +79,25 @@ public class OutilsController {
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
 
         entreeSortieService.enregistrer(entreeSortie);
+
+        switch (EntreeSortie.MotifEntreeSortie.valueOf(motif)){
+
+            case Maintenance:
+                outil.setTypeStatut(Outil.TypeStatut.Maintenance);
+                break;
+            case Prêt:
+                outil.setTypeStatut(Outil.TypeStatut.Prêt);
+                break;
+            case Rebut:
+                outil.setTypeStatut(Outil.TypeStatut.Rebut);
+                break;
+            case Etalonnage:
+                outil.setTypeStatut(Outil.TypeStatut.Etalonnage);
+                break;
+        }
+
+        outilService.enregistrer(outil);
+
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
 
@@ -85,6 +105,7 @@ public class OutilsController {
     public String retour(
             @Param("keyword)") String keyword,
             @Param("etalonnee)") boolean etalonnee,
+            @RequestParam Outil outil,
             @RequestParam String idES,
             @RequestParam String date_retour,
             @RequestParam(required = false) String date_etalonnage,
@@ -97,6 +118,11 @@ public class OutilsController {
         if (entreeSortie != null) {
             entreeSortie.setDate_retour(LocalDate.parse(date_retour));
             if (date_etalonnage != null) entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
+
+            if (date_retour != null){
+                outil.setTypeStatut(Outil.TypeStatut.Fonction);
+            }
+
             entreeSortie.setProbleme(probleme);
             entreeSortie.setReferencePV(referencePV);
             entreeSortieService.enregistrer(entreeSortie);
