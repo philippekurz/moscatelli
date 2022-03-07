@@ -22,7 +22,7 @@ import java.util.*;
 public class Outil {
 
     public enum TypeStatut{
-       Fonction, Rebut, Manquant, Maintenance, Etalonnage
+       Fonction, Rebut, Manquant, Maintenance, Etalonnage,Prêt
     }
     //////////////////////////////////////// DECLARATIONS DES VARIABLES ////////////////////////////////////////
 
@@ -178,6 +178,19 @@ public class Outil {
 //        Collections.sort(entreesSorties, (es1, es2)->{
 //            return (int)(es2.getDate_etalonnage().compareTo(es1.getDate_etalonnage()));
 //        });
+
+
+        if(this.typeStatut.equals(TypeStatut.Etalonnage))
+            classCouleur="bleu";
+
+        if(this.typeStatut.equals(TypeStatut.Rebut))
+            classCouleur="gris";
+
+        if(this.typeStatut.equals(TypeStatut.Maintenance))
+            classCouleur="vertClair";
+
+
+
 
     }
 

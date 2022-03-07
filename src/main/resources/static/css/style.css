@@ -71,15 +71,45 @@ a.tri.desc::after {
 }
 
 .vert {
-    background-color: green !important;
+    background-color: yellowgreen !important;
     /*color: #fff !important;*/
 }
 
 .orange {
-    background-color: orange !important;
+    background-color: darkorange !important;
     /*color: #fff !important;*/
 }
 .rouge {
     background-color: red !important;
+    /*color: #fff !important;*/
+}
+
+/*.alerte {
+   animation-duration: .8s;
+   animation-name: clignoter;
+   animation-iteration-count: infinite;
+   transition: none;
+
+}
+
+@keyframes clignoter {
+  0%   { opacity:1; }
+  40%   {opacity:0; }
+  100% { opacity:1; }
+}
+*/
+
+.bleu {
+    background-color: orchid !important;
+    /*color: #fff !important;*/
+}
+
+.gris {
+    background-color:grey !important;
+    /*color: #fff !important;*/
+}
+
+.vertClair {
+    background-color:palegreen !important;
     /*color: #fff !important;*/
 }
