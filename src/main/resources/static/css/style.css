@@ -60,7 +60,7 @@ a.tri {
 a.tri.asc::after {
     content: "";
     display: block;
-    background: url('/img/sort-alpha-down.svg') no-repeat;
+    /*background: url('/img/sort-alpha-down.svg') no-repeat;*/
     width: 16px;
     height: 16px;
     float: right;
@@ -71,7 +71,9 @@ a.tri.desc::after {
 }
 
 .vert {
-    background-color: green !important;
+
+    /*background-color: green !important;*/
+    background:url(../img/hachures_bleues2.png);
     /*color: #fff !important;*/
 }
 
@@ -83,3 +85,4 @@ a.tri.desc::after {
     background-color: red !important;
     /*color: #fff !important;*/
 }
+

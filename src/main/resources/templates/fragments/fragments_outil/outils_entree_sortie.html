@@ -38,8 +38,8 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="utilisateur" class="form-label col-5">Utilisateur</label>
+                        <div id="existing-user" class="row mb-3 d-flex">
+                            <label for="utilisateur" class="form-label col-5">Utilisateur (<a href="javascript:void(0)" onclick="showHide(this)">New</a>)</label>
                             <div class="col-7">
                                 <select class="form-select" id="utilisateur" name="utilisateur">
                                     <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
@@ -47,6 +47,10 @@
                             </div>
                         </div>
 
+                        <div id="new-user" class="d-none">
+
+                            New User
+                        </div>
                         <div class="row mb-3">
                             <label for="date_sortie" class="form-label col-5">Date sortie</label>
                             <div class="col-7">
@@ -158,3 +162,4 @@
     </div>
 
 </div>
+

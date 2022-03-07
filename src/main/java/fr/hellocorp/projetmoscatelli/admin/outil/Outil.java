@@ -168,7 +168,6 @@ public class Outil {
             }
             else
                 classCouleur = "orange";
-
         }
 
         if (this.date_etalonnage != null)
