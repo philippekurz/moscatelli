@@ -16,16 +16,16 @@ INSERT INTO outils (designation, fournisseur, marque,
 
 VALUES
 
-    ( 'Perceuse','Moscatelli','Leroy' , 'X7FF25', 'A000018851', '', '600W','A00012' ,'BON', 0 ,NULL,NULL,false),
-    ( 'Perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A000018775', '', '800W', 'A00015' ,'BON', 2 ,NULL,NULL,false),
-    ( 'perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A000031895', '', '600W','A00014' ,'BON', 4 ,NULL,NULL,false),
-    ( 'Scie', 'Moscatelli','Leroy' , 'X7FF25', 'A000301854', '', '50W','A00013' ,'MOYEN' , 4 ,NULL,NULL,false),
-    ( 'Perceuse','Moscatelli','Leroy' , 'X7FF25', 'A00067701851', '', '600W','A00012' ,'BON', 4 ,NULL,NULL,false),
-    ( 'Perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A0000185875', '', '800W', 'A00015' ,'BON', 2 ,NULL,NULL,false),
-    ( 'perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A00052801895', '', '600W','A00014' ,'BON', 3 ,NULL,NULL,false),
-    ( 'Scie', 'Moscatelli','Leroy' , 'X7FF25', 'A0000316854', '', '50W','A00013' ,'MOYEN' , 4 ,NULL,NULL,false),
+    ( 'Perceuse','Moscatelli','Leroy' , 'X7FF25', 'A000018851', '', '600W','A00012' ,'BON', 5 ,NULL,NULL,false),
+    ( 'Perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A000018775', '', '800W', 'A00015' ,'BON', 5 ,NULL,NULL,false),
+    ( 'perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A000031895', '', '600W','A00014' ,'BON', 0 ,NULL,NULL,false),
+    ( 'Scie', 'Moscatelli','Leroy' , 'X7FF25', 'A000301854', '', '50W','A00013' ,'MOYEN' , 0 ,NULL,NULL,false),
+    ( 'Perceuse','Moscatelli','Leroy' , 'X7FF25', 'A00067701851', '', '600W','A00012' ,'BON', 5 ,NULL,NULL,false),
+    ( 'Perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A0000185875', '', '800W', 'A00015' ,'BON', 5 ,NULL,NULL,false),
+    ( 'perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A00052801895', '', '600W','A00014' ,'BON', 5 ,NULL,NULL,false),
+    ( 'Scie', 'Moscatelli','Leroy' , 'X7FF25', 'A0000316854', '', '50W','A00013' ,'MOYEN' , 5 ,NULL,NULL,false),
     ( 'Perceuse','Moscatelli','Leroy' , 'X7FF25', 'A0000187851', '', '600W','A00012' ,'BON', 0 ,NULL,NULL,false),
-    ( 'Perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A0000187875', '', '800W', 'A00015' ,'BON', 4 ,NULL,NULL,false),
+    ( 'Perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A0000187875', '', '800W', 'A00015' ,'BON', 0 ,NULL,NULL,false),
     ( 'perceuse', 'Moscatelli','Leroy' , 'X7FF25', 'A0000314895', '', '600W','A00014' ,'BON', 3 ,NULL,NULL,false),
     ( 'Scie', 'Moscatelli','Leroy' , 'X7FF25', 'A00030122854', '', '50W','A00013' ,'MOYEN' , 1 ,NULL,NULL,false),
     ( 'Perceuse','Moscatelli','Leroy' , 'X7FF25', 'A000677101851', '', '600W','A00012' ,'BON', 1 ,NULL,NULL,false),
@@ -39,11 +39,11 @@ VALUES
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X35765', 'A000152326', '600mm', '300W', 'AC0002' ,'Bon', 0 ,'1',NULL,true),
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X7FF25', 'A000129375', '400mm', '250W','AC0001' ,'Bon', 0 ,'3','2021-12-01',true),
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X35765', 'A0001233+6', '600mm', '300W', 'AC0002' ,'Bon', 0 ,'12',NULL,true),
-    ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X7FF25', 'A000122395', '400mm', '250W','AC0001' ,'Bon', 0 ,'1','2022-03-01',true),
+    ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X7FF25', 'A000122395', '400mm', '250W','AC0001' ,'Bon', 4 ,'1','2021-03-01',true),
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X35765', 'A000123936', '600mm', '300W', 'AC0002' ,'Bon', 0 ,'1','2020-01-01',true),
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X7FF25', 'A000127835', '400mm', '250W','AC0001' ,'Bon', 0 ,'2','2022-01-01',true),
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X35765', 'A000127386', '600mm', '300W', 'AC0002' ,'Bon', 0 ,'2',NULL,true),
-    ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X7FF25', 'A000175235', '400mm', '250W','AC0001' ,'Bon', 0 ,'3','2022-02-10',true),
+    ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X7FF25', 'A000175235', '400mm', '250W','AC0001' ,'Bon', 4 ,'3','2021-02-10',true),
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X35765', 'A000123226', '600mm', '300W', 'AC0002' ,'Bon', 0 ,'4',NULL,true),
     ( 'pied a coulisse', 'Moscatelli','Leroy' , 'X72HH5', 'A000123227', '400mm', '400W','AC0003' ,'Non fonctionnel' , 1 ,'12',NULL,true);
 
@@ -70,8 +70,18 @@ VALUES ("hello.corp@javenir84.com",
 
 INSERT INTO entrees_sorties (motif, id_outil, id_utilisateur, date_sortie, date_de_retour_prevue, date_retour, date_etalonnage, probleme, referencepv) VALUES
     (0,1,1,'20211220','20220120',20201101, NULL, 'ES2', NULL),
-    (0,1,1,'20211221','20220121',NULL, NULL, 'ES1', NULL);
-
+    (0,1,1,'20211221','20220121',NULL, NULL, 'ES1', NULL),
+    (0,2,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,5,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,6,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,7,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,8,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,11,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,14,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,15,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,16,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
+    (0,21,1,'20220121','20220505',NULL,'20220601','ES3',NULL),
+    (0,25,1,'20220121','20220505',NULL,'20220601','ES3',NULL);
 
 /*
 INSERT INTO entrees_sorties (motif, id_outil, id_utilisateur, date_sortie, date_de_retour_prevue, date_retour, date_etalonnage, probleme, referencepv)

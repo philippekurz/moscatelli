@@ -162,13 +162,13 @@ public class Outil {
                 if (this.esEnCours.getDate_de_retour_prevue()!=null) {
                     if (this.esEnCours.getDate_de_retour_prevue().isBefore(LocalDate.now()))
                         classCouleur = "rouge";
-                    else
-                        classCouleur = "orange";
-                }
-            }
+                 else
+                    classCouleur = "orange";
+              }
+           }
             else
                 classCouleur = "orange";
-        }
+     }
 
         if (this.date_etalonnage != null)
             if (this.date_etalonnage.plusMonths(this.periodicite).isAfter(LocalDate.now()))
@@ -179,14 +179,14 @@ public class Outil {
 //        });
 
 
-        if(this.typeStatut.equals(TypeStatut.Etalonnage))
-            classCouleur="bleu";
-
+//        if(this.typeStatut.equals(TypeStatut.Prêt))
+//            classCouleur="orange";
+//
         if(this.typeStatut.equals(TypeStatut.Rebut))
             classCouleur="gris";
-
-        if(this.typeStatut.equals(TypeStatut.Maintenance))
-            classCouleur="vertClair";
+//
+//        if(this.typeStatut.equals(TypeStatut.Maintenance))
+//            classCouleur="vertClair";
 
 
 

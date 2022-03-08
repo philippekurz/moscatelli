@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class EntreeSortie {
     //////////////////////////////////////// DECLARATIONS DES VARIABLES ////////////////////////////////////////
     public enum MotifEntreeSortie{
-        Prêt, Rebut, Maintenance, Etalonnage
+        Prêt, Rebut, Maintenance, Etalonnage, Manquant
     }
 
     @Id

@@ -80,6 +80,8 @@ public class OutilsController {
 
         entreeSortieService.enregistrer(entreeSortie);
 
+
+
         switch (EntreeSortie.MotifEntreeSortie.valueOf(motif)){
 
             case Maintenance:
