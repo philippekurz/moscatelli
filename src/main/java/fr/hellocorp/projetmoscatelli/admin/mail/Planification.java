@@ -127,9 +127,9 @@ public class Planification {
                     + " " +   ese.getPrenom()
                     + "</div>"
                     + " <div> Outil : " +   ese.getDesignation()
-                    + " Periodicite: " + ese.getPeriodicite()
-                    + " Prochain etalonnage " +   ese.getDate_prochain_etalonnage() + "</div>"
-                    + "Date d'emprunt :  " +  ese.getNom()
+                    + "<div> Date précédent étalonnage : " + ese.getDate_etalonnage() + "</div>"
+                    + "<div> Periodicite: " + ese.getPeriodicite() + "mois <div>"
+                    + "<div> Prochain etalonnage " +   ese.getDate_prochain_etalonnage() + "</div>"
                     + "<div>Date de retour prévue : " +   ese.getNom() +  "</div>";
 
             emailService.envoiEmail(configService.getConfig().getDestinatairesNotification(), "Notification d'emprunt", texte );
