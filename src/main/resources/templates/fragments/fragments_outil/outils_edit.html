@@ -89,18 +89,18 @@
                         <div class="row mb-3">
                             <label for="typeStatut" class="col-4 form-label">Statut</label>
                             <div class="col-8">
-                                <select class="form-select" th:value="${outil.typeStatut}" id="typeStatut" name="typeStatut">
-                                    <option th:value="Fonction" th:text="Fonction"></option>
-                                    <option th:value="Maintenance" th:text="Maintenance"></option>
-                                    <option th:value="Etalonnage" th:text="Étalonnage"></option>
-                                    <option th:value="Rebut" th:text="Rebut"></option>
-                                    <option th:value="Manquant" th:text="Manquant"></option>
-                                </select>
-
-<!--                                <select class="form-select" >-->
-<!--                                    <option th:each="statutOpt : ${T(fr.hellocorp.projetmoscatelli.outil.Outil.TypeStatut).values()}"-->
-<!--                                            th:value="${statutOpt}" th:text="${statutOpt}"></option>-->
+<!--                                <select class="form-select" th:value="${outil.typeStatut}" id="typeStatut" name="typeStatut">-->
+<!--                                    <option th:value="Fonction" th:text="Fonction"></option>-->
+<!--                                    <option th:value="Maintenance" th:text="Maintenance"></option>-->
+<!--                                    <option th:value="Etalonnage" th:text="Étalonnage"></option>-->
+<!--                                    <option th:value="Rebut" th:text="Rebut"></option>-->
+<!--                                    <option th:value="Manquant" th:text="Manquant"></option>-->
 <!--                                </select>-->
+
+                                <select class="form-select" th:value="${outil.typeStatut}" id="typeStatut" name="typeStatut" >
+                                    <option th:each="statutOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).values()}"
+                                            th:value="${statutOpt}" th:text="${statutOpt}"></option>
+                                </select>
                             </div>
                         </div>
 

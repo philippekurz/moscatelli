@@ -9,7 +9,10 @@ VALUES
     ( 'Albert', 'Einstein', 'Albert@gmail.com', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65' ),
     ( 'donald', 'trump', 'visiteur@gmail.com', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65' ),
     ( 'claude', 'François', 'magasinier@gmail.com', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65' ),
-    ( 'quentin', 'tarantino', 'admin@gmail.com', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65') ;
+    ( 'quentin', 'tarantino', 'admin@gmail.com', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65') ,
+    ( 'a', 'a', 'a', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65') ,
+    ( 'm', 'm', 'm', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65') ,
+    ( 'u', 'u', 'u', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65') ;
 
 INSERT INTO outils (designation, fournisseur, marque,
                    modele, numero_de_serie, capacite, puissance, repere, etat, type_statut, periodicite, date_etalonnage, etalonnee)
@@ -60,7 +63,10 @@ VALUES  (1,1),
         (4,1),
         (5,1),
         (6,2),
-        (7,3);
+        (7,3),
+        (8,3),
+        (9,2),
+        (10,1);
 
 INSERT INTO configuration (destinataires_notification, heure_envoi, alerte_on_off, duree_pret)
 VALUES ("hello.corp@javenir84.com",
