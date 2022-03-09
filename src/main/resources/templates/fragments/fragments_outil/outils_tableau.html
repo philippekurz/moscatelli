@@ -22,8 +22,9 @@
                 <th scope="col"><a class="tri"  th:href="@{/outils}">Puissance</a></th>
                 <th scope="col" th:if="${etalonnee}" >Capacité</th>
                 <th scope="col">Repère</th>
+                <th scope="col" th:if="${etalonnee}">Réf. PV</th>
                 <th scope="col" th:if="${etalonnee}">Prochain étalonnage</th>
-                <th scope="col">Fournisseur</th>
+<!--                <th scope="col">Fournisseur</th>-->
                 <th scope="col">État</th>
                 <th scope="col">Statut</th>
 
@@ -44,8 +45,9 @@
                     <td>[[${outil.puissance}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.capacite}]]</td>
                     <td>[[${outil.repere}]]</td>
+                    <td th:if="${etalonnee}" ><a th:if="${outil.esEnCours.ReferencePV != null}" th:href="${outil.esEnCours.ReferencePV}">PV</a></td>
                     <td th:if="${etalonnee}" >[[${outil.date_prochain_etalonnage}]]</td>
-                    <td>[[${outil.fournisseur}]]</td>
+<!--                    <td>[[${outil.fournisseur}]]</td>-->
                     <td>[[${outil.etat}]]</td>
                     <td>[[${outil.typeStatut}]]</td>
 
@@ -55,13 +57,13 @@
 
 
 
-                    <td><a th:if="${outil.esEnCours.id!=null && !(outil.typeStatut eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Rebut)}"
+                    <td><a th:if="${outil.esEnCours.id!=null && outil.esEnCours.date_retour==null && !(outil.typeStatut eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Rebut)}"
                            sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')"
                            type="button" data-bs-toggle="modal"  th:attr="data-bs-target='#retourModal'+*{outil.id}" ><i class="bi bi-box-arrow-in-left mx-1"></i></a></td>
 
 
 
-                    <td><a th:if="${outil.esEnCours.id==null && (outil.typeStatut eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Fonction)}"
+                    <td><a th:if="${(outil.esEnCours.id==null || outil.esEnCours.date_retour!=null) && (outil.typeStatut eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Fonction)}"
                            sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')"
                            type="button" data-bs-toggle="modal" th:attr="data-bs-target='#sortieModal'+*{outil.id}"><i class="bi bi-box-arrow-in-right mx-1"></i></a></td>
 

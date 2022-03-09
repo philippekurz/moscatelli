@@ -8,8 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -112,10 +118,11 @@ public class OutilsController {
             @RequestParam String date_retour,
             @RequestParam(required = false) String date_etalonnage,
             @RequestParam String probleme,
-            @RequestParam String referencePV)
+            @RequestParam MultipartFile file)
     {
-
+        final String WORKING_DIR = "src/main/resources/pv";
         EntreeSortie entreeSortie = entreeSortieService.get(Long.parseLong(idES));
+
         if (entreeSortie != null) {
             entreeSortie.setDate_retour(LocalDate.parse(date_retour));
             if (date_etalonnage != null) entreeSortie.setDate_etalonnage(LocalDate.parse(date_etalonnage));
@@ -125,7 +132,11 @@ public class OutilsController {
             }
 
             entreeSortie.setProbleme(probleme);
-            entreeSortie.setReferencePV(referencePV);
+            if (null!=file) {
+                entreeSortie.setReferencePV(Paths.get(WORKING_DIR + "/" + StringUtils.cleanPath(file.getOriginalFilename())).toString());
+
+            }
+
             entreeSortieService.enregistrer(entreeSortie);
         }
 
@@ -134,6 +145,17 @@ public class OutilsController {
             outilService.enregistrer(outil);
         }
 
+        if (file!=null) {
+
+            // normalize the file path
+            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+            try {
+                Path path = Paths.get(WORKING_DIR + "/" + fileName);
+                Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
 

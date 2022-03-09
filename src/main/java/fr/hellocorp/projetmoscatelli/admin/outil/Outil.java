@@ -154,10 +154,11 @@ public class Outil {
             if (entreesSorties.get(0).getDate_retour() == null)
                 this.esEnCours = entreesSorties.get(0);
             else
-                this.esEnCours = new EntreeSortie();
+                this.esEnCours = entreesSorties.get(0);
+                //this.esEnCours = new EntreeSortie();
         }
 
-        if (this.esEnCours.getId()==null && (this.typeStatut.equals(TypeStatut.Fonction)))
+        if (this.esEnCours.getDate_retour()!=null && (this.typeStatut.equals(TypeStatut.Fonction)))
             classCouleur = "vert";
         else {
             if(this.esEnCours.getId()!=null) {
@@ -170,7 +171,7 @@ public class Outil {
            }
             else
                 classCouleur = "orange";
-     }
+        }
 
         if (this.date_prochain_etalonnage != null)
             if (this.date_prochain_etalonnage.isBefore(LocalDate.now()))

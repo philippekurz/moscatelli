@@ -88,7 +88,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form th:action="@{'/outils/retour/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post" >
+                    <form th:action="@{'/outils/retour/?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post" enctype="multipart/form-data">
 
                         <input type="hidden" id="outil" name="outil" th:value="${outil.id}">
                         <input type="hidden" id="idES" name="idES" th:value="${outil.esEnCours.id}">
@@ -135,10 +135,15 @@
 
 
                         <div class="row mb-3">
-                            <label for="referencePV" class="form-label col-5">Reference PV</label>
+                            <label for="file" class="form-label col-5">Reference PV</label>
+<!--                            <div class="col-7">-->
+<!--                                <input type="text" class="form-control" name="referencePV" id="referencePV" >-->
+<!--                            </div>-->
+
                             <div class="col-7">
-                                <input type="text" class="form-control" name="referencePV" id="referencePV" >
+                                <input type="file" name="file" id="file" class="form-control-file">
                             </div>
+
                         </div>
 
 
