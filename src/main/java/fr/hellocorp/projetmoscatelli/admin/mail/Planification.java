@@ -27,7 +27,10 @@ public class Planification {
 
     //Configuration configuration = configService.getConfig();
     //Configuration heure = configuration.getHeureEnvoi();
-    @Scheduled(cron = "0 1 * * * ?", zone = "Europe/Paris")
+
+    //@Scheduled(cron = "0 1 * * * ?", zone = "Europe/Paris")
+    @Scheduled(cron = "0 0 12 * * * ", zone = "Europe/Paris")
+    @Scheduled(cron = "0 0 18 * * * ", zone = "Europe/Paris")
     //@Scheduled(fixedRateString = heure)
     public void alertes() {
         Configuration configuration = configService.getConfig();
@@ -124,9 +127,8 @@ public class Planification {
                     + " " +   ese.getPrenom()
                     + "</div>"
                     + " <div> Outil : " +   ese.getDesignation()
-                    + " Dernier etalonnage : " +   ese.getDate_etalonnage()
                     + " Periodicite: " + ese.getPeriodicite()
-                    + " Prochain etalonnage " +   ese.getDate_etalonnage() + "</div>"
+                    + " Prochain etalonnage " +   ese.getDate_prochain_etalonnage() + "</div>"
                     + "Date d'emprunt :  " +  ese.getNom()
                     + "<div>Date de retour prévue : " +   ese.getNom() +  "</div>";
 
