@@ -115,7 +115,6 @@ public class OutilsController {
             @RequestParam String referencePV)
     {
 
-
         EntreeSortie entreeSortie = entreeSortieService.get(Long.parseLong(idES));
         if (entreeSortie != null) {
             entreeSortie.setDate_retour(LocalDate.parse(date_retour));
@@ -128,6 +127,11 @@ public class OutilsController {
             entreeSortie.setProbleme(probleme);
             entreeSortie.setReferencePV(referencePV);
             entreeSortieService.enregistrer(entreeSortie);
+        }
+
+        if (date_etalonnage != null) {
+            outil.setDate_prochain_etalonnage(LocalDate.parse(date_etalonnage).plusMonths(outil.getPeriodicite()));
+            outilService.enregistrer(outil);
         }
 
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;

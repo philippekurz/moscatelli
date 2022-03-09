@@ -15,7 +15,7 @@ VALUES
     ( 'u', 'u', 'u', '$2y$10$0T9ZbDIx4yCBsHeiknhQMu1TjokcUSUtGvOFSrq7byDZzWJvsyxTu', '06 42 56 60 65') ;
 
 INSERT INTO outils (designation, fournisseur, marque,
-                   modele, numero_de_serie, capacite, puissance, repere, etat, type_statut, periodicite, date_etalonnage, etalonnee)
+                   modele, numero_de_serie, capacite, puissance, repere, etat, type_statut, periodicite, date_prochain_etalonnage, etalonnee)
 
 VALUES
 
@@ -86,8 +86,8 @@ INSERT INTO entrees_sorties (motif, id_outil, id_utilisateur, date_sortie, date_
     (0,14,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
     (0,15,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
     (0,16,1,'20220121','20220505',NULL,NULL,'ES3',NULL),
-    (0,21,1,'20220121','20220505',NULL,'20220601','ES3',NULL),
-    (0,25,1,'20220121','20220505',NULL,'20220601','ES3',NULL);
+    (3,21,1,'20220121','20220505',NULL,'20220601','ES3',NULL),
+    (3,25,1,'20220121','20220505',NULL,'20220601','ES3',NULL);
 
 /*
 INSERT INTO entrees_sorties (motif, id_outil, id_utilisateur, date_sortie, date_de_retour_prevue, date_retour, date_etalonnage, probleme, referencepv)

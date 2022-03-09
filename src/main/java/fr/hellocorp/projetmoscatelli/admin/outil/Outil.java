@@ -1,8 +1,6 @@
 package fr.hellocorp.projetmoscatelli.admin.outil;
 
 import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie;
-import org.springframework.cglib.core.CollectionUtils;
-import org.springframework.cglib.core.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -63,7 +61,7 @@ public class Outil {
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date_etalonnage;
+    private LocalDate date_prochain_etalonnage;
 
     @Column(nullable = true)
     private Integer periodicite;
@@ -95,7 +93,7 @@ public class Outil {
     @Transient
     private String classCouleur;
 
-    public Outil(Long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
+    public Outil(Long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, LocalDate date_prochain_etalonnage, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, EntreeSortie esEnCours, String classCouleur) {
         this.id = id;
         this.designation = designation;
         this.fournisseur = fournisseur;
@@ -107,6 +105,7 @@ public class Outil {
         this.repere = repere;
         this.etat = etat;
         this.typeStatut = typeStatut;
+        this.date_prochain_etalonnage = date_prochain_etalonnage;
         this.periodicite = periodicite;
         this.disponibilite = disponibilite;
         this.etalonnee = etalonnee;
@@ -115,10 +114,11 @@ public class Outil {
         this.utilisateur_maj = utilisateur_maj;
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
-
+        this.esEnCours = esEnCours;
+        this.classCouleur = classCouleur;
     }
 
-    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties) {
+    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, LocalDate date_prochain_etalonnage, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, EntreeSortie esEnCours, String classCouleur) {
         this.designation = designation;
         this.fournisseur = fournisseur;
         this.marque = marque;
@@ -129,6 +129,7 @@ public class Outil {
         this.repere = repere;
         this.etat = etat;
         this.typeStatut = typeStatut;
+        this.date_prochain_etalonnage = date_prochain_etalonnage;
         this.periodicite = periodicite;
         this.disponibilite = disponibilite;
         this.etalonnee = etalonnee;
@@ -137,7 +138,8 @@ public class Outil {
         this.utilisateur_maj = utilisateur_maj;
         this.date_maj = date_maj;
         this.entreesSorties = entreesSorties;
-
+        this.esEnCours = esEnCours;
+        this.classCouleur = classCouleur;
     }
 
     @PostLoad
@@ -170,8 +172,8 @@ public class Outil {
                 classCouleur = "orange";
      }
 
-        if (this.date_etalonnage != null)
-            if (this.date_etalonnage.plusMonths(this.periodicite).isAfter(LocalDate.now()))
+        if (this.date_prochain_etalonnage != null)
+            if (this.date_prochain_etalonnage.isBefore(LocalDate.now()))
                 classCouleur="rouge";
 //        // Tri de la collection sur id
 //        Collections.sort(entreesSorties, (es1, es2)->{
@@ -306,6 +308,14 @@ public class Outil {
 
     public void setEtalonnee(boolean etalonnee) {
         this.etalonnee = etalonnee;
+    }
+
+    public LocalDate getDate_prochain_etalonnage() {
+        return date_prochain_etalonnage;
+    }
+
+    public void setDate_prochain_etalonnage(LocalDate date_prochain_etalonnage) {
+        this.date_prochain_etalonnage = date_prochain_etalonnage;
     }
 
     public String getUtilisateur_creation() {
