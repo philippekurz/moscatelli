@@ -132,7 +132,7 @@ public class Planification {
                     + "<div> Prochain etalonnage " +   ese.getDate_prochain_etalonnage() + "</div>"
                     + "<div>Date de retour prévue : " +   ese.getNom() +  "</div>";
 
-            emailService.envoiEmail(configService.getConfig().getDestinatairesNotification(), "Notification d'emprunt", texte );
+            emailService.envoiEmail(configService.getConfig().getDestinatairesNotification(), "Notification d'étalonnage proche", texte );
             //designation outil
             //date de retour prévue
             //emprunteur
