@@ -22,11 +22,13 @@
                 <th scope="col"><a class="tri"  th:href="@{/outils}">Puissance</a></th>
                 <th scope="col" th:if="${etalonnee}" >Capacité</th>
                 <th scope="col">Repère</th>
-                <th scope="col">État</th>
-                <th scope="col">Statut</th>
                 <th scope="col" th:if="${etalonnee}">Périodicité</th>
                 <th scope="col">Fournisseur</th>
-                <th scope="col">ES</th>
+                <th scope="col">État</th>
+                <th scope="col">Statut</th>
+
+
+<!--                <th scope="col">ES</th>-->
                 <th scope="col" colspan="5"></th>
             </tr>
             </thead>
@@ -42,11 +44,13 @@
                     <td>[[${outil.puissance}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.capacite}]]</td>
                     <td>[[${outil.repere}]]</td>
-                    <td>[[${outil.etat}]]</td>
-                    <td>[[${outil.typeStatut}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.periodicite}]]</td>
                     <td>[[${outil.fournisseur}]]</td>
-                    <td>[[${outil.esEnCours.id}]]</td>
+                    <td>[[${outil.etat}]]</td>
+                    <td>[[${outil.typeStatut}]]</td>
+
+
+<!--                    <td>[[${outil.esEnCours.id}]]</td>-->
 
 
 
