@@ -22,7 +22,7 @@
                 <th scope="col"><a class="tri"  th:href="@{/outils}">Puissance</a></th>
                 <th scope="col" th:if="${etalonnee}" >Capacité</th>
                 <th scope="col">Repère</th>
-                <th scope="col" th:if="${etalonnee}">Périodicité</th>
+                <th scope="col" th:if="${etalonnee}">Prochain étalonnage</th>
                 <th scope="col">Fournisseur</th>
                 <th scope="col">État</th>
                 <th scope="col">Statut</th>
@@ -44,7 +44,7 @@
                     <td>[[${outil.puissance}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.capacite}]]</td>
                     <td>[[${outil.repere}]]</td>
-                    <td th:if="${etalonnee}" >[[${outil.periodicite}]]</td>
+                    <td th:if="${etalonnee}" >[[${outil.date_prochain_etalonnage}]]</td>
                     <td>[[${outil.fournisseur}]]</td>
                     <td>[[${outil.etat}]]</td>
                     <td>[[${outil.typeStatut}]]</td>
