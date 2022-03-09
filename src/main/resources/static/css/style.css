@@ -83,7 +83,10 @@ a.tri.desc::after {
     background-color: red !important;
     /*color: #fff !important;*/
 }
-
+.tomate {
+    background-color: tomato !important;
+    /*color: #fff !important;*/
+}
 /*.alerte {
    animation-duration: .8s;
    animation-name: clignoter;

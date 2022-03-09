@@ -158,13 +158,13 @@ public class Outil {
                 //this.esEnCours = new EntreeSortie();
         }
 
-        if (this.esEnCours.getDate_retour()!=null && (this.typeStatut.equals(TypeStatut.Fonction)))
+        if (this.typeStatut.equals(TypeStatut.Fonction))
             classCouleur = "vert";
         else {
             if(this.esEnCours.getId()!=null) {
                 if (this.esEnCours.getDate_de_retour_prevue()!=null) {
                     if (this.esEnCours.getDate_de_retour_prevue().isBefore(LocalDate.now()))
-                        classCouleur = "rouge";
+                        classCouleur = "tomate";
                  else
                     classCouleur = "orange";
               }
