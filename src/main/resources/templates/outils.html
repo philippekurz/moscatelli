@@ -25,23 +25,26 @@
 
     <div th:replace="fragments/fragments_outil/outils_add.html :: outils_add"></div>
 
-
-
-</div>
-</main>
-<script th:inline="javascript">
+    <script th:inline="javascript">
     function showHide(element) {
-        if (document.querySelector('#existant').classList.contains("d-flex")) {
-            document.querySelector('#existant').classList.replace("d-flex","d-none");
-            document.querySelector('#nouveau').classList.replace("d-none","d-flex");
+        const args=element.id.split('_');
+        let id=element.id.split('_')[1];
+        alert(id);
+        if (document.querySelector('#existant'+id).classList.contains("d-flex")) {
+            document.querySelector('#existant'+id).classList.replace("d-flex","d-none");
+            document.querySelector('#nouveau'+id).classList.replace("d-none","d-flex");
             element.innerText="Existant";
         } else {
-            document.querySelector('#nouveau').classList.replace("d-flex","d-none");
-            document.querySelector('#existant').classList.replace("d-none","d-flex");
+            document.querySelector('#nouveau'+id).classList.replace("d-flex","d-none");
+            document.querySelector('#existant'+id).classList.replace("d-none","d-flex");
             element.innerText="Nouveau";
         }
     }
 </script>
+
+</div>
+</main>
+
 </body>
 
 </html>
