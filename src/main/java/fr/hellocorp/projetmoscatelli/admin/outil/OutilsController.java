@@ -210,6 +210,7 @@ public class OutilsController {
                            @RequestParam String repere,
                            @RequestParam String etat,
                            @RequestParam Outil.TypeStatut typeStatut,
+                           @RequestParam String date_prochain_etalonnage,
                            @RequestParam String periodicite) {
 
         Outil outil = new Outil();
@@ -226,13 +227,11 @@ public class OutilsController {
         outil.setTypeStatut(Outil.TypeStatut.valueOf(String.valueOf(typeStatut)));
         if(periodicite.length()!=0)
             outil.setPeriodicite(Integer.parseInt(periodicite));
+        outil.setDate_prochain_etalonnage(LocalDate.parse(date_prochain_etalonnage));
         outil.setEtalonnee(etalonnee);
 
         service.enregistrer(outil);
 
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
-
-
-
 }

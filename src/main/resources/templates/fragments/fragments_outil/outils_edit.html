@@ -118,7 +118,7 @@
                         </div>
 
                         <input th:if="${!etalonnee}" type="hidden" th:value="${outil.periodicite}" id="periodicite" name="periodicite" >
-
+                        <input th:if="${etalonnee}" type="hidden" th:value="${outil.date_prochain_etalonnage}" id="date_prochain_etalonnage" name="date_prochain_etalonnage" >
 
                         <div class="row mb-3">
                             <label for="fournisseur" class="col-4 form-label">Fournisseur</label>
