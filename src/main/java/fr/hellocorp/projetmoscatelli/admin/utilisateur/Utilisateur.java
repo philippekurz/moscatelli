@@ -100,12 +100,14 @@ public class Utilisateur {
         this.nom = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
-    }
+    public String getPrenom() {return prenom;}
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public String getNomPrenom() {
+        return prenom + (prenom==null?"":" ") + nom;
     }
 
     public String getEmail() {
