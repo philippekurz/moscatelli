@@ -87,10 +87,11 @@
                         </div>
 
 
+
                         <div class="row mb-3">
                             <label for="etat" class="col-4 form-label">État</label>
                             <div class="col-8">
-                                <select class="form-select" th:value="${outil.etat}"  id="etat" name="etat" >
+                                <select class="form-select" th:field="*{etat}"  id="etat" name="etat" >
                                     <th:block  th:each="etatOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.Etat).values()}">
                                         <option th:value="${etatOpt}" th:text="${etatOpt}"></option>
                                     </th:block>
