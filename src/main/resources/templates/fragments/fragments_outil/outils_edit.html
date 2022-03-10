@@ -98,8 +98,14 @@
 <!--                                </select>-->
 
                                 <select class="form-select" th:value="${outil.typeStatut}" id="typeStatut" name="typeStatut" >
-                                    <option th:each="statutOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).values()}"
+                                    <th:block  th:each="statutOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).values()}">
+                                    <option th:unless="${statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Maintenance
+                                                      ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Manquant)
+                                                      ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Etalonnage)
+                                                      ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Pret)}"
+
                                             th:value="${statutOpt}" th:text="${statutOpt}"></option>
+                                    </th:block>
                                 </select>
                             </div>
                         </div>

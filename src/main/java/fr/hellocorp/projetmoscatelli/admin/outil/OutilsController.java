@@ -101,13 +101,16 @@ public class OutilsController {
                 outil.setTypeStatut(Outil.TypeStatut.Maintenance);
                 break;
             case Prêt:
-                outil.setTypeStatut(Outil.TypeStatut.Prêt);
+                outil.setTypeStatut(Outil.TypeStatut.Pret);
                 break;
             case Rebut:
                 outil.setTypeStatut(Outil.TypeStatut.Rebut);
                 break;
             case Etalonnage:
                 outil.setTypeStatut(Outil.TypeStatut.Etalonnage);
+                break;
+            case Manquant:
+                outil.setTypeStatut(Outil.TypeStatut.Manquant);
                 break;
         }
 
