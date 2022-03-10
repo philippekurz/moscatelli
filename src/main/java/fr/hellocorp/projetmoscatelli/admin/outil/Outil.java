@@ -20,7 +20,7 @@ import java.util.*;
 public class Outil {
 
     public enum TypeStatut{
-       Fonction, Rebut, Manquant, Maintenance, Etalonnage,Pret
+       Fonction, Rebut, Manquant, Maintenance, Etalonnage, Pret
     }
 
     public enum Etat{

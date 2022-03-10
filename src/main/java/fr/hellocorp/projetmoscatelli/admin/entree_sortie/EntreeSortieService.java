@@ -41,7 +41,7 @@ public class EntreeSortieService {
     public void supprimer(Long id) throws EntreeSortieNotFoundException {
         Long count = repo.countById(id);
         if (count == null || count ==0) {
-            throw new EntreeSortieNotFoundException("ce pret " + id + " n'existe pas.");
+            throw new EntreeSortieNotFoundException("ce prêt " + id + " n'existe pas.");
         }
         repo.deleteById(id);
     }

@@ -69,6 +69,7 @@ public class EntreeSortieController {
                            @PathVariable Long id,
                            @RequestParam Utilisateur utilisateur,
                            @RequestParam Outil outil,
+                           @RequestParam EntreeSortie.MotifEntreeSortie motif,
                            @RequestParam String date_sortie,
                            @RequestParam String date_de_retour_prevue,
                            @RequestParam String probleme,
@@ -83,6 +84,7 @@ public class EntreeSortieController {
         entreeSortie.setId(id);
         entreeSortie.setUtilisateur(utilisateur);
         entreeSortie.setOutil(outil);
+        entreeSortie.setMotif(motif);
         entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
         entreeSortie.setProbleme(probleme);
