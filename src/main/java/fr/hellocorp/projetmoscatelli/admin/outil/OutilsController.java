@@ -256,7 +256,7 @@ public class OutilsController {
         outil.setCapacite(capacite);
         outil.setPuissance(puissance);
         outil.setRepere(repere);
-        outil.setEtat(etat);
+        outil.setEtat(Outil.Etat.valueOf(String.valueOf(etat)));
         outil.setTypeStatut(Outil.TypeStatut.valueOf(String.valueOf(typeStatut)));
         if(periodicite.length()!=0)
             outil.setPeriodicite(Integer.parseInt(periodicite));

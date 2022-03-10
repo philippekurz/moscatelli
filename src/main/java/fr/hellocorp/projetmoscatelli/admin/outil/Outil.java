@@ -22,6 +22,10 @@ public class Outil {
     public enum TypeStatut{
        Fonction, Rebut, Manquant, Maintenance, Etalonnage,Pret
     }
+
+    public enum Etat{
+        BON, MOYEN, MAUVAIS
+    }
     //////////////////////////////////////// DECLARATIONS DES VARIABLES ////////////////////////////////////////
 
     @Id
@@ -53,8 +57,8 @@ public class Outil {
     @Column(length = 30)
     private String repere;
 
-    @Column
-    private String etat;
+    @Column(nullable = false, length = 30)
+    private Etat etat;
 
     @Column(nullable = false, length = 30)
     private TypeStatut typeStatut;
@@ -93,7 +97,7 @@ public class Outil {
     @Transient
     private String classCouleur;
 
-    public Outil(Long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, LocalDate date_prochain_etalonnage, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, EntreeSortie esEnCours, String classCouleur) {
+    public Outil(Long id, String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, Etat etat, TypeStatut typeStatut, LocalDate date_prochain_etalonnage, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, EntreeSortie esEnCours, String classCouleur) {
         this.id = id;
         this.designation = designation;
         this.fournisseur = fournisseur;
@@ -118,7 +122,7 @@ public class Outil {
         this.classCouleur = classCouleur;
     }
 
-    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, String etat, TypeStatut typeStatut, LocalDate date_prochain_etalonnage, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, EntreeSortie esEnCours, String classCouleur) {
+    public Outil(String designation, String fournisseur, String marque, String modele, String numero_de_serie, String capacite, String puissance, String repere, Etat etat, TypeStatut typeStatut, LocalDate date_prochain_etalonnage, Integer periodicite, boolean disponibilite, boolean etalonnee, String utilisateur_creation, LocalDateTime date_creation, String utilisateur_maj, LocalDateTime date_maj, List<EntreeSortie> entreesSorties, EntreeSortie esEnCours, String classCouleur) {
         this.designation = designation;
         this.fournisseur = fournisseur;
         this.marque = marque;
@@ -203,7 +207,7 @@ public class Outil {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -271,11 +275,11 @@ public class Outil {
         this.repere = repere;
     }
 
-    public String getEtat() {
+    public Etat getEtat() {
         return etat;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(Etat etat) {
         this.etat = etat;
     }
 
@@ -285,6 +289,14 @@ public class Outil {
 
     public void setTypeStatut(TypeStatut typeStatut) {
         this.typeStatut = typeStatut;
+    }
+
+    public LocalDate getDate_prochain_etalonnage() {
+        return date_prochain_etalonnage;
+    }
+
+    public void setDate_prochain_etalonnage(LocalDate date_prochain_etalonnage) {
+        this.date_prochain_etalonnage = date_prochain_etalonnage;
     }
 
     public Integer getPeriodicite() {
@@ -309,14 +321,6 @@ public class Outil {
 
     public void setEtalonnee(boolean etalonnee) {
         this.etalonnee = etalonnee;
-    }
-
-    public LocalDate getDate_prochain_etalonnage() {
-        return date_prochain_etalonnage;
-    }
-
-    public void setDate_prochain_etalonnage(LocalDate date_prochain_etalonnage) {
-        this.date_prochain_etalonnage = date_prochain_etalonnage;
     }
 
     public String getUtilisateur_creation() {
@@ -363,6 +367,10 @@ public class Outil {
         return esEnCours;
     }
 
+    public void setEsEnCours(EntreeSortie esEnCours) {
+        this.esEnCours = esEnCours;
+    }
+
     public String getClassCouleur() {
         return classCouleur;
     }
@@ -383,9 +391,10 @@ public class Outil {
                 ", capacite='" + capacite + '\'' +
                 ", puissance='" + puissance + '\'' +
                 ", repere='" + repere + '\'' +
-                ", etat='" + etat + '\'' +
+                ", etat=" + etat +
                 ", typeStatut=" + typeStatut +
-                ", periodicite='" + periodicite + '\'' +
+                ", date_prochain_etalonnage=" + date_prochain_etalonnage +
+                ", periodicite=" + periodicite +
                 ", disponibilite=" + disponibilite +
                 ", etalonnee=" + etalonnee +
                 ", utilisateur_creation='" + utilisateur_creation + '\'' +
@@ -393,6 +402,8 @@ public class Outil {
                 ", utilisateur_maj='" + utilisateur_maj + '\'' +
                 ", date_maj=" + date_maj +
                 ", entreesSorties=" + entreesSorties +
+                ", esEnCours=" + esEnCours +
+                ", classCouleur='" + classCouleur + '\'' +
                 '}';
     }
 }
