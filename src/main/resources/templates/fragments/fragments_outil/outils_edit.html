@@ -105,13 +105,13 @@
                         </div>
 
                         <div th:if="${etalonnee}" class="row mb-3">
-                            <label for="periodicite" class="col-4 form-label">Périodicité</label>
+                            <label for="date_prochain_etalonnage" class="col-4 form-label">date prochain etalonnage</label>
                             <div class="col-8">
-                                <input type="text" th:value="${outil.periodicite}" class="form-control" id="periodicite" name="periodicite">
+                                <input type="date" th:value="${outil.date_prochain_etalonnage}" class="form-control" id="date_prochain_etalonnage" name="date_prochain_etalonnage">
                             </div>
                         </div>
 
-                        <input th:if="${!etalonnee}" type="hidden" th:value="${outil.periodicite}" id="periodicite" name="periodicite" >
+                        <input th:if="${!etalonnee}" type="hidden" th:value="${outil.date_prochain_etalonnage}" id="date_prochain_etalonnage" name="date_prochain_etalonnage" >
 
 
                         <div class="row mb-3">
