@@ -15,50 +15,55 @@
                 <div class="modal-body">
                     <form th:action="@{/entreesortie/enregistrer}" method="post" th:object="${entreeSortie}">
 
-
-                        <div class="mb-3">
-                            <label for="motif" class="form-label">Motif</label>
+                        <div class="form-floating mb-3">
                             <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif">
                                 <th:block th:each="optMotif : ${T(fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie.MotifEntreeSortie).values()}">
                                     <option th:value="${optMotif}" th:text="${optMotif}"></option>
                                 </th:block>
                             </select>
+                            <label for="motif">Motif</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="utilisateur" class="form-label">Utilisateur</label>
-                            <select id="utilisateur" class="form-select" th:field="*{utilisateur}">Utilisateur
-                                <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
 
+                        <div class="form-floating mb-3">
+                             <select id="utilisateur" class="form-select" th:field="*{utilisateur}">Utilisateur
+                                <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nomPrenom}"></option>
                             </select>
-
+                            <label for="utilisateur">Utilisateur</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="outil" class="form-label">Outil</label>
+
+                        <div class="form-floating mb-3">
                             <select id="outil" class="form-select" th:field="*{outil}">Outil
-                                <option th:each="outils:${Outils}" th:value="${outils.id}" th:text="${outils.designation}"></option>
+                                <option th:each="outils:${Outils}" th:value="${outils.id}" th:text="${outils.identification}"></option>
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="date_sortie" class="form-label">Date sortie</label>
-                            <input type="Date" class="form-control" name="date_sortie" id="date_sortie" placeholder="JJ/MM/AAAA" th:field="*{date_sortie}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="date_de_retour_prevue" class="form-label">Date de retour prévue</label>
-                            <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA" th:field="*{date_de_retour_prevue}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="date_retour" class="form-label">Date de retour</label>
-                            <input type="Date" class="form-control" name="date_retour" id="date_retour" placeholder="JJ/MM/AAAA" th:field="*{date_retour}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="date_etalonnage" class="form-label">Date d'étalonnage</label>
-                            <input type="Date" class="form-control" name="date_etalonnage" id="date_etalonnage" placeholder="JJ/MM/AAAA" th:field="*{date_etalonnage}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="probleme" class="form-label">probleme</label>
-                            <input type="text" class="form-control" name="probleme" id="probleme" placeholder="probleme" th:field="*{probleme}">
+                            <label for="outil" >Outil</label>
                         </div>
 
+                        <div class="form-floating mb-3">
+                            <input type="Date" class="form-control" name="date_sortie" id="date_sortie" placeholder="JJ/MM/AAAA" th:field="*{date_sortie}">
+                            <label for="date_sortie">Date sortie</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="Date" class="form-control" name="date_de_retour_prevue" id="date_de_retour_prevue" placeholder="JJ/MM/AAAA" th:field="*{date_de_retour_prevue}">
+                            <label for="date_de_retour_prevue">Date de retour prévue</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="Date" class="form-control" name="date_retour" id="date_retour" placeholder="JJ/MM/AAAA" th:field="*{date_retour}">
+                            <label for="date_retour">Date de retour</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="Date" class="form-control" name="date_etalonnage" id="date_etalonnage" placeholder="JJ/MM/AAAA" th:field="*{date_etalonnage}">
+                            <label for="date_etalonnage">Date d'étalonnage</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="probleme" id="probleme" placeholder="probleme" th:field="*{probleme}">
+                            <label for="probleme" >Problème</label>
+                        </div>
+
+                        <input type="hidden" name="referencePV" id="referencePV" th:field="*{referencePV}">
 <!--                        -->
 <!--                        <div class="mb-3">-->
 <!--                            <label for="referencePV" class="form-label">referencePV</label>-->

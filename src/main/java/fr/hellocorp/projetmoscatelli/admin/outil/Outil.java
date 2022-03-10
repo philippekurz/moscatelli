@@ -211,6 +211,10 @@ public class Outil {
         return designation;
     }
 
+    public String getIdentification() {
+        return designation + " " + numero_de_serie;
+    }
+
     public void setDesignation(String designation) {
         this.designation = designation;
     }
