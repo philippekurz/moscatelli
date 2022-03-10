@@ -9,7 +9,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabelEdit">Modifier un pret</h5>
+                    <h5 class="modal-title" id="exampleModalLabelEdit">Modifier une entrée/sortie</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -25,19 +25,27 @@
                                th:select="${entreeSortie.motif}==${entreeSortie.motif}"></option>
                             </select>-->
 
-                            <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif" >
-                                <option value="Prêt">Prêt</option>
-                                <option value="Etalonnage">Etalonnage</option>
-                                <option value="Maintenance">Maintenance</option>
-                            </select>
+<!--                            <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif" >-->
+<!--                                <option value="Prêt">Prêt</option>-->
+<!--                                <option value="Etalonnage">Etalonnage</option>-->
+<!--                                <option value="Maintenance">Maintenance</option>-->
+<!--                            </select>-->
 
+                            <label class="form-label">Motif</label>
+                            <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif">
+                                <th:block th:each="optMotif : ${T(fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie.MotifEntreeSortie).values()}">
+                                    <option th:value="${optMotif}" th:text="${optMotif}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Utilisateur</label>
                             <select class="form-select" id="utilisateur" name="utilisateur">
                                 <option th:each="utilisateur:${utilisateurs}" th:value="${utilisateur.id}" th:text="${utilisateur.nom}"
                                         th:selected="${entreeSortie.utilisateur.id}==${utilisateur.id}"></option>
                             </select>
                         </div>
-
 
                         <div class="mb-3">
                             <label class="form-label">Outil</label>

@@ -42,7 +42,7 @@
                             <label for="utilisateur" class="form-label col-5">Utilisateur (<a href="javascript:void(0)" th:attr="id='a_'+*{outil.id}"  onclick="showHide(this)">Nouveau</a>)</label>
                             <div th:attr="id='existant'+*{outil.id}"  class="existant col-7 d-flex">
                                 <select class="form-select" id="utilisateur" name="utilisateur">
-                                    <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
+                                    <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nomPrenom}"></option>
                                 </select>
                             </div>
                             <div th:attr="id='nouveau'+*{outil.id}" class="nouveau col-7 d-none flex-column">

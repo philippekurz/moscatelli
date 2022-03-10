@@ -9,33 +9,32 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nouveau compte</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nouvelle entrée/sortie</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form th:action="@{/entreesortie/enregistrer}" method="post" th:object="${entreeSortie}">
 
-                        <!--<select class="form-select" th:field="*{motif}" >
-                          <option th:each="motifOpt : ${T(fr.hellocorp.projetmoscatelli.entree_sortie.EntreeSortie.MotifEntreeSortie).values()}"
-                                   th:value="${motifOpt}" th:text="${motifOpt}"></option>-->
-
-                        <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif">
-                            <option value="Prêt">Prêt</option>
-                            <option value="Etalonnage">Etalonnage</option>
-                            <option value="Maintenance">Maintenance</option>
-                        </select>
-                        </select>
 
                         <div class="mb-3">
-                            <select class="form-select" th:field="*{utilisateur}">Utilisateur
+                            <label for="motif" class="form-label">Motif</label>
+                            <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif">
+                                <th:block th:each="optMotif : ${T(fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie.MotifEntreeSortie).values()}">
+                                    <option th:value="${optMotif}" th:text="${optMotif}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="utilisateur" class="form-label">Utilisateur</label>
+                            <select id="utilisateur" class="form-select" th:field="*{utilisateur}">Utilisateur
                                 <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
 
                             </select>
 
                         </div>
                         <div class="mb-3">
-
-                            <select class="form-select" th:field="*{outil}">Outil
+                            <label for="outil" class="form-label">Outil</label>
+                            <select id="outil" class="form-select" th:field="*{outil}">Outil
                                 <option th:each="outils:${Outils}" th:value="${outils.id}" th:text="${outils.designation}"></option>
                             </select>
                         </div>
