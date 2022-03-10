@@ -118,7 +118,7 @@
                         </div>
 
 
-                        <div class="row mb-3">
+                        <div th:if="${!(outil.esEnCours.motif eq T(fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie.MotifEntreeSortie).Etalonnage)}" class="row mb-3">
                             <label for="date_retour" class="form-label col-5">Date retour</label>
                             <div class="col-7">
                                 <input type="date" class="form-control" name="date_retour" id="date_retour" th:value="${currentDate}" >
@@ -134,7 +134,7 @@
                         </div>
 
 
-                        <div class="row mb-3">
+                        <div th:if="${outil.esEnCours.motif eq T(fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie.MotifEntreeSortie).Etalonnage}" class="row mb-3">
                             <label for="file" class="form-label col-5">Reference PV</label>
 <!--                            <div class="col-7">-->
 <!--                                <input type="text" class="form-control" name="referencePV" id="referencePV" >-->
@@ -148,7 +148,7 @@
 
 
                         <div th:if="${outil.esEnCours.motif eq T(fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie.MotifEntreeSortie).Etalonnage}" class="row mb-3">
-                            <label for="date_etalonnage" class="form-label col-5">Date prochain étalonnage</label>
+                            <label for="date_etalonnage" class="form-label col-5">Date retour étalonnage</label>
                             <div class="col-7">
                                 <input type="Date" class="form-control" name="date_etalonnage" id="date_etalonnage" th:value="${currentDate}" placeholder="JJ/MM/AAAA">
                             </div>
