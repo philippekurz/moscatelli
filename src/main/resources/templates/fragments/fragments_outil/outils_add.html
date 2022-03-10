@@ -62,13 +62,13 @@
                         </div>
 
 
-                        <div  th:if="${periodicite}" class="row mb-3">
+                        <div  th:if="${etalonnee}" class="row mb-3">
                             <label class="col-4 form-label">Périodicité</label>
                             <div class="col-8">
                                 <input type="text" th:field="*{periodicite}"  class="form-control" name="periodicite" placeholder="periodicite">
                             </div>
                         </div>
-                        <input th:unless="${periodicite}"  type="hidden" th:field="*{periodicite}" placeholder="periodicite">
+                        <input th:unless="${!etalonnee}"  type="hidden" th:field="*{periodicite}" placeholder="periodicite">
 
 
                         <div class="row mb-3">
