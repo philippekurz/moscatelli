@@ -23,7 +23,7 @@
                 <th scope="col">Date de retour prévue</th>
                 <th scope="col">Date d'étalonnage</th>
                 <th scope="col">Problème</th>
-                <th scope="col">Référence PV</th>
+<!--                <th scope="col">Référence PV</th>-->
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -40,7 +40,7 @@
                     <td>[[${entreeSortie.date_de_retour_prevue}]]</td>
                     <td>[[${entreeSortie.date_etalonnage}]]</td>
                     <td>[[${entreeSortie.probleme}]]</td>
-                    <td>[[${entreeSortie.referencePV}]]</td>
+<!--                    <td>[[${entreeSortie.referencePV}]]</td>-->
                     
                     <td><a  sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#editModal'+*{entreeSortie.id}"><i class="bi bi-pencil-fill"></i></a></td>
                     <td><a  sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR')" type="button" data-bs-toggle="modal" th:attr="data-bs-target='#deleteModal'+*{entreeSortie.id}"><i class="bi bi-trash-fill"></i></a></td>
