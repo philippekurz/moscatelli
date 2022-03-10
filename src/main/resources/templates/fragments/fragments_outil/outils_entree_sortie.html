@@ -38,12 +38,18 @@
                             </div>
                         </div>
 
-                        <div id="existing-user" class="row mb-3 d-flex">
-                            <label for="utilisateur" class="form-label col-5">Utilisateur (<a href="javascript:void(0)" onclick="showHide(this)">New</a>)</label>
-                            <div class="col-7">
+                        <div class="row mb-3 d-flex">
+                            <label for="utilisateur" class="form-label col-5">Utilisateur (<a href="javascript:void(0)" onclick="showHide(this)">Nouveau</a>)</label>
+                            <div id="existant" class="col-7 d-flex">
                                 <select class="form-select" id="utilisateur" name="utilisateur">
                                     <option th:each="utilisateurs:${utilisateurs}" th:value="${utilisateurs.id}" th:text="${utilisateurs.nom}"></option>
                                 </select>
+                            </div>
+                            <div id="nouveau" class="col-7 d-none flex-column">
+
+                                <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom"><br />
+                                <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom"><br />
+                                <input id="telephone" name="telephone" type="text" class="form-control" placeholder="Téléphone">
                             </div>
                         </div>
 

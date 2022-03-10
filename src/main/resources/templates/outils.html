@@ -31,12 +31,17 @@
 </main>
 
 </body>
-<script>
+<script th:inline="javascript">
     function showHide(element) {
-        //document.getElementById('new-user').classList;document.getElementById('new-user').classList.re
-        //('d-none');document.getElementById('new-user').classList;
-        alert(document.querySelector('#new-user').classList);
-        document.querySelector('#utilisateur').style.display="none";
+        if (document.querySelector('#existant').classList.contains("d-flex")) {
+            document.querySelector('#existant').classList.replace("d-flex","d-none");
+            document.querySelector('#nouveau').classList.replace("d-none","d-flex");
+            element.innerText="Existant";
+        } else {
+            document.querySelector('#nouveau').classList.replace("d-flex","d-none");
+            document.querySelector('#existant').classList.replace("d-none","d-flex");
+            element.innerText="Nouveau";
+        }
     }
 </script>
 </html>

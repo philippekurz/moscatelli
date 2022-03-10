@@ -10,6 +10,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -24,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -82,14 +85,43 @@ public class OutilsController {
 
             @RequestParam String motif,
             @RequestParam String date_sortie,
-            @RequestParam String date_de_retour_prevue)
+            @RequestParam String date_de_retour_prevue,
+
+            @RequestParam String nom,
+            @RequestParam String prenom,
+            @RequestParam String telephone )
     {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
         EntreeSortie entreeSortie = new EntreeSortie();
-        entreeSortie.setUtilisateur(utilisateur);
         entreeSortie.setOutil(outil);
         entreeSortie.setMotif(EntreeSortie.MotifEntreeSortie.valueOf(motif));
         entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
+
+        if (nom!=null) {
+            Utilisateur u = new Utilisateur();
+            u.setNom(nom);
+            u.setPrenom(prenom);
+            u.setTelephone(telephone);
+            u.setMdp("MotDePasse");
+            u.setDate_creation(LocalDateTime.now());
+            u.setDate_maj(LocalDateTime.now());
+            u.setUtilisateur_creation(currentPrincipalName);
+            u.setUtilisateur_maj(currentPrincipalName);
+            Utilisateur nouvelUtilisateur = utilisateurService.enregistrer(u);
+            entreeSortie.setUtilisateur(nouvelUtilisateur);
+
+        }
+        else
+            entreeSortie.setUtilisateur(utilisateur);
+
+        entreeSortie.setDateCreation(LocalDateTime.now());
+        entreeSortie.setDateMaj(LocalDateTime.now());
+
+        entreeSortie.setUtilisateurcreation(currentPrincipalName);
+        entreeSortie.setUtilisateurMAJ(currentPrincipalName);
 
         entreeSortieService.enregistrer(entreeSortie);
 
@@ -115,6 +147,7 @@ public class OutilsController {
         }
 
         outilService.enregistrer(outil);
+
 
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }

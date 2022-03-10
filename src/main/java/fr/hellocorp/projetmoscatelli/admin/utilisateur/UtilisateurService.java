@@ -2,7 +2,6 @@ package fr.hellocorp.projetmoscatelli.admin.utilisateur;
 
 import fr.hellocorp.projetmoscatelli.admin.droit.Droit;
 import fr.hellocorp.projetmoscatelli.admin.droit.IRepositoryDroit;
-import fr.hellocorp.projetmoscatelli.admin.outil.Outil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ public class UtilisateurService {
         return (List<Utilisateur>) repo.findAll();
     }
 
-    public void enregistrer(Utilisateur utilisateur) {
+    public Utilisateur enregistrer(Utilisateur utilisateur) {
         if (utilisateur.getId() == null) {
 
             //Cryptage du mot de passe
@@ -39,7 +38,7 @@ public class UtilisateurService {
             Droit droit = repositoryDroit.findByNom("Visiteur");
             utilisateur.ajouterDroit(droit);
         }
-        repo.save(utilisateur);
+        return(repo.save(utilisateur));
     }
 
     public void supprimer(Long id) throws UtilisateurNotFoundException {

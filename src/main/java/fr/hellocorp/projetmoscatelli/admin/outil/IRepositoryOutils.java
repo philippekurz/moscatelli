@@ -2,10 +2,11 @@ package fr.hellocorp.projetmoscatelli.admin.outil;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface IRepositoryOutils extends CrudRepository <Outil, Long> {
+public interface IRepositoryOutils extends PagingAndSortingRepository<Outil, Long> {
     Long countById(Long id);
 
 

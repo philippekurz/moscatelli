@@ -28,7 +28,8 @@ public class Utilisateur {
     @Column(nullable = false, length = 70)
     private String prenom;
 
-    @Column(nullable = false, length = 70)
+//    @Column(nullable = false, length = 70)
+    @Column(length = 70)
     private String email;
 
     @Column(nullable = false)
