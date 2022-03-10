@@ -18,6 +18,7 @@
                         <thead>
                         <tr>
                             <th scope="col">Id</th>
+                            <th scope="col">Utilisateur</th>
                             <th scope="col">Sortie</th>
                             <th scope="col">Retour prévu</th>
                             <th scope="col">Retour</th>
@@ -30,11 +31,11 @@
 
                             <tr>
                                 <td>[[${entreeSortie.id}]]</td>
+                                <td>[[${entreeSortie.utilisateur.nom}]]</td>
                                 <td>[[${entreeSortie.date_sortie}]]</td>
                                 <td>[[${entreeSortie.date_de_retour_prevue}]]</td>
                                 <td>[[${entreeSortie.date_retour}]]</td>
                                 <td>[[${entreeSortie.probleme}]]</td>
-<!--                                <td>[[${entreeSortie.referencePV}]]</td>-->
 
                                 <td><a th:if="${entreeSortie.ReferencePV != null}" th:href="@{'/outils/download/' + ${entreeSortie.ReferencePV}}">[[${entreeSortie.referencePV}]]</a>
                                 </td>
