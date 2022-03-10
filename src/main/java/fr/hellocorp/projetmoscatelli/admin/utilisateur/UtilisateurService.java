@@ -16,6 +16,8 @@ public class UtilisateurService {
     @Autowired
     private IRepositoryDroit repositoryDroit;
 
+
+
     public List<Utilisateur> findAll(String keyword) {
         if (keyword != null) {
             return repo.search(keyword);}

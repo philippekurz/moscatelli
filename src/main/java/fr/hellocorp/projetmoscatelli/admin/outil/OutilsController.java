@@ -5,13 +5,20 @@ import fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortieService;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.Utilisateur;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -133,8 +140,8 @@ public class OutilsController {
 
             entreeSortie.setProbleme(probleme);
             if (null!=file) {
-                entreeSortie.setReferencePV(Paths.get(WORKING_DIR + "/" + StringUtils.cleanPath(file.getOriginalFilename())).toString());
-
+//                entreeSortie.setReferencePV(Paths.get(WORKING_DIR + "/" + StringUtils.cleanPath(file.getOriginalFilename())).toString());
+                entreeSortie.setReferencePV(StringUtils.cleanPath(file.getOriginalFilename()));
             }
 
             entreeSortieService.enregistrer(entreeSortie);
@@ -156,10 +163,24 @@ public class OutilsController {
                 System.out.println(e.getMessage());
             }
         }
+
         return "redirect:/outils?keyword="+(Objects.equals(keyword, "null") ? "":keyword) +"&etalonnee="+etalonnee;
     }
 
 
+    @RequestMapping("/download/{fileName}")
+    public ResponseEntity<InputStreamResource> downloadTextFileExample1(@PathVariable("fileName") String fileName) throws FileNotFoundException {
+        final String WORKING_DIR = "src/main/resources/pv";
+        final File file = new File(WORKING_DIR + "/" + fileName);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        InputStreamResource inputStreamResource = new InputStreamResource(fileInputStream);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + fileName)
+                .contentType(MediaType.TEXT_PLAIN)
+                .contentLength(file.length())
+                .body(inputStreamResource);
+    }
 
     @PostMapping("/supprimer/{id}")
     public String supprimer(@PathVariable Long id,

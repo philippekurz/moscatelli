@@ -34,7 +34,10 @@
                                 <td>[[${entreeSortie.date_de_retour_prevue}]]</td>
                                 <td>[[${entreeSortie.date_retour}]]</td>
                                 <td>[[${entreeSortie.probleme}]]</td>
-                                <td>[[${entreeSortie.referencePV}]]</td>
+<!--                                <td>[[${entreeSortie.referencePV}]]</td>-->
+
+                                <td><a th:if="${entreeSortie.ReferencePV != null}" th:href="@{'/outils/download/' + ${entreeSortie.ReferencePV}}">[[${entreeSortie.referencePV}]]</a>
+                                </td>
                             </tr>
                         </th:block>
                         </tbody>

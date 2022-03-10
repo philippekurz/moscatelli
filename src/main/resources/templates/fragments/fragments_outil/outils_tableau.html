@@ -45,7 +45,7 @@
                     <td>[[${outil.puissance}]]</td>
                     <td th:if="${etalonnee}" >[[${outil.capacite}]]</td>
                     <td>[[${outil.repere}]]</td>
-                    <td th:if="${etalonnee}" ><a th:if="${outil.esEnCours.ReferencePV != null}" th:href="${outil.esEnCours.ReferencePV}">PV</a></td>
+                    <td th:if="${etalonnee}" ><a th:if="${outil.esEnCours.ReferencePV != null}" th:href="@{'/outils/download/' + ${outil.esEnCours.ReferencePV}}">PV</a></td>
                     <td th:if="${etalonnee}" >[[${outil.date_prochain_etalonnage}]]</td>
 <!--                    <td>[[${outil.fournisseur}]]</td>-->
                     <td>[[${outil.etat}]]</td>
