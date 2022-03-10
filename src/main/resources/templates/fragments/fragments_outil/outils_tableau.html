@@ -4,10 +4,8 @@
 
 <div th:fragment="outils_tableau">
     <div class="text-center" >
-        <h1 sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" th:if="${etalonnee}">Gestion des appareils
-            etalonnés</h1>
+        <h1 sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" th:if="${etalonnee}">Gestion des appareils etalonnés</h1>
         <h1 sec:authorize="hasAnyRole('ROLE_ADMINISTRATEUR', 'ROLE_MAGASINIER')" th:if="${!etalonnee}">Gestion des outils</h1>
-
         <h1 sec:authorize="hasAnyRole('ROLE_VISITEUR')" th:if="${etalonnee}">Liste des appareil etalonnés</h1>
         <h1 sec:authorize="hasAnyRole('ROLE_VISITEUR')" th:if="${!etalonnee}">Liste des outils</h1>
 
@@ -16,7 +14,7 @@
             <thead>
             <tr>
 
-                <th scope="col"><a class="tri asc"  th:href="@{/outils}">Désignation</a></th>
+                <th scope="col"><a class="tri asc"th:href="@{/outils}">Désignation</a></th>
                 <th scope="col"><a class="tri desc"  th:href="@{/outils}">Marque</a></th>
                 <th scope="col"><a class="tri"  th:href="@{/outils}">Modèle</a></th>
                 <th scope="col"><a class="tri"  th:href="@{/outils}">N° de série</a></th>
@@ -44,10 +42,10 @@
                     <td>[[${outil.modele}]]</td>
                     <td>[[${outil.numero_de_serie}]]</td>
                     <td>[[${outil.puissance}]]</td>
-                    <td th:if="${etalonnee}" >[[${outil.capacite}]]</td>
+                    <td th:if="${etalonnee}">[[${outil.capacite}]]</td>
                     <td>[[${outil.repere}]]</td>
-                    <td th:if="${etalonnee}" ><a th:if="${outil.esEnCours.ReferencePV != null}" th:href="@{'/outils/download/' + ${outil.esEnCours.ReferencePV}}">PV</a></td>
-                    <td th:if="${etalonnee}" >[[${outil.date_prochain_etalonnage}]]</td>
+                    <td th:if="${etalonnee}"><a th:if="${outil.esEnCours.ReferencePV != null}" th:href="@{'/outils/download/' + ${outil.esEnCours.ReferencePV}}">PV</a></td>
+                    <td th:if="${etalonnee}">[[${outil.date_prochain_etalonnage}]]</td>
 <!--                    <td>[[${outil.fournisseur}]]</td>-->
                     <td>[[${outil.etat}]]</td>
                     <td>[[${outil.typeStatut}]]</td>
