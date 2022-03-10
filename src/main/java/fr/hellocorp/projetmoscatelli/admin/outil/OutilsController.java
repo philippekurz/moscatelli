@@ -115,10 +115,10 @@ public class OutilsController {
             @Param("etalonnee)") boolean etalonnee,
             @RequestParam Outil outil,
             @RequestParam String idES,
-            @RequestParam String date_retour,
+            @RequestParam  String date_retour,
             @RequestParam(required = false) String date_etalonnage,
             @RequestParam String probleme,
-            @RequestParam MultipartFile file)
+            @RequestParam (required = false) MultipartFile file)
     {
         final String WORKING_DIR = "src/main/resources/pv";
         EntreeSortie entreeSortie = entreeSortieService.get(Long.parseLong(idES));
