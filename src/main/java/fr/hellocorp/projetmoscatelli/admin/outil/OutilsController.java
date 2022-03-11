@@ -159,7 +159,7 @@ public class OutilsController {
             @RequestParam Outil outil,
             @RequestParam String idES,
             @RequestParam  String date_retour,
-            @RequestParam(required = false) String date_etalonnage,
+            @RequestParam (required = false) String date_etalonnage,
             @RequestParam String probleme,
             @RequestParam (required = false) MultipartFile file)
     {
@@ -243,7 +243,7 @@ public class OutilsController {
                            @RequestParam String repere,
                            @RequestParam String etat,
                            @RequestParam Outil.TypeStatut typeStatut,
-                           @RequestParam String date_prochain_etalonnage,
+                           @RequestParam (required = false) String date_prochain_etalonnage,
                            @RequestParam String periodicite) {
 
         Outil outil = new Outil();
@@ -258,9 +258,11 @@ public class OutilsController {
         outil.setRepere(repere);
         outil.setEtat(Outil.Etat.valueOf(String.valueOf(etat)));
         outil.setTypeStatut(Outil.TypeStatut.valueOf(String.valueOf(typeStatut)));
-        if(periodicite.length()!=0)
+        if (periodicite.length()!=0)
             outil.setPeriodicite(Integer.parseInt(periodicite));
-        outil.setDate_prochain_etalonnage(LocalDate.parse(date_prochain_etalonnage));
+        if (date_prochain_etalonnage!=null)
+            if (date_prochain_etalonnage.length()!=0)
+                outil.setDate_prochain_etalonnage(LocalDate.parse(date_prochain_etalonnage));
         outil.setEtalonnee(etalonnee);
 
         service.enregistrer(outil);

@@ -12,91 +12,60 @@
                 <div class="modal-body">
                     <form th:action="@{'/outils/enregistrer?keyword=' +${keyword}+'&etalonnee=' +${etalonnee}}" method="post" th:object="${Outil}">
 
-
-                        <div class="row mb-3">
-                            <label class="col-4 form-label">Désignation</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{designation}"  class="form-control" name="designation" placeholder="designation">
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" th:field="*{designation}"  class="form-control" id="designation" name="designation" placeholder="designation">
+                            <label for="designation">Désignation</label>
                         </div>
 
-
-                        <div class="row mb-3">
-                            <label class="col-4 form-label">Marque</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{marque}"  class="form-control" name="marque" placeholder="marque">
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" th:field="*{marque}"  class="form-control" id="marque" name="marque" placeholder="marque">
+                            <label for="marque">Marque</label>
                         </div>
 
-
-                        <div class="row mb-3">
-                            <label class="col-4 form-label">Modèle</label>
-                            <div class="col-8">
-                                <input type="text"  th:field="*{modele}" class="form-control" name="modele" placeholder="modele">
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text"  th:field="*{modele}" class="form-control" id="modele" name="modele" placeholder="modele">
+                            <label for="modele">Modèle</label>
                         </div>
 
-
-                        <div class="row mb-3">
-                            <label class="col-4 form-label">Puissance</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{puissance}"  class="form-control" name="puissance" placeholder="puissance">
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" th:field="*{puissance}"  class="form-control" id="puissance" name="puissance" placeholder="puissance">
+                            <label for="puissance">Puissance</label>
                         </div>
 
-
-                        <div  th:if="${etalonnee}" class="row mb-3">
-                            <label class="col-4 form-label">Capacité</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{capacite}"  class="form-control" name="capacite" placeholder="capacite">
-                            </div>
+                        <div  th:if="${etalonnee}" class="row form-floating mb-3">
+                            <input type="text" th:field="*{capacite}"  class="form-control" id="capacite" name="capacite" placeholder="capacite">
+                            <label for="capacite">Capacité</label>
                         </div>
                         <input th:unless="${etalonnee}"  type="hidden" th:field="*{capacite}" placeholder="capacite">
 
-
-                        <div class="row mb-3">
-                            <label class="col-4 form-label">Numéro de série</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{numero_de_serie}"  class="form-control" name="numero_de_serie" placeholder="numero de serie">
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" th:field="*{numero_de_serie}"  class="form-control" id="numero_de_serie" name="numero_de_serie" placeholder="numero de serie">
+                            <label for="numero_de_serie">Numéro de série</label>
                         </div>
 
-
-                        <div  th:if="${etalonnee}" class="row mb-3">
-                            <label class="col-4 form-label">Périodicité</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{periodicite}"  class="form-control" name="periodicite" placeholder="periodicite">
-                            </div>
+                        <div  th:if="${etalonnee}" class="row form-floating mb-3">
+                            <input type="text" th:field="*{periodicite}"  class="form-control" id="periodicite" name="periodicite" placeholder="periodicite">
+                            <label for="periodicite">Périodicité</label>
                         </div>
                         <input th:unless="${!etalonnee}"  type="hidden" th:field="*{periodicite}" placeholder="periodicite">
 
-
-                        <div class="row mb-3">
-                            <label class="col-4 form-label">Repère</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{repere}"  class="form-control" name="repere" placeholder="Repère">
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" th:field="*{repere}"  class="form-control" id="repere" name="repere" placeholder="Repère">
+                            <label for="repere">Repère</label>
                         </div>
 
-
-                        <div class="row mb-3">
-                            <label class="col-4 form-label">Fournisseur</label>
-                            <div class="col-8">
-                                <input type="text" th:field="*{fournisseur}"  class="form-control" name="fournisseur" placeholder="fournisseur">
-                            </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" th:field="*{fournisseur}"  class="form-control" id="fournisseur" name="fournisseur" placeholder="fournisseur">
+                            <label for="fournisseur">Fournisseur</label>
                         </div>
 
-
-
-                        <div class="row mb-3">
-                            <label for="etat" class="col-4 form-label">État</label>
-                            <div class="col-8">
-                                <select class="form-select" th:field="*{etat}"  id="etat" name="etat" >
-                                    <th:block  th:each="etatOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.Etat).values()}">
-                                        <option th:value="${etatOpt}" th:text="${etatOpt}"></option>
-                                    </th:block>
-                                </select>
-                            </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" th:field="*{etat}"  id="etat" name="etat" >
+                                <th:block  th:each="etatOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.Etat).values()}">
+                                    <option th:value="${etatOpt}" th:text="${etatOpt}"></option>
+                                </th:block>
+                            </select>
+                            <label for="etat">État</label>
                         </div>
 
 
