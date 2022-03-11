@@ -42,29 +42,23 @@
                             <input type="text" th:value="${utilisateur.telephone}" class="form-control" id="telephone1" name="telephone1">
                             <label for="telephone1">Téléphone</label>
                         </div>
-                        <!--                                        <div class="mb-3">-->
-                        <!--                                            <label for="role1" class="form-label">Rôle</label>-->
-                        <!--                                            <select class="form-select" th:value="${utilisateur.droits}" id="role1" name="role1">-->
-                        <!--                                                <option th:value="ROLE_Administrateur" th:text="Administrateur"></option>-->
-                        <!--                                                <option th:value="ROLE_Magasinier" th:text="Magasinier"></option>-->
-                        <!--                                                <option th:value="ROLE_Visiteur" th:text="Visiteur"></option>-->
-                        <!--                                            </select>-->
-                        <!--                                        </div>-->
 
-                        <div class="mb-3">
-                            <label class="form-label">Rôle</label>
-                            <th:block th:each="role : ${roles}">
-                                <input type="checkbox" class="m-2"
-                                       th:checked="${utilisateur.isUserInRole(role.nom)}"
-                                       th:value="${role.nom}"
-                                       th:text="${role.nom}"
-                                       th:id="${role.nom}"
-                                       th:name="droits[]"
-                                />
-                            </th:block>
-                        </div>
+<!--                        <div class="mb-3">-->
+<!--                            <label class="form-label">Rôle</label>-->
+<!--                            <th:block th:each="role : ${roles}">-->
+<!--                                <input type="checkbox" class="m-2"-->
+<!--                                       th:checked="${utilisateur.isUserInRole(role.nom)}"-->
+<!--                                       th:value="${role.nom}"-->
+<!--                                       th:text="${role.nom}"-->
+<!--                                       th:id="${role.nom}"-->
+<!--                                       th:name="droits[]"-->
+<!--                                />-->
+<!--                            </th:block>-->
+<!--                        </div>-->
+
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+
                     </form>
                 </div>
 

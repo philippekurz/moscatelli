@@ -15,10 +15,7 @@ public class OutilService {
     @Autowired
     private IRepositoryOutils repo;
 
-
-
     public List<Outil> findAll(String keyword, boolean etalonnee) {
-
         if (keyword != null) {
             return repo.search(keyword, etalonnee);
         }
@@ -35,18 +32,10 @@ public class OutilService {
 
     public void enregistrer(Outil outil) {
         if (outil.getId() == null){
-
            outil.setTypeStatut(Fonction);
-
         }
-
-
         repo.save(outil);
     }
-
-
-
-
 
     public void supprimer(Long id) throws OutilNotFoundException {
         Long count = repo.countById(id);
@@ -54,7 +43,6 @@ public class OutilService {
             throw new OutilNotFoundException("l'outil " + id + " n'existe pas.");
         }
         repo.deleteById(id);
-
     }
 
     public Outil getOutil(Long id) throws OutilNotFoundException {

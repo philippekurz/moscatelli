@@ -116,3 +116,16 @@ a.tri.desc::after {
     background-color:palegreen !important;
     /*color: #fff !important;*/
 }
+
+.bi-clock-history {
+    font-size: 1.2rem;
+}
+
+.bi-box-arrow-in-right, .bi-box-arrow-in-left {
+    font-size: 1.2rem;
+}
+
+.bi-exclamation-triangle {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

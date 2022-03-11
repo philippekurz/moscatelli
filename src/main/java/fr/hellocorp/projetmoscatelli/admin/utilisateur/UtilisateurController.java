@@ -35,14 +35,13 @@ public class UtilisateurController {
         List<Droit> roles = droitService.liste();
         model.addAttribute("roles", roles);
 
-
-
         return "/utilisateur";
     }
 
     @PostMapping("/enregistrer")
     public String enregistrer(Utilisateur utilisateur) {
 
+        // Nouvel utilisateur
         if (utilisateur.getId() == null) {
 
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
