@@ -29,7 +29,7 @@
     function showHide(element) {
         const args=element.id.split('_');
         let id=element.id.split('_')[1];
-        alert(id);
+        //alert(id);
         if (document.querySelector('#existant'+id).classList.contains("d-flex")) {
             document.querySelector('#existant'+id).classList.replace("d-flex","d-none");
             document.querySelector('#nouveau'+id).classList.replace("d-none","d-flex");
