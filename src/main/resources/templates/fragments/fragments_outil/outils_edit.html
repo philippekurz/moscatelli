@@ -81,7 +81,7 @@
 
                         <div th:if="${etalonnee}" class="form-floating mb-3">
                             <input type="text" th:value="${outil.periodicite}" class="form-control" id="periodicite" name="periodicite">
-                            <label for="periodicite" class="col-4 form-label">Périodicité</label>
+                            <label for="periodicite" class="form-label">Périodicité</label>
                         </div>
 
                         <input th:if="${!etalonnee}" type="hidden" th:value="${outil.periodicite}" id="periodicite" name="periodicite" >
