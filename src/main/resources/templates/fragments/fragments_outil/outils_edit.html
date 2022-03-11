@@ -66,15 +66,17 @@
                             <label for="etat">État</label>
                         </div>
 
-                        <div class="form-floating mb-3">
+                        <div   class="form-floating mb-3">
                             <select class="form-select" th:value="${outil.typeStatut}" id="typeStatut" name="typeStatut" >
                                 <th:block  th:each="statutOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).values()}">
-                                <option th:unless="${statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Maintenance
-                                                  ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Manquant)
-                                                  ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Etalonnage)
-                                                  ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Pret)}"
+                                <option th:if="${statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Fonction
+                                                  ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Rebut)}"
                                         th:value="${statutOpt}" th:text="${statutOpt}"
                                         th:selected="${outil.typeStatut}==${statutOpt}"></option>
+
+
+
+
 
                                 </th:block>
                             </select>
