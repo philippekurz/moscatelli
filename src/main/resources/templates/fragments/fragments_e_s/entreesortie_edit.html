@@ -19,7 +19,10 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" th:value="${entreeSortie.motif}" id="motif" name="motif">
                                 <th:block th:each="optMotif : ${T(fr.hellocorp.projetmoscatelli.admin.entree_sortie.EntreeSortie.MotifEntreeSortie).values()}">
-                                    <option th:value="${optMotif}" th:text="${optMotif}"></option>
+                                    <option th:value="${optMotif}" th:text="${optMotif}"
+                                            th:selected="${entreeSortie.motif}==${optMotif}"
+
+                                    ></option>
                                 </th:block>
                             </select>
                             <label for="motif">Motif</label>

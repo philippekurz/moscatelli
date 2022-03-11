@@ -59,7 +59,8 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" th:value="${outil.etat}"  id="etat" name="etat" >
                                 <th:block  th:each="etatOpt : ${T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.Etat).values()}">
-                                    <option th:value="${etatOpt}" th:text="${etatOpt}"></option>
+                                    <option th:value="${etatOpt}" th:text="${etatOpt}"
+                                            th:selected="${outil.etat}==${etatOpt}"></option>
                                 </th:block>
                             </select>
                             <label for="etat">État</label>
@@ -72,8 +73,9 @@
                                                   ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Manquant)
                                                   ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Etalonnage)
                                                   ||(statutOpt eq T(fr.hellocorp.projetmoscatelli.admin.outil.Outil.TypeStatut).Pret)}"
+                                        th:value="${statutOpt}" th:text="${statutOpt}"
+                                        th:selected="${outil.typeStatut}==${statutOpt}"></option>
 
-                                        th:value="${statutOpt}" th:text="${statutOpt}"></option>
                                 </th:block>
                             </select>
                             <label for="typeStatut">Statut</label>
