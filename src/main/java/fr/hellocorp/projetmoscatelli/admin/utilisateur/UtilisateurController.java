@@ -3,7 +3,12 @@ package fr.hellocorp.projetmoscatelli.admin.utilisateur;
 import fr.hellocorp.projetmoscatelli.admin.droit.Droit;
 import fr.hellocorp.projetmoscatelli.admin.droit.DroitService;
 import fr.hellocorp.projetmoscatelli.admin.droit.IRepositoryDroit;
+import net.bytebuddy.description.annotation.AnnotationValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -25,8 +30,10 @@ public class UtilisateurController {
 
 
     @GetMapping(value = {"/recherche",""})
-    public String index(Model model, @Param("keyword") String keyword) {
-        List<Utilisateur> utilisateurs = utilisateurService.findAll(keyword);
+    public String index(Model model, @Param("keyword") String keyword, @RequestParam(value = "page" , defaultValue = "0")  int page) {
+        Pageable sortedById =
+                PageRequest.of(page, 8, Sort.by("email"));
+        Page<Utilisateur> utilisateurs = utilisateurService.findAll(keyword, sortedById );
         model.addAttribute("utilisateurs", utilisateurs);
         Utilisateur utilisateur = new Utilisateur();
         model.addAttribute("utilisateur", utilisateur);

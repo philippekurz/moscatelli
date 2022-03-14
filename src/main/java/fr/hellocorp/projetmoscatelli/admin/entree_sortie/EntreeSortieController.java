@@ -5,6 +5,7 @@ import fr.hellocorp.projetmoscatelli.admin.outil.OutilService;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.Utilisateur;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,7 @@ public class EntreeSortieController {
         model.addAttribute("entreesSorties", entreesSorties);
         EntreeSortie entreesortie = new EntreeSortie();
         model.addAttribute("entreeSortie", entreesortie);
-        List<Utilisateur> utilisateurs = utilisateurService.findAll();
+        List<Utilisateur> utilisateurs = utilisateurService.listAll();
         model.addAttribute("utilisateurs", utilisateurs);
         List<Outil> outils = outilService.findAll();
         model.addAttribute("Outils",outils);
@@ -103,7 +104,7 @@ public class EntreeSortieController {
         List<EntreeSortie> entreesSorties = service.findAll(keyword);
         model.addAttribute("entreesSorties", entreesSorties);
 
-        List<Utilisateur> utilisateurs = utilisateurService.findAll();
+        List<Utilisateur> utilisateurs = utilisateurService.listAll();
         model.addAttribute("utilisateurs", utilisateurs);
         List<Outil> outils = outilService.findAll();
         model.addAttribute("Outils",outils);

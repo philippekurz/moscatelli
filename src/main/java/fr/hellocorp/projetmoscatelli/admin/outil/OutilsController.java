@@ -6,6 +6,7 @@ import fr.hellocorp.projetmoscatelli.admin.utilisateur.Utilisateur;
 import fr.hellocorp.projetmoscatelli.admin.utilisateur.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -55,7 +56,7 @@ public class OutilsController {
         model.addAttribute("Outil",outil);
 
 
-        List<Utilisateur> utilisateurs = utilisateurService.findAll(keyword);
+        List<Utilisateur> utilisateurs = utilisateurService.listAll();
         model.addAttribute("utilisateurs", utilisateurs);
 
         model.addAttribute("url","/outils");

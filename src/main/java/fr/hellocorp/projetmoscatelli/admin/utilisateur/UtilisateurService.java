@@ -3,6 +3,9 @@ package fr.hellocorp.projetmoscatelli.admin.utilisateur;
 import fr.hellocorp.projetmoscatelli.admin.droit.Droit;
 import fr.hellocorp.projetmoscatelli.admin.droit.IRepositoryDroit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +20,19 @@ public class UtilisateurService {
 
 
 
-    public List<Utilisateur> findAll(String keyword) {
-        if (keyword != null) {
-            return repo.search(keyword);}
-        return (List<Utilisateur>) repo.findAll();
+    public Page<Utilisateur> findAll(String keyword) {
+//        if (keyword != null) {
+//            return repo.search(keyword);}
+
+        return (Page<Utilisateur>) repo.findAll();
     }
 
-    public List<Utilisateur> findAll(){
-        return (List<Utilisateur>) repo.findAll();
+    public List<Utilisateur> listAll(){
+        return (List<Utilisateur>) repo.listAll();
+    }
+
+    public Page<Utilisateur> findAll(){
+        return (Page<Utilisateur>) repo.findAll();
     }
 
     public Utilisateur enregistrer(Utilisateur utilisateur) {
@@ -49,4 +57,7 @@ public class UtilisateurService {
         repo.deleteById(id);
     }
 
+    public Page<Utilisateur> findAll(String keyword, Pageable sortedById) {
+        return repo.findAll(sortedById);
+    }
 }
