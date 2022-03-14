@@ -5,11 +5,11 @@
     <table class="table table-striped table-responsive" >
         <thead>
         <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Téléphone</th>
-            <th scope="col">Rôle</th>
+            <th scope="col"> <a th:href="@{'/utilisateur?tri=nom&page=0'}" >Nom</a></th>
+            <th scope="col"> <a th:href="@{'/utilisateur?tri=prenom&page=0'}" >Prénom</a></th>
+            <th scope="col"> <a th:href="@{'/utilisateur?tri=email&page=0'}" >E-mail</a></th>
+            <th scope="col"> <a th:href="@{'/utilisateur?tri=telephone&page=0'}" >Téléphone</a></th>
+            <th scope="col"> <a th:href="@{'/utilisateur?tri=droits&page=0'}" >Rôle</a></th>
             <th scope="col"></th>
         </tr>
         </thead>

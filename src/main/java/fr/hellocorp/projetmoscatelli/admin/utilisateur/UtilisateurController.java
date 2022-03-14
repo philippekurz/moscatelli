@@ -30,11 +30,18 @@ public class UtilisateurController {
 
 
     @GetMapping(value = {"/recherche",""})
-    public String index(Model model, @Param("keyword") String keyword, @RequestParam(value = "page" , defaultValue = "0")  int page) {
+    public String index(Model model, @Param("keyword") String keyword,
+                        @RequestParam(value = "page" , defaultValue = "0")  int page,
+                        @RequestParam(value = "tri" , defaultValue = "id") String tri){
+
         Pageable sortedById =
-                PageRequest.of(page, 8, Sort.by("email"));
+                PageRequest.of(page, 8, Sort.by(tri));
+
         Page<Utilisateur> utilisateurs = utilisateurService.findAll(keyword, sortedById );
         model.addAttribute("utilisateurs", utilisateurs);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("tri",tri);
+
         Utilisateur utilisateur = new Utilisateur();
         model.addAttribute("utilisateur", utilisateur);
         model.addAttribute("url","/utilisateur");

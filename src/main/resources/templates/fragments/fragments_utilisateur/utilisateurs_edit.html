@@ -45,6 +45,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Rôle</label>
+
                             <th:block th:each="role : ${roles}">
                                 <input type="checkbox" class="m-2"
                                        th:checked="${utilisateur.isUserInRole(role.nom)}"

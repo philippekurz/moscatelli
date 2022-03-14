@@ -177,6 +177,7 @@ public class OutilsController {
 
             entreeSortie.setProbleme(probleme);
             if (null!=file) {
+//                entreeSortie.setReferencePV(Paths.get(WORKING_DIR + "/" + StringUtils.cleanPath(file.getOriginalFilename())).toString());
                 entreeSortie.setReferencePV(StringUtils.cleanPath(file.getOriginalFilename()));
             }
 
