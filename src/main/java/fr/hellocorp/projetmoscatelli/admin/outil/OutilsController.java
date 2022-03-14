@@ -101,7 +101,7 @@ public class OutilsController {
         entreeSortie.setDate_sortie(LocalDate.parse(date_sortie));
         entreeSortie.setDate_de_retour_prevue(LocalDate.parse(date_de_retour_prevue));
 
-        if (nom!=null) {
+        if (nom.length()!=0) {
             Utilisateur u = new Utilisateur();
             u.setNom(nom);
             u.setPrenom(prenom);
